@@ -1,0 +1,284 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-5">
+          <h4 class="card-title mb-0">Tráfego</h4>
+          <div class="small text-muted">Novembro, 2015</div>
+        </div><!--/.col-->
+        <div class="col-sm-7 hidden-sm-down">
+          <button type="button" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button>
+          <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
+              <label class="btn btn-outline-secondary">
+                <input type="radio" name="options" id="option1"> Dia
+              </label>
+              <label class="btn btn-outline-secondary active">
+                <input type="radio" name="options" id="option2" checked> Mês
+              </label>
+              <label class="btn btn-outline-secondary">
+                <input type="radio" name="options" id="option3"> Ano
+              </label>
+            </div>
+          </div>
+        </div><!--/.col-->
+      </div><!--/.row-->
+      <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+        <canvas baseChart class="chart"
+        [datasets]="mainChartData"
+        [labels]="mainChartLabels"
+        [options]="mainChartOptions"
+        [colors]="mainChartColours"
+        [legend]="mainChartLegend"
+        [chartType]="mainChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+    <div class="card-footer">
+      <ul>
+        <li>
+          <div class="text-muted">Visitas</div>
+          <strong>29.703 Usuários (40%)</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li class="hidden-sm-down">
+          <div class="text-muted">Unicos</div>
+          <strong>24.093 Usuários (20%)</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li>
+          <div class="text-muted">Vizualizações</div>
+          <strong>78.706 Vizualizações (60%)</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li class="hidden-sm-down">
+          <div class="text-muted">Novos Usuários</div>
+          <strong>22.123 Usuários (80%)</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li class="hidden-sm-down">
+          <div class="text-muted">Taxa de Rejeição</div>
+          <strong>40.15%</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+          <div class="table-responsive"></div>
+          <table class="table table-responsive table-hover table-outline mb-0">
+            <thead class="thead-default">
+              <tr>
+                <th class="text-center"><i class="icon-people"></i></th>
+                <th>Usuário</th>
+                <th>Uso</th>
+                <th>Atividade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  <div class="avatar">
+                    <img src="assets/img/avatars/1.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" src="assets/img/avatars/1.jpg">
+                    <span class="avatar-status badge-success"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>Jason Lee Scott</div>
+                  <div class="small text-muted">
+                    <span>Novo</span> | Registrado em: Jan 1, 2015
+                  </div>
+                </td>
+                <td>
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <strong>50%</strong>
+                    </div>
+                    <div class="float-right">
+                      <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                    </div>
+                  </div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="small text-muted">Último login</div>
+                  <strong>10 seg atrás</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <div class="avatar">
+                    <img src="assets/img/avatars/2.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" src="assets/img/avatars/2.jpg">
+                    <span class="avatar-status badge-danger"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>Zack Taylor</div>
+                  <div class="small text-muted">
+
+                    <span>Recorrente</span> | Registrado em: Jan 1, 2015
+                  </div>
+                </td>
+                <td>
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <strong>10%</strong>
+                    </div>
+                    <div class="float-right">
+                      <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                    </div>
+                  </div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="small text-muted">Último login</div>
+                  <strong>5 minutos atrás</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <div class="avatar">
+                    <img src="assets/img/avatars/3.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" src="assets/img/avatars/3.jpg">
+                    <span class="avatar-status badge-warning"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>Billy Cranston</div>
+                  <div class="small text-muted">
+                    <span>Novo</span> | Registrado em: Jan 1, 2015
+                  </div>
+                </td>
+                <td>
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <strong>74%</strong>
+                    </div>
+                    <div class="float-right">
+                      <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                    </div>
+                  </div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 74%" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="small text-muted">Último login</div>
+                  <strong>1 hora atrás</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <div class="avatar">
+                    <img src="assets/img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" src="assets/img/avatars/4.jpg">
+                    <span class="avatar-status badge-default"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>Trini Kwan</div>
+                  <div class="small text-muted">
+                    <span>Novo</span> | Registrado em: Jan 1, 2015
+                  </div>
+                </td>
+                <td>
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <strong>98%</strong>
+                    </div>
+                    <div class="float-right">
+                      <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                    </div>
+                  </div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="small text-muted">Último login</div>
+                  <strong>Mês passado</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <div class="avatar">
+                    <img src="assets/img/avatars/5.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" src="assets/img/avatars/5.jpg">
+                    <span class="avatar-status badge-success"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>Kim Ann Hart</div>
+                  <div class="small text-muted">
+                    <span>Novo</span> | Registrado em: Jan 1, 2015
+                  </div>
+                </td>
+                <td>
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <strong>22%</strong>
+                    </div>
+                    <div class="float-right">
+                      <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                    </div>
+                  </div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="small text-muted">Último login</div>
+                  <strong>Semana passada</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <div class="avatar">
+                    <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" src="assets/img/avatars/6.jpg">
+                    <span class="avatar-status badge-danger"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>Tommy Oliver</div>
+                  <div class="small text-muted">
+                    <span>Novo</span> | Registrado em: Jan 1, 2015
+                  </div>
+                </td>
+                <td>
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <strong>43%</strong>
+                    </div>
+                    <div class="float-right">
+                      <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                    </div>
+                  </div>
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="small text-muted">Último login</div>
+                  <strong>Ontem</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+</div>

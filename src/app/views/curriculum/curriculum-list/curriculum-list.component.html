@@ -1,0 +1,13 @@
+<div class="container">
+  <h3>Currículos</h3>
+    <div class="card-body">
+      <ul *ngFor="let curriculum of curriculums">
+        <!--<li> {{curriculum }}</li>-->
+        <li>{{ curriculum.id }}</li>
+        <li>{{ curriculum.titulo }}</li>
+        <li>{{ curriculum.descricao }}</li>
+        <li>{{ curriculum.autor }}</li>
+        <li>{{ curriculum.data_criacao }}</li>
+      </ul>
+    </div>
+</div>

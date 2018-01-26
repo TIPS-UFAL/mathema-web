@@ -1,0 +1,46 @@
+<div class="sidebar">
+  <app-sidebar-header></app-sidebar-header>
+  <app-sidebar-form></app-sidebar-form>
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Início </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard-professor']"><i class="icon-puzzle"></i> Professor</a>
+      </li>
+      <li class="divider"></li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum/form']"><i class="icon-book-open"></i> Cadastro de Currículo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/topic/form']"><i class="icon-list"></i> Cadastro de Tópico</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/question/form']"><i class="icon-puzzle"></i> Cadastro de Atividade</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/quiz/form']"><i class="icon-star"></i> Cadastro de Questionário</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum']"><i class="icon-book-open"></i> Curriculums</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/topic']"><i class="icon-list"></i> Tópicos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/question/form']"><i class="icon-puzzle"></i> Atividades</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/quiz']"><i class="icon-star"></i> Questionários</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/charts']"><i class="icon-pie-chart"></i> Estatísticas</a>
+      </li>
+      <li class="divider"></li>
+      <li class="nav-title">
+    </ul>
+  </nav>
+  <app-sidebar-footer></app-sidebar-footer>
+  <app-sidebar-minimizer></app-sidebar-minimizer>
+</div>

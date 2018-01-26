@@ -1,0 +1,71 @@
+<div class="animated fadeIn">
+  <div class="card-columns cols-2">
+    <div class="card">
+      <div class="card-header">
+        Pontuação Matemática
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart"
+          [datasets]="lineChartDataMat"
+          [labels]="lineChartLabelsMat"
+          [options]="lineChartOptionsMat"
+          [colors]="lineChartColoursMat"
+          [legend]="lineChartLegendMat"
+          [chartType]="lineChartTypeMat"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        Pontuação Lógica
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart"
+                  [datasets]="lineChartDataLog"
+                  [labels]="lineChartLabelsLog"
+                  [options]="lineChartOptionsLog"
+                  [colors]="lineChartColoursLog"
+                  [legend]="lineChartLegendLog"
+                  [chartType]="lineChartTypeLog"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        Habilidades
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart"
+          [datasets]="radarChartDataMat"
+          [labels]="radarChartLabelsMat"
+          [colors]="radarChartColoursMat"
+          [chartType]="radarChartTypeMat"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        Habilidades
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart"
+                  [datasets]="radarChartDataLog"
+                  [labels]="radarChartLabelsLog"
+                  [colors]="radarChartColoursLog"
+                  [chartType]="radarChartTypeLog"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+</div>
