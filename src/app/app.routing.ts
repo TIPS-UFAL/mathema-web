@@ -10,29 +10,13 @@ import {
   FullLayout,
   SimpleLayout
 } from './containers';
+import {AuthGuard} from './auth/services/authentication.guard';
 
 export const routes: Routes = [
-  /*{
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: '',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: '**',
-    redirectTo: ''
-  },*/
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
   {
     path: '',
     component: FullLayout,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },

@@ -1,25 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
-import { AuthenticationService } from '../services/index';
 import { User } from '../models/index';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AuthenticationService} from '../../../../auth/services';
 
 @Injectable()
 export class UserService {
+  user: User;
+
   constructor(
-    private http: Http,
+    private http: HttpClient,
     private authenticationService: AuthenticationService) {
+      this.getUser();
   }
 
-  getUsers(): Observable<User[]> {
+  getUser(): Observable<any> {
     // add authorization header with jwt token
-    let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-    let options = new RequestOptions({ headers: headers });
+
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    const options: any = ({ headers: headers });
 
     // get users from api
-    return this.http.get('/api/users', options)
-      .map((response: Response) => response.json());
+    return this.http.get('http://localhost:8000/api/rest-auth/user/', options);
   }
 }
+
+
+

@@ -1,4 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
+import {AuthenticationService} from '../../auth/services';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,7 @@ import { Component, ElementRef } from '@angular/core';
 })
 export class AppHeader {
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef, private authenticationService: AuthenticationService) { }
 
   //wait for the component to render completely
   ngOnInit(): void {
@@ -19,4 +20,9 @@ export class AppHeader {
     // remove the empty element(the host)
     parentElement.removeChild(nativeElement);
   }
+
+  logout () {
+    this.authenticationService.logout();
+  }
+
 }

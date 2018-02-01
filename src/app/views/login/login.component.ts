@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { AuthenticationService } from '../../auth/services/index';
+import {UserService} from '../user/shared/services';
+import {User} from '../user/shared/models';
+
 
 @Component({
     selector: 'app-login',
@@ -12,27 +15,33 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     error = '';
+    returnUrl;
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService) { }
+        private authenticationService: AuthenticationService,
+        private userService: UserService,
+        private route: ActivatedRoute) { }
 
     ngOnInit() {
-        // reset login status
-        this.authenticationService.logout();
+      this.userService.getUser().subscribe((user: User) => {
+        this.router.navigate(['/dashboard']);
+      });
+
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     login() {
         this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
-            .subscribe(result => {
-                console.log("aqui");
-                if (result === true) {
-                    this.router.navigate(['/dashboard/']);
-                } else {
-                    this.error = 'Username or password is incorrect';
-                    this.loading = false;
-                }
-            });
+        this.authenticationService.login(this.model.username, this.model.password, this.callBack.bind(this));
+    }
+
+    callBack(success: boolean) {
+      if (!success) {
+        this.error = 'Username or password is incorrect';
+        this.loading = false;
+      } else {
+        this.router.navigateByUrl(this.returnUrl);
+      }
     }
 }

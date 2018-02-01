@@ -70,13 +70,13 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { CurriculumListComponent } from './views/curriculum/curriculum-list/curriculum-list.component';
-import { CurriculumFormComponent } from "./views/curriculum/curriculum-form/curriculum-form.component";
-import { CurriculumRoutingModule } from "./views/curriculum/curriculum-routing.module";
-import { FormsModule } from "@angular/forms";
-import { CurriculumModule } from "./views/curriculum/curriculum.module";
-import { UserComponent } from './views/user/user.component';
-import {AuthenticationService} from "./auth/services/authentication.service";
+import { FormsModule } from '@angular/forms';
+import { CurriculumModule } from './views/curriculum/curriculum.module';
+import {AuthenticationService} from './auth/services';
+import {HttpClientModule} from '@angular/common/http';
+import {AuthGuard} from './auth/services/authentication.guard';
+import {UserService} from './views/user/shared/services';
+
 
 @NgModule({
   imports: [
@@ -87,20 +87,18 @@ import {AuthenticationService} from "./auth/services/authentication.service";
     ChartsModule,
     FormsModule,
     CurriculumModule,
-    /*HttpModule,
-    routing*/
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
-    ...APP_DIRECTIVES,
-    UserComponent,
-    /*LoginComponent,
-    HomeComponent*/
+    ...APP_DIRECTIVES
   ],
   providers: [
     AuthenticationService,
+    AuthGuard,
+    UserService,
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
