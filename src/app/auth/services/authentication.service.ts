@@ -7,10 +7,10 @@ import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
-    public token: string;
-    public url = 'http://localhost:8000/api/';
-    public headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    public options: any = { headers: this.headers };
+    token: string;
+    url = 'http://localhost:8000/api/';
+    headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    options: any = { headers: this.headers };
 
     constructor(private http: HttpClient, private router: Router) {
         // set token if saved in local storage
@@ -40,5 +40,9 @@ export class AuthenticationService {
         this.token = null;
         localStorage.removeItem('currentUser');
         this.router.navigate(['login']);
+    }
+
+    getToken() {
+
     }
 }
