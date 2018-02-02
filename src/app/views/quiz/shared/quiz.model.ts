@@ -7,10 +7,10 @@ export abstract class Quiz {
     titulo: string;
     descricao: string;
     curriculo: Curriculum;
-    topico: Topic;
+    topico: Topic[];
     atividade: Question[];
 
-    constructor(id: number, titulo: string, descricao: string, curriculo: Curriculum, topico: Topic, atividade: Question[]) {
+    constructor(id: number, titulo: string, descricao: string, curriculo: Curriculum, topico: Topic[], atividade: Question[]) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;

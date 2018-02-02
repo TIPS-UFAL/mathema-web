@@ -6,15 +6,13 @@ export abstract class Question {
     titulo: string;
     descricao: string;
     curriculo: Curriculum;
-    topico: Topic;
-    subTopico?: Topic;
+    topico: Topic[];
 
-    constructor(id: number, titulo: string, descricao: string, curriculo: Curriculum, topico: Topic, subTopico?: Topic) {
+    constructor(id: number, titulo: string, descricao: string, curriculo: Curriculum, topico: Topic[]) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.curriculo = curriculo;
         this.topico = topico;
-        this.subTopico = subTopico;
     }
 }

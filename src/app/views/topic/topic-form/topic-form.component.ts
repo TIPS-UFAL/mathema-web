@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Topic } from '../shared/topic.model';
 import { TopicService } from '../shared/topic.service';
 import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
+import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service'
 
 @Component({
     selector: 'app-topic-form',
@@ -17,8 +18,20 @@ export class TopicFormComponent {
     curriculo: Curriculum;
     topicoPai?: Topic;
 
+    curriculums: Curriculum[] = [];
+    topics: Topic[] = [];
+
     constructor(private topicService: TopicService,
-                private router: Router) { }
+                private curriculumService: CurriculumService,
+                private router: Router) {
+        curriculumService.getCurriculums().subscribe((data: any) => {
+            this.curriculums = data;
+        })
+
+        topicService.getTopics().subscribe((data:any) => {
+            this.topics = data;
+        })
+    }
 
     onSubmit() {
         this.topicService.createTopic({'titulo': this.titulo,
