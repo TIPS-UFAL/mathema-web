@@ -10,27 +10,22 @@ export class QuizService {
   constructor(private http: Http) { }
 
   createQuiz(obj: any) {
-    return this.http.post(this.url + 'quiz/', obj)
-      .map((res: Response) => res.json());
+    return this.http.post(this.url + 'quiz/', obj);
   }
 
   getQuizzes() {
-    return this.http.get(this.url + 'quiz/')
-      .map((res: Response) => res.json());
+    return this.http.get(this.url + 'quiz/');
   }
 
   getQuiz(id: number) {
-    return this.http.get(this.url + 'quiz/' + id + '/')
-      .map((res: Response) => res.json());
+    return this.http.get(this.url + 'quiz/' + id + '/');
   }
 
   updateQuiz(obj: any, id: number) {
-    return this.http.patch(this.url + 'quiz/' + id + '/', obj)
-      .map((res: Response) => res.json());
+    return this.http.patch(this.url + 'quiz/' + id + '/', obj);
   }
 
   deleteQuiz(id: number) {
-    return this.http.delete(this.url + 'quiz/' + id + '/')
-      .map((res: Response) => res.json());
+    return this.http.delete(this.url + 'quiz/' + id + '/');
   }
 }

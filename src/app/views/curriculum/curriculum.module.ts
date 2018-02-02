@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';
 import {HttpModule} from '@angular/http';
 
 import { CurriculumRoutingModule } from './curriculum-routing.module';
-import {CurriculumService} from "./shared/curriculum.service";
-import {CurriculumListComponent} from "./curriculum-list/curriculum-list.component";
+import {CurriculumService} from './shared/curriculum.service';
+import {CurriculumListComponent} from './curriculum-list/curriculum-list.component';
 import { CurriculumFormComponent } from './curriculum-form/curriculum-form.component';
 
 @NgModule({

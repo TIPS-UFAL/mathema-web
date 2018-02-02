@@ -43,6 +43,6 @@ export class AuthenticationService {
     }
 
     getToken() {
-
+      return 'Bearer ' + this.token
     }
 }

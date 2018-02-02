@@ -11,27 +11,22 @@ export class CurriculumService {
   constructor(private http: HttpService) { }
 
   createCurriculum(obj: any) {
-    return this.http.post(this.url + 'curriculum/', obj)
-      .map((res: Response) => res.json());
+    return this.http.post(this.url + 'curriculum/', obj);
   }
 
   getCurriculums() {
-    return this.http.get(this.url + 'curriculum/')
-      .map((res: Response) => res.json());
+    return this.http.get(this.url + 'curriculum/');
   }
 
   getCurriculum(id: number) {
-    return this.http.get(this.url + 'curriculum/' + id + '/')
-      .map((res: Response) => res.json());
+    return this.http.get(this.url + 'curriculum/' + id + '/');
   }
 
   updateCurriculum(obj: any, id: number) {
-    return this.http.patch(this.url + 'curriculum/' + id + '/', obj)
-      .map((res: Response) => res.json());
+    return this.http.patch(this.url + 'curriculum/' + id + '/', obj);
   }
 
   deleteCurriculum(id: number) {
-    return this.http.delete(this.url + 'curriculum/' + id + '/')
-      .map((res: Response) => res.json());
+    return this.http.delete(this.url + 'curriculum/' + id + '/');
   }
 }

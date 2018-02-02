@@ -16,11 +16,23 @@ export class HttpService {
     return this.http.post(url, obj, this.createHeaders());
   }
 
+  delete(url: string) {
+    return this.http.delete(url, this.createHeaders());
+  }
+
+  patch(url: string, obj: any) {
+    return this.http.patch(url, this.createHeaders());
+  }
+
+
+
   private createHeaders() {
     const headers: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authentication' :  'Bearer ' + this.authenticationService.token
+      'Authorization' :  'Bearer ' + this.authenticationService.token
     });
     return { headers: headers };
   }
+
+
 }

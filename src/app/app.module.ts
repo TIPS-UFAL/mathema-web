@@ -77,6 +77,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './auth/services/authentication.guard';
 import {UserService} from './views/user/shared/services';
 import {SharedModule} from './shared/shared.module';
+import {HttpService} from './shared/http.service';
 
 
 @NgModule({
@@ -90,6 +91,8 @@ import {SharedModule} from './shared/shared.module';
     CurriculumModule,
     HttpClientModule,
     SharedModule
+
+
   ],
   declarations: [
     AppComponent,
