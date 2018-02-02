@@ -7,11 +7,11 @@ import {Router} from '@angular/router';
   templateUrl: 'register.component.html'
 })
 export class RegisterComponent {
-  private username: string;
-  private email: string;
-  private password: string;
-  private password2: string;
-  private error = null;
+  username: string;
+  email: string;
+  password: string;
+  password2: string;
+  error = [];
 
   constructor (private userService: UserService, private router: Router) { }
   register () {
@@ -20,7 +20,18 @@ export class RegisterComponent {
         alert('Usuário criado com sucesso!');
         this.router.navigate(['/login']);
       }, (error: any) => {
-        this.error = 'a';
+        if (error.password1) {
+          this.error.concat(error.password1);
+        }
+        if (error.username) {
+          this.error.concat(error.username);
+        }
+        if (error.password2) {
+          this.error.concat(error.password2);
+        }
+        if (error.email) {
+          this.error.concat(error.email);
+        }
       });
   }
 }

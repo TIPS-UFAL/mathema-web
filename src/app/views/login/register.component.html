@@ -25,7 +25,7 @@
               <span class="input-group-addon"><i class="icon-lock"></i></span>
               <input type="password" class="form-control" placeholder="Repeat password" [(ngModel)]="this.password2" name="inputPassword2"  #inputPassword2="ngModel">
             </div>
-            <!--<div *ngIf="error" class="alert alert-danger">{{error}}</div>-->
+            <div *ngIf="error" *ngFor="let err of error" class="alert alert-danger">{{err}}</div>
             <button type="button" class="btn btn-block btn-success" (click)="register()">Create Account</button>
           </div>
           <!--<div class="card-footer p-4">-->
