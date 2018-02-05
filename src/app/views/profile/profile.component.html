@@ -1,3 +1,53 @@
 <div class="container">
-    <h3>Perfil</h3>
+    <div class="row">
+        <div class="col">
+            <img src="assets/img/avatars/admin.png" class="img-avatar" style='height: 65%; width: 65%; margin-left:0px'/>
+            <img/>
+            <div class="row">
+                <button type="button" style='margin-right:16px; margin-top:16px' class="btn btn-info btn-sm"> <i class="fa fa-pencil append-icon"></i> Editar dados</button>
+                <button type="button" style='margin-top:16px' class="btn btn-danger btn-sm"> <i class="fa fa-close append-icon"></i> Excluir conta</button>
+            </div>
+        </div>
+        <div class="col">
+            <h3 class="mgbt-xs-15 mgtp-10 font-semibold"><i class="icon-user mgr-10 profile-icon"></i> Dados</h3>
+            <table style="width:80%; height:50%; margin-top:18px; margin-left:0px">
+                <tbody>
+                    <tr>
+                        <td><b>Nome</b></td>
+                        <td>{{ user?.first_name}} {{ user?.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Usuário</b></td>
+                        <td>{{ user?.username }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td>{{ user?.email }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Categoria</b></td>
+                        <td>Professor</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <table style="width:120%; height:50%; margin-top:45px">
+                <tbody>
+                    <tr>
+                        <td><b>Instituição</b></td>
+                        <td>Universidade Federal de Alagoas</td>
+                    </tr>
+                    <tr>
+                        <td><b>Curso</b></td>
+                        <td>Engenharia de Computação</td>
+                    </tr>
+                    <tr>
+                        <td><b>Período</b></td>
+                        <td>5°</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

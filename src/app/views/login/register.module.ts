@@ -4,12 +4,16 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { RegisterComponent } from './register.component';
 import { RegisterRoutingModule } from './register-routing.module';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
     RegisterRoutingModule,
     ChartsModule,
-    BsDropdownModule
+    BsDropdownModule,
+    FormsModule
   ],
   declarations: [ RegisterComponent ]
 })
