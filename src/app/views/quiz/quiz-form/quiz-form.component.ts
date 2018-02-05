@@ -32,16 +32,16 @@ export class QuizFormComponent {
                 private topicService: TopicService,
                 private questionService: QuestionService,
                 private router: Router) {
-        
+
         curriculumService.getCurriculums().subscribe((data: any) => {
             this.curriculums = data;
         })
 
-        topicService.getTopics().subscribe((data:any) => {
+        topicService.getTopics().subscribe((data: any) => {
             this.topics = data;
         })
 
-        questionService.getQuestions().subscribe((data:any) => {
+        questionService.getQuestions().subscribe((data: any) => {
             this.questions = data;
         })
 
@@ -54,6 +54,6 @@ export class QuizFormComponent {
                                      'topico': this.topico,
                                      'atividade': this.atividade}).subscribe(() => {
                                         this.router.navigate(['']);
-                                    });  
+                                    });
     }
 }

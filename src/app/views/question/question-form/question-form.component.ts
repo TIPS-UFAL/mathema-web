@@ -26,8 +26,8 @@ export class QuestionFormComponent {
     constructor(private questionService: QuestionService,
                 private curriculumService: CurriculumService,
                 private topicService: TopicService,
-                private router: Router) { 
-        
+                private router: Router) {
+
         curriculumService.getCurriculums().subscribe((data: any) => {
             this.curriculums = data;
         })
@@ -36,13 +36,13 @@ export class QuestionFormComponent {
             this.topics = data;
         })
     }
-    
+
     onSubmit() {
         this.questionService.createQuestion({'titulo': this.titulo,
                                              'descricao': this.descricao,
                                              'curriculo': this.curriculo,
                                              'topico': this.topico}).subscribe(() => {
                                                  this.router.navigate(['']);
-                                             });   
+                                             });
     }
 }

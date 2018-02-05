@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, RequestOptions} from "@angular/http";
 import 'rxjs/add/operator/map';
+import {HttpService} from '../../../shared/http.service';
 
 @Injectable()
 export class QuizService {
 
   url = 'http://localhost:8000/api/';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpService) { }
 
   createQuiz(obj: any) {
     return this.http.post(this.url + 'quiz/', obj);

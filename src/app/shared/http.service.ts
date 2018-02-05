@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthenticationService} from '../auth/services';
 
+
 @Injectable()
 export class HttpService {
   constructor(private http: HttpClient,

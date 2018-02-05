@@ -77,7 +77,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './auth/services/authentication.guard';
 import {UserService} from './views/user/shared/services';
 import {SharedModule} from './shared/shared.module';
+import { HttpModule } from '@angular/http';
 import {HttpService} from './shared/http.service';
+import {TopicService} from './views/topic/shared/topic.service';
+import {QuestionService} from './views/question/shared/question.service';
+import {CurriculumService} from './views/curriculum/shared/curriculum.service';
+import {QuizService} from './views/quiz/shared/quiz.service';
 
 
 @NgModule({
@@ -90,6 +95,7 @@ import {HttpService} from './shared/http.service';
     FormsModule,
     CurriculumModule,
     HttpClientModule,
+    HttpModule,
     SharedModule
 
 
@@ -104,6 +110,9 @@ import {HttpService} from './shared/http.service';
     AuthenticationService,
     AuthGuard,
     UserService,
+    QuestionService,
+    TopicService,
+    QuizService,
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
