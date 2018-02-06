@@ -1,15 +1,14 @@
 <div class="container">
     <h3>Questionários</h3>
       <div class="card-body">
-        oi
         <ul *ngFor="let quiz of quizzes">
           <li>{{ quiz.id }}</li>
-          <li>{{ quiz.titulo }}</li>
-          <li>{{ quiz.descricao }}</li>
-          <li>{{ quiz.curriculo }}</li>
-          <li>{{ quiz.topico }}</li>
-          <li>{{ quiz.atividade }}</li>
-          <li>{{ quiz.data_criacao }}</li>
+          <li>{{ quiz.title }}</li>
+          <li>{{ quiz.description }}</li>
+          <li>{{ quiz.curriculum }}</li>
+          <li>{{ quiz.topic }}</li>
+          <li>{{ quiz.activity }}</li>
+          <li>{{ quiz.creation_data }}</li>
         </ul>
       </div>
   </div>

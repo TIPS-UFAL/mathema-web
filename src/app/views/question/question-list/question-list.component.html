@@ -1,14 +1,13 @@
 <div class="container">
     <h3>Atividades</h3>
       <div class="card-body">
-        oi
         <ul *ngFor="let question of questions">
           <li>{{ question.id }}</li>
-          <li>{{ question.titulo }}</li>
-          <li>{{ question.descricao }}</li>
-          <li>{{ question.curriculo }}</li>
-          <li>{{ question.topico }}</li>
-          <li>{{ question.data_criacao }}</li>
+          <li>{{ question.title }}</li>
+          <li>{{ question.description }}</li>
+          <li>{{ question.curriculum }}</li>
+          <li>{{ question.topic }}</li>
+          <li>{{ question.creation_data }}</li>
         </ul>
       </div>
   </div>

@@ -16,20 +16,11 @@
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="curriculum">Currículo</label>
-            <div class="">
-              <select [(ngModel)]="curriculums" id="curriculum" name="curriculum" class="form-control" required>
-                <option *ngFor="let c of curriculums" [value]="c">{{ c.titulo }}</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
               <div class="form-control-label">
                   <label for="subtopico">
                       <label for="subtopico">Tópico-pai</label>
                   </label>
-                  <select [(ngModel)]="topics" id="topic" name="topic" class="form-control" required>
+                  <select [(ngModel)]="topics" id="topic" name="topic" class="form-control">
                     <option value="">Não é um sub-tópico</option>
                     <option *ngFor="let t of topics" [value]="t">{{ t.titulo }}</option>
                   </select>

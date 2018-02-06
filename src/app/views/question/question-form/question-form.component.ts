@@ -7,6 +7,8 @@ import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
 import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service';
 import { Topic } from 'app/views/topic/shared/topic.model';
 import { TopicService } from 'app/views/topic/shared/topic.service';
+import {User} from '../../user/shared/models';
+import {UserService} from '../../user/shared/services';
 
 @Component({
     selector: 'app-question-form',
@@ -17,31 +19,21 @@ export class QuestionFormComponent {
 
     titulo: string;
     descricao: string;
-    curriculo: Curriculum;
-    topico: Topic[];
-
-    curriculums: Curriculum[] = [];
-    topics: Topic[] = [];
+    // tipo: ActivityType;
+    user: User;
 
     constructor(private questionService: QuestionService,
-                private curriculumService: CurriculumService,
-                private topicService: TopicService,
+                userService: UserService,
                 private router: Router) {
-
-        curriculumService.getCurriculums().subscribe((data: any) => {
-            this.curriculums = data;
-        })
-
-        topicService.getTopics().subscribe((data:any) => {
-            this.topics = data;
-        })
+      userService.user.subscribe((user: User) => {
+        this.user = user
+      })
     }
 
     onSubmit() {
-        this.questionService.createQuestion({'titulo': this.titulo,
-                                             'descricao': this.descricao,
-                                             'curriculo': this.curriculo,
-                                             'topico': this.topico}).subscribe(() => {
+        this.questionService.createQuestion({'title': this.titulo,
+                                             'description': this.descricao,
+                                             'author': this.user.pk}).subscribe(() => {
                                                  this.router.navigate(['']);
                                              });
     }

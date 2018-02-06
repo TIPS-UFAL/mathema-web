@@ -17,15 +17,15 @@ export class CurriculumService {
     return this.http.get(this.url + 'curriculum/');
   }
 
-  getCurriculum(id: number) {
-    return this.http.get(this.url + 'curriculum/' + id + '/');
+  getCurriculum(pk: number) {
+    return this.http.get(this.url + 'curriculum/' + pk + '/');
   }
 
-  updateCurriculum(obj: any, id: number) {
-    return this.http.patch(this.url + 'curriculum/' + id + '/', obj);
+  updateCurriculum(obj: any, pk: number) {
+    return this.http.patch(this.url + 'curriculum/' + pk + '/', obj);
   }
 
-  deleteCurriculum(id: number) {
-    return this.http.delete(this.url + 'curriculum/' + id + '/');
+  deleteCurriculum(pk: number) {
+    return this.http.delete(this.url + 'curriculum/' + pk + '/');
   }
 }

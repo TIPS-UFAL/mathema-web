@@ -8,7 +8,7 @@ import { CurriculumListComponent } from './curriculum-list/curriculum-list.compo
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'list',
     component: CurriculumListComponent,
   },
   {

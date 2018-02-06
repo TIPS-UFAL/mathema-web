@@ -7,7 +7,7 @@ import { TopicFormComponent } from './topic-form/topic-form.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'list',
     component: TopicListComponent,
   },
   {

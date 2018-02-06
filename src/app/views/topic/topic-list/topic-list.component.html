@@ -1,15 +1,14 @@
 <div class="container">
     <h3>Tópicos</h3>
       <div class="card-body">
-        oi
         <ul *ngFor="let topic of topics">
           <li>{{ topic.id }}</li>
-          <li>{{ topic.titulo }}</li>
-          <li>{{ topic.descricao }}</li>
-          <li>{{ topic.curriculo }}</li>
-          <li>{{ topic.topicoPai }}</li>
-          <li>{{ topic.atividade }}</li>
-          <li>{{ topic.data_criacao }}</li>
+          <li>{{ topic.title }}</li>
+          <li>{{ topic.description }}</li>
+          <li>{{ topic.curriculum }}</li>
+          <li>{{ topic.parentTopic }}</li>
+          <li>{{ topic.activity }}</li>
+          <li>{{ topic.creation_data }}</li>
         </ul>
       </div>
   </div>
