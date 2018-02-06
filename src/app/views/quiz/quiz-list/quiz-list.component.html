@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
     <h3>Questionários</h3>
       <div class="card-body">
         <ul *ngFor="let quiz of quizzes">
@@ -11,4 +11,20 @@
           <li>{{ quiz.creation_data }}</li>
         </ul>
       </div>
-  </div>
+  </div>-->
+
+<div class="container">
+  <h3>Questionários<br><br></h3>
+  <ul *ngFor="let quiz of quizzes">
+    <div class="card" style="width: 62rem;">
+      <h5 class="card-header">Titulo: {{ quiz.title }}</h5>
+      <div class="card-body">
+        <p class="card-text">Descrição: {{ quiz.description}}</p>
+        <p class="card-text">Curriculum: {{ quiz.curriculum}}</p>
+        <p class="card-text">Topico: {{ quiz.topic}}</p>
+        <p class="card-text">Activity: {{ quiz.activity}}</p>
+        <a href="#" class="btn btn-primary">Editar(há implementar)</a>
+      </div>
+    </div>
+  </ul>
+</div>

@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
     <h3>Tópicos</h3>
       <div class="card-body">
         <ul *ngFor="let topic of topics">
@@ -11,4 +11,20 @@
           <li>{{ topic.creation_data }}</li>
         </ul>
       </div>
-  </div>
+  </div>-->
+
+<div class="container">
+  <h3>Tópicos<br><br></h3>
+  <ul *ngFor="let topic of topics">
+    <div class="card" style="width: 62rem;">
+      <h5 class="card-header">Titulo: {{ topic.title }}</h5>
+      <div class="card-body">
+        <p class="card-text">Descrição: {{ topic.description}}</p>
+        <p class="card-text">Curriculum: {{ topic.curriculum}}</p>
+        <p class="card-text">Topico Pai: {{ topic.parentTopic}}</p>
+        <p class="card-text">Activity: {{ topic.activity}}</p>
+        <a href="#" class="btn btn-primary">Editar(há implementar)</a>
+      </div>
+    </div>
+  </ul>
+</div>
