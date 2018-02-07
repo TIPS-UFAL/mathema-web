@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Curriculum} from "../shared/curriculum.model";
-import {CurriculumService} from "../shared/curriculum.service";
+import {Curriculum} from '../shared/curriculum.model';
+import {CurriculumService} from '../shared/curriculum.service';
 
 @Component({
   selector: 'app-curriculum-list',

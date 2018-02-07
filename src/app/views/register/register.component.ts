@@ -33,29 +33,29 @@ export class RegisterComponent implements OnInit {
       }, (error: any) => {
         this.error = [];
         if (error.error.username) {
-          if (error.error.username == "Este campo é obrigatório.") {
-            this.error = this.error.concat("Campo Username é obrigatório");
+          if (error.error.username == 'Este campo é obrigatório.') {
+            this.error = this.error.concat('Campo Username é obrigatório');
           } else {
             this.error = this.error.concat(error.error.username);
           }
         }
         if (error.error.password1) {
-          if (error.error.password1 == "Este campo é obrigatório.") {
-            this.error = this.error.concat("Campo Password é obrigatório");
+          if (error.error.password1 == 'Este campo é obrigatório.') {
+            this.error = this.error.concat('Campo Password é obrigatório');
           } else {
             this.error = this.error.concat(error.error.password1);
           }
         }
         if (error.error.password2) {
-          if (error.error.password2 == "Este campo é obrigatório.") {
-            this.error = this.error.concat("Campo Repeat Password é obrigatório");
+          if (error.error.password2 == 'Este campo é obrigatório.') {
+            this.error = this.error.concat('Campo Repeat Password é obrigatório');
           } else {
             this.error = this.error.concat(error.error.password2);
           }
         }
         if (error.error.email) {
-          if (error.error.email == "Este campo é obrigatório.") {
-            this.error = this.error.concat("Campo Email é obrigatório");
+          if (error.error.email == 'Este campo é obrigatório.') {
+            this.error = this.error.concat('Campo Email é obrigatório');
           } else {
             this.error = this.error.concat(error.error.email);
           }

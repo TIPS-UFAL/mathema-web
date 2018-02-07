@@ -1,5 +1,5 @@
-import { Curriculum } from "app/views/curriculum/shared/curriculum.model";
-import { Topic } from "app/views/topic/shared/topic.model";
+import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
+import { Topic } from 'app/views/topic/shared/topic.model';
 
 export abstract class Question {
     id: number;
