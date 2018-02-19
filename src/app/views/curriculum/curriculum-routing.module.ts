@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { CurriculumFormComponent } from './curriculum-form/curriculum-form.component';
 import { CurriculumListComponent } from './curriculum-list/curriculum-list.component';
+import {CurriculumDetailComponent} from './curriculum-detail/curriculum-detail.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,11 @@ const routes: Routes = [
   {
     path: 'form',
     component: CurriculumFormComponent,
-  }
+  },
+  {
+    path: ':id',
+    component: CurriculumDetailComponent,
+  },
 
 ];
 
