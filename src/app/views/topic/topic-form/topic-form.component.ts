@@ -38,7 +38,7 @@ export class TopicFormComponent {
     }
 
     onSubmit() {
-      //verifica se é subtopico
+      // verifica se é subtopico
       if(this.topicoPai == null) {
         this.topicService.createTopic({'title': this.titulo,
           'description': this.descricao,

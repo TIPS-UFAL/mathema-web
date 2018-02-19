@@ -20,11 +20,19 @@ export class QuestionFormComponent {
     titulo: string;
     descricao: string;
     // tipo: ActivityType;
+    topico: Topic
     user: User;
 
+     topics: Topic[] = [];
+
     constructor(private questionService: QuestionService,
+                private topicService: TopicService,
                 userService: UserService,
                 private router: Router) {
+      topicService.getTopics().subscribe((data: any) => {
+        this.topics = data;
+      })
+
       userService.user.subscribe((user: User) => {
         this.user = user
       })

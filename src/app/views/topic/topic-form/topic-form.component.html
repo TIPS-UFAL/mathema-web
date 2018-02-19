@@ -22,7 +22,7 @@
                   </label>
                   <select [(ngModel)]="topics" id="topic" name="topic" class="form-control">
                     <option value="">Não é um sub-tópico</option>
-                    <option *ngFor="let t of topics" [value]="t">{{ t.titulo }}</option>
+                    <option *ngFor="let t of topics" [value]="t">{{ t.title }}</option>
                   </select>
               </div>
           </div>
