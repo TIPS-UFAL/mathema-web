@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {CurriculumService} from '../shared/curriculum.service';
+import {Curriculum} from '../shared/curriculum.model';
 
 @Component({
   selector: 'app-curriculum-detail',
@@ -7,12 +9,21 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./curriculum-detail.component.scss']
 })
 export class CurriculumDetailComponent implements OnInit {
+
   public curriculumId;
-  constructor(private route: ActivatedRoute) { }
+
+  curriculum: Curriculum;
+
+  constructor(private curriculumService: CurriculumService, private route: ActivatedRoute) {
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+    curriculumService.getCurriculum(id).subscribe((data: any) => {
+      this.curriculum = data;
+      console.log(this.curriculum);
+
+    })
+  }
 
   ngOnInit() {
-     let id = parseInt(this.route.snapshot.paramMap.get('id'));
-     this.curriculumId = id;
   }
 
 }

@@ -1,15 +1,15 @@
 export abstract class Curriculum {
-  pk: number;
-  titulo: string;
-  descricao: string;
-  autor: number;
-  data_criacao: string;
+  id: number;
+  title: string;
+  description: string;
+  author: number;
+  creation_data: string;
 
-  constructor(pk: number, titulo: string, descricao: string, autor: number, data_criacao: string) {
-    this.pk = pk;
-    this.titulo = titulo;
-    this.descricao = descricao;
-    this.autor = autor;
-    this.data_criacao = data_criacao;
+  constructor(id: number, title: string, description: string, author: number, creation_data: string) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.author = author;
+    this.creation_data = creation_data;
   }
 }
