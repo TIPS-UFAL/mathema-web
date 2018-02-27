@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
     <h3>Cadastro de Tópico</h3>
       <div class="card-body">
-        <form (ngSubmit)="onSubmit()" #topicForm="ngForm">
+        <form #topicForm="ngForm">
           <div class="form-group">
             <label for="titulo">Título</label>
             <input type="text" class="form-control" id="titulo" placeholder="Insira um título." required [(ngModel)]="titulo" name="titulo">
@@ -20,7 +20,7 @@
                   <label for="subtopico">
                       <label for="subtopico">Tópico-pai</label>
                   </label>
-                  <select [(ngModel)]="topics" id="topic" name="topic" class="form-control">
+                  <select id="topic" name="topic" class="form-control">
                     <option value="">Não é um sub-tópico</option>
                     <option *ngFor="let t of topics" [value]="t">{{ t.title }}</option>
                   </select>

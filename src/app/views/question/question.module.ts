@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { QuestionListComponent } from './question-list/question-list.component';
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { QuestionRoutingModule } from './question-routing.module';
 import { QuestionService } from 'app/views/question/shared/question.service';
 
@@ -21,7 +22,8 @@ import { QuestionService } from 'app/views/question/shared/question.service';
   ],
   declarations: [
     QuestionFormComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    QuestionDetailComponent
   ],
   providers: [ QuestionService ]
 })

@@ -20,10 +20,11 @@ export class QuestionFormComponent {
     titulo: string;
     descricao: string;
     // tipo: ActivityType;
-    topico: Topic
     user: User;
 
-     topics: Topic[] = [];
+    topics: Topic[] = [];
+
+    topicoSelecionado;
 
     constructor(private questionService: QuestionService,
                 private topicService: TopicService,
@@ -39,10 +40,27 @@ export class QuestionFormComponent {
     }
 
     onSubmit() {
-        this.questionService.createQuestion({'title': this.titulo,
-                                             'description': this.descricao,
-                                             'author': this.user.pk}).subscribe(() => {
-                                                 this.router.navigate(['']);
-                                             });
+        if(this.topicoSelecionado != null) {
+            console.log(this.topicoSelecionado)
+            console.log(this.topicoSelecionado[0])
+            console.log(this.topicoSelecionado[0].id)
+            this.questionService.createQuestion({'title': this.titulo,
+                                                'description': this.descricao,
+                                                'author': this.user.pk,
+                                                'topics': this.topicoSelecionado[0]}).subscribe(() => {
+                                                    this.router.navigate(['']);
+                                                });
+        } else {
+            console.log("sem topico")
+            this.questionService.createQuestion({'title': this.titulo,
+                                                'description': this.descricao,
+                                                'author': this.user.pk}).subscribe(() => {
+                                                    this.router.navigate(['']);
+                                                });
+        }
+    }
+
+    text(){
+        console.log("oi")
     }
 }
