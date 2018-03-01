@@ -95,10 +95,7 @@ import {QuizService} from './views/quiz/shared/quiz.service';
     FormsModule,
     CurriculumModule,
     HttpClientModule,
-    HttpModule,
     SharedModule
-
-
   ],
   declarations: [
     AppComponent,

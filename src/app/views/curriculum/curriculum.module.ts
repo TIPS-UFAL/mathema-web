@@ -14,7 +14,6 @@ import { CurriculumFormComponent } from './curriculum-form/curriculum-form.compo
   imports: [
     CommonModule,
     CurriculumRoutingModule,
-    HttpModule,
     ChartsModule,
     BsDropdownModule,
     FormsModule
