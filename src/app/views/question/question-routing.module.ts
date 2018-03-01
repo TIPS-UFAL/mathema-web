@@ -7,7 +7,7 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'list',
     component: QuestionListComponent,
   },
   {

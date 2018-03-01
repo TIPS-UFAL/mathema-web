@@ -10,22 +10,22 @@ export class QuestionService {
   constructor(private http: HttpService) { }
 
   createQuestion(obj: any) {
-    return this.http.post(this.url + 'question/', obj)
+    return this.http.post(this.url + 'activity/', obj)
   }
 
   getQuestions() {
-    return this.http.get(this.url + 'question/')
+    return this.http.get(this.url + 'activity/')
   }
 
   getQuestion(id: number) {
-    return this.http.get(this.url + 'question/' + id + '/')
+    return this.http.get(this.url + 'activity/' + id + '/')
   }
 
   updateQuestion(obj: any, id: number) {
-    return this.http.patch(this.url + 'question/' + id + '/', obj)
+    return this.http.patch(this.url + 'activity/' + id + '/', obj)
   }
 
   deleteQuestion(id: number) {
-    return this.http.delete(this.url + 'question/' + id + '/')
+    return this.http.delete(this.url + 'activity/' + id + '/')
   }
 }

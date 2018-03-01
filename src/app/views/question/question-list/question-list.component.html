@@ -1,14 +1,29 @@
-<div class="container">
+<!--<div class="container">
     <h3>Atividades</h3>
       <div class="card-body">
-        oi
         <ul *ngFor="let question of questions">
           <li>{{ question.id }}</li>
-          <li>{{ question.titulo }}</li>
-          <li>{{ question.descricao }}</li>
-          <li>{{ question.curriculo }}</li>
-          <li>{{ question.topico }}</li>
-          <li>{{ question.data_criacao }}</li>
+          <li>{{ question.title }}</li>
+          <li>{{ question.description }}</li>
+          <li>{{ question.curriculum }}</li>
+          <li>{{ question.topic }}</li>
+          <li>{{ question.creation_data }}</li>
         </ul>
       </div>
-  </div>
+  </div>-->
+
+
+<div class="container">
+  <h3>Atividades<br><br></h3>
+  <ul *ngFor="let question of questions">
+    <div class="card" style="width: 62rem;">
+      <h5 class="card-header">Titulo: {{ question.title }}</h5>
+      <div class="card-body">
+        <p class="card-text">Descrição: {{ question.description}}</p>
+        <p class="card-text">Curriculum: {{ question.curriculum}}</p>
+        <p class="card-text">Topico: {{ question.topic}}</p>
+        <a href="#" class="btn btn-primary">Editar(há implementar)</a>
+      </div>
+    </div>
+  </ul>
+</div>

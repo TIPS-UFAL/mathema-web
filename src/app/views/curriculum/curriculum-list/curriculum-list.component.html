@@ -1,13 +1,12 @@
 <div class="container">
-  <h3>Currículos</h3>
-    <div class="card-body">
-      <ul *ngFor="let curriculum of curriculums">
-        <!--<li> {{curriculum }}</li>-->
-        <li>{{ curriculum.id }}</li>
-        <li>{{ curriculum.titulo }}</li>
-        <li>{{ curriculum.descricao }}</li>
-        <li>{{ curriculum.autor }}</li>
-        <li>{{ curriculum.data_criacao }}</li>
-      </ul>
+  <h3>Currículos<br><br></h3>
+  <ul *ngFor="let curriculum of curriculums">
+    <div class="card" style="width: 62rem;">
+      <h5 class="card-header">Titulo: {{ curriculum.title }}</h5>
+      <div class="card-body">
+        <p class="card-text">Descrição: {{ curriculum.description}}</p>
+        <a href="#" class="btn btn-primary">Editar(há implementar)</a>
+      </div>
     </div>
+  </ul>
 </div>

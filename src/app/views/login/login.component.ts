@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       });
 
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
     }
 
     login() {
@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         this.error = 'Username or password is incorrect';
         this.loading = false;
       } else {
+        console.log(this.returnUrl);
         this.router.navigateByUrl(this.returnUrl);
       }
     }

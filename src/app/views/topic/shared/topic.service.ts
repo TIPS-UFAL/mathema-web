@@ -17,15 +17,15 @@ export class TopicService {
     return this.http.get(this.url + 'topic/')
   }
 
-  getTopic(id: number) {
-    return this.http.get(this.url + 'topic/' + id + '/')
+  getTopic(pk: number) {
+    return this.http.get(this.url + 'topic/' + pk + '/')
   }
 
-  updateTopic(obj: any, id: number) {
-    return this.http.patch(this.url + 'topic/' + id + '/', obj)
+  updateTopic(obj: any, pk: number) {
+    return this.http.patch(this.url + 'topic/' + pk + '/', obj)
   }
 
-  deleteTopic(id: number) {
-    return this.http.delete(this.url + 'topic/' + id + '/')
+  deleteTopic(pk: number) {
+    return this.http.delete(this.url + 'topic/' + pk + '/')
   }
 }

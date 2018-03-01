@@ -14,6 +14,8 @@ export class CurriculumListComponent implements OnInit {
   constructor(private curriculumService: CurriculumService) {
     curriculumService.getCurriculums().subscribe((data: any) => {
       this.curriculums = data;
+      console.log(this.curriculums);
+      console.log(data);
     })
   }
 
