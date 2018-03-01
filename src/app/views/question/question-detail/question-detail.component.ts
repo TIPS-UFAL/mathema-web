@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from '../shared/question.service';
 import { Question } from '../shared/question.model';
 import { UserService } from '../../user/shared/services';
+import { AnswerService } from '../../answer/shared/answer.service';
+import { User } from '../../user/shared/models';
 
 @Component({
     selector: 'app-question-detail',
@@ -18,9 +20,14 @@ export class QuestionDetailComponent implements OnInit {
     public author
     public solution
 
-    constructor(private route: ActivatedRoute, private questionService: QuestionService,
-                private userService: UserService) {
+    user: User
 
+    constructor(private route: ActivatedRoute, private answerRoute: Router,
+                private questionService: QuestionService, private userService: UserService,
+                private answerService: AnswerService) {
+        this.userService.getUser().subscribe((user: User) => {
+            this.user = user
+        })
     }
 
     ngOnInit() {
@@ -29,15 +36,23 @@ export class QuestionDetailComponent implements OnInit {
         this.questionService.getQuestion(this.pk).subscribe((data: any) => {
             this.title = data.title
             this.description = data.description
-            this.author = data.author
+            
+            this.userService.findUser(parseInt(data.author)).subscribe((user: any) => {
+                this.author = user.username
+            })
           });
-        
-        //buscar autor pelo id
     }
 
     onSubmit() {
-        //TODO: usar classe Answer para registrar solução
-        console.log(this.solution)
+        
+        this.answerService.createAnswer({
+            'answer': this.solution,
+            'activity': this.pk,
+            'author': this.user.pk
+        }).subscribe(() => {
+            this.answerRoute.navigate(['']);
+        })
+
         this.solution = ""
     }
 }

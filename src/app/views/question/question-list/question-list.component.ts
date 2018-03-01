@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 export class QuestionListComponent implements OnInit {
 
   questions: Question[] = []
+  public author
 
   constructor(private questionService: QuestionService, private router: Router) {
     questionService.getQuestions().subscribe((data: any) => {
       this.questions = data
-      console.log(data)
     })
   }
 
@@ -32,5 +32,9 @@ export class QuestionListComponent implements OnInit {
     console.log(question.title)
     console.log(question.description)
     this.router.navigate(['/question', question.id])
+  }
+
+  checkSubmissions(question) {
+    this.router.navigate(['/answer/list'])
   }
 }

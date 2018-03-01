@@ -42,6 +42,10 @@ export const routes: Routes = [
         loadChildren: './views/question/question.module#QuestionModule'
       },
       {
+        path: 'answer',
+        loadChildren: './views/answer/answer.module#AnswerModule'
+      },
+      {
         path: 'quiz',
         loadChildren: './views/quiz/quiz.module#QuizModule'
       },

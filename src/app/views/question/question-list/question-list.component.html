@@ -4,10 +4,10 @@
     <div class="card" style="width: 100%;">
       <h5 class="card-header">Titulo: {{ question?.title }}</h5>
       <div class="card-body">
-        <p class="card-text">Autor: {{ question?.author }}</p>
         <p class="card-text">Curriculum: {{ question?.curriculum }}</p>
         <p class="card-text">Topico: {{ question?.topic?.title }}</p>
-        <li href="#" (click) = "onSelect(question)" class="btn btn-primary">Ver</li>
+        <li href="#" (click) = "onSelect(question)" class="btn btn-primary">Abrir</li>
+        <li href="#" (click) = "checkSubmissions(question)" class="btn btn-primary">Ver submissões</li>
       </div>
     </div>
   </ul>
