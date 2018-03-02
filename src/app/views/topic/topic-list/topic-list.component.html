@@ -1,22 +1,7 @@
-<!--<div class="container">
-    <h3>Tópicos</h3>
-      <div class="card-body">
-        <ul *ngFor="let topic of topics">
-          <li>{{ topic.id }}</li>
-          <li>{{ topic.title }}</li>
-          <li>{{ topic.description }}</li>
-          <li>{{ topic.curriculum }}</li>
-          <li>{{ topic.parentTopic }}</li>
-          <li>{{ topic.activity }}</li>
-          <li>{{ topic.creation_data }}</li>
-        </ul>
-      </div>
-  </div>-->
-
-<div class="container">
+<div class="container-fluid">
   <h3>Tópicos<br><br></h3>
   <ul *ngFor="let topic of topics">
-    <div class="card" style="width: 62rem;">
+    <div class="card" style="width: 100%;">
       <h5 class="card-header">Titulo: {{ topic.title }}</h5>
       <div class="card-body">
         <p class="card-text">Descrição: {{ topic.description}}</p>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Curriculum} from '../shared/curriculum.model';
 import {CurriculumService} from '../shared/curriculum.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-curriculum-list',
@@ -11,7 +12,7 @@ export class CurriculumListComponent implements OnInit {
 
   curriculums: Curriculum[] = [];
 
-  constructor(private curriculumService: CurriculumService) {
+  constructor(private curriculumService: CurriculumService, private router: Router) {
     curriculumService.getCurriculums().subscribe((data: any) => {
       this.curriculums = data;
       console.log(this.curriculums);
@@ -26,4 +27,7 @@ export class CurriculumListComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelect(curriculum){
+    this.router.navigate(['/curriculum', curriculum.id]);
+  }
 }

@@ -81,6 +81,7 @@ import { HttpModule } from '@angular/http';
 import {HttpService} from './shared/http.service';
 import {TopicService} from './views/topic/shared/topic.service';
 import {QuestionService} from './views/question/shared/question.service';
+import { AnswerService } from './views/answer/shared/answer.service';
 import {CurriculumService} from './views/curriculum/shared/curriculum.service';
 import {QuizService} from './views/quiz/shared/quiz.service';
 
@@ -108,6 +109,7 @@ import {QuizService} from './views/quiz/shared/quiz.service';
     AuthGuard,
     UserService,
     QuestionService,
+    AnswerService,
     TopicService,
     QuizService,
     {

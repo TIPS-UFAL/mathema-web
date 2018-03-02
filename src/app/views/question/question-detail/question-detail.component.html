@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="card card-accent-primary" style="width: 100%;">
+        <form #activityForm="ngForm">   
+            <h5 class="card-header">Atividade {{ pk }} - {{ title }}</h5>
+            <div class="card-body">
+                <p class="card-text">Autor: {{ author }} <!--puxar usuário pelo id no component--></p>
+                <pre class="card-text">{{ description }}</pre>
+                <p class="card-text">Solução:</p>
+                <textarea id="solution" name="solution" rows="4" class="form-control" placeholder="A resposta será avaliada por seu professor." required 
+                [(ngModel)]="solution" name="solution"></textarea>
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" [disabled]="!activityForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Submeter</button>
+            </div>
+        </form>
+    </div>
+</div>

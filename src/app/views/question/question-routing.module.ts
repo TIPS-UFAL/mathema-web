@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'form',
     component: QuestionFormComponent,
+  },
+  {
+    path: ':id',
+    component: QuestionDetailComponent
   }
 ];
 

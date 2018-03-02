@@ -40,12 +40,14 @@ export class TopicFormComponent {
     onSubmit() {
       // verifica se é subtopico
       if(this.topicoPai == null) {
+        console.log("entrei")
         this.topicService.createTopic({'title': this.titulo,
           'description': this.descricao,
           'author': this.user.pk}).subscribe(() => {
           this.router.navigate(['']);
         });
       } else {
+        console.log("n entrei")
         this.topicService.createTopic({'title': this.titulo,
           'description': this.descricao,
           'author': this.user.pk,
