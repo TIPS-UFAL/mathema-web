@@ -84,6 +84,7 @@ import {QuestionService} from './views/question/shared/question.service';
 import { AnswerService } from './views/answer/shared/answer.service';
 import {CurriculumService} from './views/curriculum/shared/curriculum.service';
 import {QuizService} from './views/quiz/shared/quiz.service';
+import { GroupComponent } from './views/group/group.component';
 
 
 @NgModule({
@@ -105,7 +106,8 @@ import {QuizService} from './views/quiz/shared/quiz.service';
     AppComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
-    ...APP_DIRECTIVES
+    ...APP_DIRECTIVES,
+    GroupComponent
   ],
   providers: [
     AuthenticationService,
