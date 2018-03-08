@@ -4,7 +4,7 @@ import { HttpService } from '../../../shared/http.service'
 
 @Injectable() export class AnswerService {
 
-    url = 'http://localhost:8000/api/'
+    url = 'http://localhost:8000/api/';
 
     constructor(private http: HttpService) { }
 

@@ -77,13 +77,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './auth/services/authentication.guard';
 import {UserService} from './views/user/shared/services';
 import {SharedModule} from './shared/shared.module';
-import { HttpModule } from '@angular/http';
 import {HttpService} from './shared/http.service';
 import {TopicService} from './views/topic/shared/topic.service';
 import {QuestionService} from './views/question/shared/question.service';
 import { AnswerService } from './views/answer/shared/answer.service';
 import {CurriculumService} from './views/curriculum/shared/curriculum.service';
 import {QuizService} from './views/quiz/shared/quiz.service';
+import {NgxPermissionsModule} from 'ngx-permissions';
 
 
 @NgModule({
@@ -96,7 +96,8 @@ import {QuizService} from './views/quiz/shared/quiz.service';
     FormsModule,
     CurriculumModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NgxPermissionsModule.forRoot()
   ],
   declarations: [
     AppComponent,

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicFormComponent } from './topic-form/topic-form.component';
+import {NgxPermissionsGuard} from 'ngx-permissions';
 
 const routes: Routes = [
   {
@@ -13,6 +14,13 @@ const routes: Routes = [
   {
     path: 'form',
     component: TopicFormComponent,
+    canActivate: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        except: ['STUDENT'],
+        redirectTo: ''
+      }
+    },
   }
 ];
 
