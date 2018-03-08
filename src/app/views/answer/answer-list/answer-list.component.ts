@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { AnswerService } from '../shared/answer.service';
 import { Answer } from '../shared/answer.model';
+import { QuestionService } from '../../question/shared/question.service';
 
 @Component({
     selector: 'app-answer-list',
@@ -12,10 +13,14 @@ import { Answer } from '../shared/answer.model';
 export class AnswerListComponent implements OnInit {
 
     answers: Answer[] = []
+    public question
     
-    constructor(answerService: AnswerService, private router: Router) {
+    constructor(answerService: AnswerService, private questionService: QuestionService,
+        private router: Router) {
+        
         answerService.getAnswers().subscribe((data: any) => {
             this.answers = data
+            console.log(data)
         })
     }
 
@@ -24,7 +29,7 @@ export class AnswerListComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        
     }
 
     onSelect(answer) {
@@ -33,7 +38,9 @@ export class AnswerListComponent implements OnInit {
         console.log(answer.activity)
         console.log(answer.author)
         console.log(answer.evaluation)
+        
+        this.router.navigate(['/answer', answer.id])
 
-        //colocar data no cadastro da submissão
+        //TODO: colocar data no cadastro da submissão
     }
  }

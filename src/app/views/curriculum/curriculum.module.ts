@@ -15,7 +15,6 @@ import { CurriculumDetailComponent } from './curriculum-detail/curriculum-detail
   imports: [
     CommonModule,
     CurriculumRoutingModule,
-    HttpModule,
     ChartsModule,
     BsDropdownModule,
     FormsModule
