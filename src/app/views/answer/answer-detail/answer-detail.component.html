@@ -1,0 +1,20 @@
+<div class="animated fadeIn">
+    <div class="card card-accent-primary" style="width: 100%;">
+        <form #activityForm="ngForm">   
+            <h5 class="card-header">Submissão #{{ pk }} - {{ activityTitle }}</h5>
+            <div class="card-body">
+                <p class="card-text">Autor: {{ authorName }}</p>
+                <p class="card-text">Solução:</p>
+                <pre class="card-text">{{ answer }}</pre>
+                <p class="card-text">Avaliação:</p>
+                <textarea id="note" name="note" rows="4" class="form-control" placeholder="Adicione um comentário à avaliação." required 
+                [(ngModel)]="note" name="note"></textarea>   
+                <p class="card-text" style="margin-top:14pt">Nota:</p>
+                <select id="grade" name="grade" class="form-control" [(ngModel)]="evaluation">
+                    <option *ngFor="let g of grades" [value]="g"> {{ g }}</option>
+                </select>
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Avaliar</button>
+			</div>
+        </form>
+    </div>
+</div>

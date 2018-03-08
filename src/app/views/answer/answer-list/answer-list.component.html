@@ -2,7 +2,7 @@
     <h3>Submissões<br><br></h3>
     <ul *ngFor="let answer of answers">
       <div class="card" style="width: 100%;">
-        <h5 class="card-header">Atividade: {{ answer?.activity }}</h5>
+        <h5 class="card-header">#{{ answer?.id }} - {{ answer?.activity }}</h5>
         <div class="card-body">
           <p class="card-text">Autor: {{ answer?.author }}</p>
           <p class="card-text">Data: (fazer)</p>
