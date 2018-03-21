@@ -34,6 +34,10 @@ export const routes: Routes = [
         loadChildren: './views/curriculum/curriculum.module#CurriculumModule'
       },
       {
+        path: 'group',
+        loadChildren: './views/group/group.module#GroupModule'
+      },
+      {
         path: 'topic',
         loadChildren: './views/topic/topic.module#TopicModule'
       },

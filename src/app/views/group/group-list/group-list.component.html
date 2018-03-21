@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <h3>Tópicos<br><br></h3>
+  <ul *ngFor="let group of groups">
+    <div class="card" style="width: 100%;">
+      <h5 class="card-header">Titulo: {{ group.title }}</h5>
+      <div class="card-body">
+        <p class="card-text">Descrição: {{ group.description}}</p>
+        <p class="card-text">Curriculum: {{ group.curriculum}}</p>
+        <p class="card-text">Groupo Pai: {{ group.parentGroup}}</p>
+        <p class="card-text">Activity: {{ group.activity}}</p>
+        <a href="#" class="btn btn-primary">Editar(há implementar)</a>
+      </div>
+    </div>
+  </ul>
+</div>

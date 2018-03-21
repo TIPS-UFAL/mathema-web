@@ -1,37 +1,36 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Topic } from '../shared/topic.model';
-import { TopicService } from '../shared/topic.service';
+import { Group } from '../shared/group.model';
+import { GroupService } from '../shared/group.service';
 import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
 import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service'
 import {UserService} from '../../user/shared/services';
 import {User} from '../../user/shared/models';
 
 @Component({
-    selector: 'app-topic-form',
-    templateUrl: './topic-form.component.html'
+    selector: 'app-group-form',
+    templateUrl: './group-form.component.html'
 })
 
-export class TopicFormComponent {
+export class GroupFormComponent {
 
     titulo: string;
     descricao: string;
-    // suporte?: TopicSuport;
-    // atividades?: TopicActivity;
-
-    topicoPai?: Topic;
+    // suporte?: GroupSuport;
+    // atividades?: GroupActivity;
+    groupoPai?: Group;
     user: User;
 
-    topics: Topic[] = [];
+    groups: Group[] = [];
 
-    constructor(private topicService: TopicService,
+    constructor(private groupService: GroupService,
                 private userService: UserService,
                 private router: Router) {
 
-        // topicService.getTopics().subscribe((data: any) => {
-        //     this.topics = data;
-        // })
+        groupService.getGroups().subscribe((data: any) => {
+            this.groups = data;
+        })
 
         userService.user.subscribe((user: User) => {
           this.user = user
@@ -39,20 +38,20 @@ export class TopicFormComponent {
     }
 
     onSubmit() {
-      // verifica se é subtopico
-      if (this.topicoPai == null) {
-        console.log('entrei')
-        this.topicService.createTopic({'title': this.titulo,
+      // verifica se é subgroupo
+      if(this.groupoPai == null) {
+        console.log("entrei")
+        this.groupService.createGroup({'title': this.titulo,
           'description': this.descricao,
           'author': this.user.pk}).subscribe(() => {
           this.router.navigate(['']);
         });
       } else {
-        console.log('n entrei')
-        this.topicService.createTopic({'title': this.titulo,
+        console.log("n entrei")
+        this.groupService.createGroup({'title': this.titulo,
           'description': this.descricao,
           'author': this.user.pk,
-          'parent_topic': this.topicoPai.pk}).subscribe(() => {
+          'parent_group': this.groupoPai.pk}).subscribe(() => {
           this.router.navigate(['']);
         });
       }

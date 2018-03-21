@@ -14,7 +14,7 @@ export class QuestionListComponent implements OnInit {
   public author
 
   constructor(private questionService: QuestionService, private router: Router) {
-    questionService.getQuestions().subscribe((data: any) => {
+    questionService.getQuestions(1).subscribe((data: any) => { // TODO
       this.questions = data
     })
   }

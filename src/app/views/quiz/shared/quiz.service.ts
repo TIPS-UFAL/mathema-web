@@ -5,27 +5,26 @@ import {HttpService} from '../../../shared/http.service';
 @Injectable()
 export class QuizService {
 
-  url = 'http://localhost:8000/api/';
 
   constructor(private http: HttpService) { }
 
   createQuiz(obj: any) {
-    return this.http.post(this.url + 'quiz/', obj);
+    return this.http.post('quiz/', obj);
   }
 
   getQuizzes() {
-    return this.http.get(this.url + 'quiz/');
+    return this.http.get('quiz/');
   }
 
   getQuiz(id: number) {
-    return this.http.get(this.url + 'quiz/' + id + '/');
+    return this.http.get('quiz/' + id + '/');
   }
 
   updateQuiz(obj: any, id: number) {
-    return this.http.patch(this.url + 'quiz/' + id + '/', obj);
+    return this.http.patch('quiz/' + id + '/', obj);
   }
 
   deleteQuiz(id: number) {
-    return this.http.delete(this.url + 'quiz/' + id + '/');
+    return this.http.delete('quiz/' + id + '/');
   }
 }

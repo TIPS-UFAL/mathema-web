@@ -4,6 +4,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import {HttpModule} from '@angular/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { CurriculumRoutingModule } from './curriculum-routing.module';
 import {CurriculumService} from './shared/curriculum.service';
@@ -13,6 +14,7 @@ import { CurriculumDetailComponent } from './curriculum-detail/curriculum-detail
 
 @NgModule({
   imports: [
+    ModalModule.forRoot(),
     CommonModule,
     CurriculumRoutingModule,
     ChartsModule,

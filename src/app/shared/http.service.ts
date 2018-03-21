@@ -6,23 +6,26 @@ import {AuthenticationService} from '../auth/services';
 
 @Injectable()
 export class HttpService {
+
+  url = 'http://localhost:8000/api/';
+
   constructor(private http: HttpClient,
               private authenticationService: AuthenticationService) { }
 
   get(url: string) {
-    return this.http.get(url, this.createHeaders());
+    return this.http.get(this.url + url, this.createHeaders());
   }
 
   post(url: string, obj: any) {
-    return this.http.post(url, obj, this.createHeaders());
+    return this.http.post(this.url + url, obj, this.createHeaders());
   }
 
   delete(url: string) {
-    return this.http.delete(url, this.createHeaders());
+    return this.http.delete(this.url + url, this.createHeaders());
   }
 
   patch(url: string, obj: any) {
-    return this.http.patch(url, this.createHeaders());
+    return this.http.patch(this.url + url, this.createHeaders());
   }
 
 

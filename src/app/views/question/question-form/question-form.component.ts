@@ -30,7 +30,7 @@ export class QuestionFormComponent {
                 private topicService: TopicService,
                 userService: UserService,
                 private router: Router) {
-      topicService.getTopics().subscribe((data: any) => {
+      topicService.getTopics(1).subscribe((data: any) => {
         this.topics = data;
       })
 
@@ -41,26 +41,22 @@ export class QuestionFormComponent {
 
     onSubmit() {
         if(this.topicoSelecionado != null) {
-            console.log(this.topicoSelecionado)
-            console.log(this.topicoSelecionado[0])
-            console.log(this.topicoSelecionado[0].id)
+            console.log(this.topicoSelecionado);
+            console.log(this.topicoSelecionado[0]);
+            console.log(this.topicoSelecionado[0].id);
             this.questionService.createQuestion({'title': this.titulo,
                                                 'description': this.descricao,
                                                 'author': this.user.pk,
-                                                'topics': this.topicoSelecionado[0]}).subscribe(() => {
+                                                'topic': this.topicoSelecionado[0].id}).subscribe(() => {
                                                     this.router.navigate(['']);
                                                 });
         } else {
-            console.log("sem topico")
+            console.log('sem topico');
             this.questionService.createQuestion({'title': this.titulo,
                                                 'description': this.descricao,
                                                 'author': this.user.pk}).subscribe(() => {
                                                     this.router.navigate(['']);
                                                 });
         }
-    }
-
-    text(){
-        console.log("oi")
     }
 }

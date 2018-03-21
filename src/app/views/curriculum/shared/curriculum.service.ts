@@ -5,27 +5,25 @@ import {HttpService} from '../../../shared/http.service';
 @Injectable()
 export class CurriculumService {
 
-  url = 'http://localhost:8000/api/';
-
   constructor(private http: HttpService) { }
 
   createCurriculum(obj: any) {
-    return this.http.post(this.url + 'curriculum/', obj);
+    return this.http.post('curriculum/', obj);
   }
 
   getCurriculums() {
-    return this.http.get(this.url + 'curriculum/');
+    return this.http.get('curriculum/');
   }
 
   getCurriculum(pk: number) {
-    return this.http.get(this.url + 'curriculum/' + pk + '/');
+    return this.http.get('curriculum/' + pk + '/');
   }
 
   updateCurriculum(obj: any, pk: number) {
-    return this.http.patch(this.url + 'curriculum/' + pk + '/', obj);
+    return this.http.patch('curriculum/' + pk + '/', obj);
   }
 
   deleteCurriculum(pk: number) {
-    return this.http.delete(this.url + 'curriculum/' + pk + '/');
+    return this.http.delete('curriculum/' + pk + '/');
   }
 }

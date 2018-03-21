@@ -12,9 +12,9 @@ export class TopicListComponent implements OnInit {
   topics: Topic[] = [];
 
   constructor(private topicService: TopicService) {
-    topicService.getTopics().subscribe((data: any) => {
-      this.topics = data;
-    })
+    // topicService.getTopics().subscribe((data: any) => {
+    //   this.topics = data;
+    // })
   }
 
   goTo(id: number) {

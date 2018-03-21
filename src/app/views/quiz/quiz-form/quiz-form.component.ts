@@ -37,13 +37,13 @@ export class QuizFormComponent {
             this.curriculums = data;
         })
 
-        topicService.getTopics().subscribe((data: any) => {
-            this.topics = data;
-        })
-
-        questionService.getQuestions().subscribe((data: any) => {
-            this.questions = data;
-        })
+        // topicService.getTopics().subscribe((data: any) => {
+        //     this.topics = data;
+        // })
+        //
+        // questionService.getQuestions().subscribe((data: any) => {
+        //     this.questions = data;
+        // })
 
     }
 
