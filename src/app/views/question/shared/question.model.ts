@@ -1,20 +1,19 @@
-import { Curriculum } from "app/views/curriculum/shared/curriculum.model";
-import { Topic } from "app/views/topic/shared/topic.model";
+import { Topic } from "../../topic/shared/topic.model";
 
 export abstract class Question {
-    id: number;
+    pk: number;
     titulo: string;
     descricao: string;
-    curriculo: Curriculum;
-    topico: Topic;
-    subTopico?: Topic;
+    topicos: Topic[];
+    autor: string;
+    tipo: string;
 
-    constructor(id: number, titulo: string, descricao: string, curriculo: Curriculum, topico: Topic, subTopico?: Topic) {
-        this.id = id;
+    constructor(pk: number, titulo: string, descricao: string, topicos: Topic[], autor: string, tipo: string) {
+        this.pk = pk;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.curriculo = curriculo;
-        this.topico = topico;
-        this.subTopico = subTopico;
+        this.topicos = topicos;
+        this.autor = autor;
+        this.tipo = tipo;
     }
 }

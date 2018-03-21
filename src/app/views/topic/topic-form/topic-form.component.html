@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
     <h3>Cadastro de Tópico</h3>
       <div class="card-body">
-        <form (ngSubmit)="onSubmit()" #topicForm="ngForm">
+        <form #topicForm="ngForm">
           <div class="form-group">
             <label for="titulo">Título</label>
             <input type="text" class="form-control" id="titulo" placeholder="Insira um título." required [(ngModel)]="titulo" name="titulo">
@@ -16,32 +16,16 @@
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="curriculum">Currículo</label>
-            <div class="">
-              <select id="curriculum" name="curriculum" class="form-control" required>
-                <option value="" disabled>Selecione o currículo correspondente</option>
-                <option value="1">Currículo #1</option>
-                <option value="2">Currículo #2</option>
-                <option value="3">Currículo #3</option>
-              </select>
-            </div>
+              <div class="form-control-label">
+                  <label for="subtopico">
+                      <label for="subtopico">Tópico-pai</label>
+                  </label>
+                  <select id="topic" name="topic" class="form-control">
+                    <option value="">Não é um sub-tópico</option>
+                    <option *ngFor="let t of topics" [value]="t">{{ t.title }}</option>
+                  </select>
+              </div>
           </div>
-
-        <div class="form-group row">
-          <div class="col-md-9">
-             <div class="checkbox">
-                <label for="subtopico">
-                    <label for="subtopico">Tópico-pai</label>
-                </label>
-                <select id="select" name="select" class="form-control form-control-sm">
-                    <option value="0">Não é um sub-tópico</option>
-                    <option value="1">Tópico #1</option>
-                    <option value="2">Tópico #2</option>
-                    <option value="3">Tópico #3</option>
-                </select>
-             </div>
-          </div>
-        </div>
 
         <button type="submit" class="btn btn-sm btn-primary" [disabled]="!topicForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Cadastrar</button>
         </form>

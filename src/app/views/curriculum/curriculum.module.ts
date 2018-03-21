@@ -6,22 +6,23 @@ import { CommonModule } from '@angular/common';
 import {HttpModule} from '@angular/http';
 
 import { CurriculumRoutingModule } from './curriculum-routing.module';
-import {CurriculumService} from "./shared/curriculum.service";
-import {CurriculumListComponent} from "./curriculum-list/curriculum-list.component";
+import {CurriculumService} from './shared/curriculum.service';
+import {CurriculumListComponent} from './curriculum-list/curriculum-list.component';
 import { CurriculumFormComponent } from './curriculum-form/curriculum-form.component';
+import { CurriculumDetailComponent } from './curriculum-detail/curriculum-detail.component';
 
 @NgModule({
   imports: [
     CommonModule,
     CurriculumRoutingModule,
-    HttpModule,
     ChartsModule,
     BsDropdownModule,
     FormsModule
   ],
   declarations: [
     CurriculumFormComponent,
-    CurriculumListComponent
+    CurriculumListComponent,
+    CurriculumDetailComponent
   ],
   providers: [ CurriculumService ]
 })

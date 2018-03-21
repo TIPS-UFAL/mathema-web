@@ -1,15 +1,14 @@
-<div class="container">
-    <h3>Atividades</h3>
+<div class="container-fluid">
+  <h3>Atividades<br><br></h3>
+  <ul *ngFor="let question of questions">
+    <div class="card" style="width: 100%;">
+      <h5 class="card-header">#{{ question?.id }} - {{ question?.title }}</h5>
       <div class="card-body">
-        oi
-        <ul *ngFor="let question of questions">
-          <li>{{ question.id }}</li>
-          <li>{{ question.titulo }}</li>
-          <li>{{ question.descricao }}</li>
-          <li>{{ question.curriculo }}</li>
-          <li>{{ question.topico }}</li>
-          <li>{{ question.subTopico }}</li>
-          <li>{{ question.data_criacao }}</li>
-        </ul>
+        <p class="card-text">Curriculum: {{ question?.curriculum }}</p>
+        <p class="card-text">Topico: {{ question?.topic?.title }}</p>
+        <li href="#" (click) = "onSelect(question)" class="btn btn-primary">Abrir</li>
+        <li href="#" (click) = "checkSubmissions(question)" class="btn btn-primary">Ver submissões</li>
       </div>
-  </div>
+    </div>
+  </ul>
+</div>

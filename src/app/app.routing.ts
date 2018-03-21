@@ -10,29 +10,13 @@ import {
   FullLayout,
   SimpleLayout
 } from './containers';
+import {AuthGuard} from './auth/services/authentication.guard';
 
 export const routes: Routes = [
-  /*{
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: '',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: '**',
-    redirectTo: ''
-  },*/
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
   {
     path: '',
     component: FullLayout,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -56,6 +40,10 @@ export const routes: Routes = [
       {
         path: 'question',
         loadChildren: './views/question/question.module#QuestionModule'
+      },
+      {
+        path: 'answer',
+        loadChildren: './views/answer/answer.module#AnswerModule'
       },
       {
         path: 'quiz',
@@ -100,7 +88,7 @@ export const routes: Routes = [
       },
       {
         path: 'register',
-        loadChildren: './views/login/register.module#RegisterModule'
+        loadChildren: './views/register/register.module#RegisterModule'
       },
     ]
   }

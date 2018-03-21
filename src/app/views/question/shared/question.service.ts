@@ -1,36 +1,31 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, RequestOptions} from "@angular/http";
 import 'rxjs/add/operator/map';
+import {HttpService} from '../../../shared/http.service';
 
 @Injectable()
 export class QuestionService {
 
   url = 'http://localhost:8000/api/';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpService) { }
 
   createQuestion(obj: any) {
-    return this.http.post(this.url + 'question/', obj)
-      .map((res: Response) => res.json());
+    return this.http.post(this.url + 'activity/', obj)
   }
 
   getQuestions() {
-    return this.http.get(this.url + 'question/')
-      .map((res: Response) => res.json());
+    return this.http.get(this.url + 'activity/')
   }
 
   getQuestion(id: number) {
-    return this.http.get(this.url + 'question/' + id + '/')
-      .map((res: Response) => res.json());
+    return this.http.get(this.url + 'activity/' + id + '/')
   }
 
   updateQuestion(obj: any, id: number) {
-    return this.http.patch(this.url + 'question/' + id + '/', obj)
-      .map((res: Response) => res.json());
+    return this.http.patch(this.url + 'activity/' + id + '/', obj)
   }
 
   deleteQuestion(id: number) {
-    return this.http.delete(this.url + 'question/' + id + '/')
-      .map((res: Response) => res.json());
+    return this.http.delete(this.url + 'activity/' + id + '/')
   }
 }

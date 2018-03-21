@@ -4,7 +4,11 @@ import { Router } from '@angular/router';
 import { Question } from '../shared/question.model';
 import { QuestionService } from '../shared/question.service';
 import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
+import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service';
 import { Topic } from 'app/views/topic/shared/topic.model';
+import { TopicService } from 'app/views/topic/shared/topic.service';
+import {User} from '../../user/shared/models';
+import {UserService} from '../../user/shared/services';
 
 @Component({
     selector: 'app-question-form',
@@ -15,20 +19,48 @@ export class QuestionFormComponent {
 
     titulo: string;
     descricao: string;
-    curriculo: Curriculum;
-    topico: Topic;
-    subTopico?: Topic;    //se tiver subtopico
+    // tipo: ActivityType;
+    user: User;
+
+    topics: Topic[] = [];
+
+    topicoSelecionado;
 
     constructor(private questionService: QuestionService,
-                private router: Router) { }
-    
+                private topicService: TopicService,
+                userService: UserService,
+                private router: Router) {
+      topicService.getTopics().subscribe((data: any) => {
+        this.topics = data;
+      })
+
+      userService.user.subscribe((user: User) => {
+        this.user = user
+      })
+    }
+
     onSubmit() {
-        this.questionService.createQuestion({'titulo': this.titulo,
-                                             'descricao': this.descricao,
-                                             'curriculo': this.curriculo,
-                                             'topico': this.topico,
-                                             'subTopico': this.subTopico}).subscribe(() => {
-                                                 this.router.navigate(['']);
-                                             });   
+        if(this.topicoSelecionado != null) {
+            console.log(this.topicoSelecionado)
+            console.log(this.topicoSelecionado[0])
+            console.log(this.topicoSelecionado[0].id)
+            this.questionService.createQuestion({'title': this.titulo,
+                                                'description': this.descricao,
+                                                'author': this.user.pk,
+                                                'topics': this.topicoSelecionado[0]}).subscribe(() => {
+                                                    this.router.navigate(['']);
+                                                });
+        } else {
+            console.log("sem topico")
+            this.questionService.createQuestion({'title': this.titulo,
+                                                'description': this.descricao,
+                                                'author': this.user.pk}).subscribe(() => {
+                                                    this.router.navigate(['']);
+                                                });
+        }
+    }
+
+    text(){
+        console.log("oi")
     }
 }

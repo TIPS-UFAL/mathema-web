@@ -1,4 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
+import {AuthenticationService} from '../../auth/services';
+import {User} from '../../views/user/shared/models';
+import {UserService} from '../../views/user/shared/services';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +9,19 @@ import { Component, ElementRef } from '@angular/core';
 })
 export class AppHeader {
 
-  constructor(private el: ElementRef) { }
+  user: User;
+
+  constructor(private el: ElementRef,
+              private authenticationService: AuthenticationService,
+              private userService: UserService) {
+    userService.user.subscribe((user: User) => {
+      this.user = user;
+    });
+  }
 
   //wait for the component to render completely
   ngOnInit(): void {
+
     var nativeElement: HTMLElement = this.el.nativeElement,
     parentElement: HTMLElement = nativeElement.parentElement;
     // move all children out of the element
@@ -19,4 +31,9 @@ export class AppHeader {
     // remove the empty element(the host)
     parentElement.removeChild(nativeElement);
   }
+
+  logout () {
+    this.authenticationService.logout();
+  }
+
 }

@@ -1,47 +1,60 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {RequestOptions} from '@angular/http';
+import {Router} from '@angular/router';
+import {NgxPermissionsService} from 'ngx-permissions';
 
 @Injectable()
 export class AuthenticationService {
-    public token: string;
-    public url = "http://localhost:8000/api/"
-    public headers = new Headers({ 'Content-Type': 'application/json' });
-    public options = new RequestOptions({ headers: this.headers });
+    token: string;
+    permissions = ['ADMIN', 'STUDENT', 'TEACHER']; // permissions that exists in the system
+    url = 'http://localhost:8000/api/';
+    headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    options: any = { headers: this.headers };
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient,
+                private router: Router,
+                private permissionService: NgxPermissionsService) {
         // set token if saved in local storage
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
+        // set permission if saved in local storage
+        const currentPermission = JSON.parse(localStorage.getItem('permissions'));
+        this.permissionService.loadPermissions([currentPermission]);
     }
 
-    login(username: string, password: string): Observable<boolean> {
-        return this.http.post(this.url+'rest-auth/login/', {'username': username, 'password': password }, this.options)
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let token = response.json() && response.json().token;
-                if (token) {
-                    // set token property
-                    this.token = token;
+    login(username: string, password: string, callBack: any) {
+        this.http.post(this.url + 'rest-auth/login/', JSON.stringify({'username': username, 'password': password }), this.options)
+          .subscribe((json: any) => {
+                // login successful
+                // set token property
+                this.token = json.token;
+                const permission = this.permissions[json.user.user_type];
 
-                    // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+                // store jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('currentUser', JSON.stringify({token: this.token }));
+                // store ngx-permission
+                localStorage.setItem('permissions', JSON.stringify(permission));
+                // load permissions
+                this.permissionService.loadPermissions([permission]);
 
-                    // return true to indicate successful login
-                    console.log(true);
-                    return true;
-                } else {
-                    // return false to indicate failed login
-                    console.log(false);
-                    return false;
-                }
-            });
+                callBack(true);
+            }, error => {
+                callBack(false);
+          });
     }
 
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('permissions');
+        this.router.navigate(['login']);
+    }
+
+    getToken() {
+      return 'Bearer ' + this.token
     }
 }
