@@ -11,6 +11,7 @@ import {CurriculumService} from './shared/curriculum.service';
 import {CurriculumListComponent} from './curriculum-list/curriculum-list.component';
 import { CurriculumFormComponent } from './curriculum-form/curriculum-form.component';
 import { CurriculumDetailComponent } from './curriculum-detail/curriculum-detail.component';
+import {TopicModule} from '../topic/topic.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { CurriculumDetailComponent } from './curriculum-detail/curriculum-detail
     CurriculumRoutingModule,
     ChartsModule,
     BsDropdownModule,
-    FormsModule
+    FormsModule,
+    TopicModule
   ],
   declarations: [
     CurriculumFormComponent,

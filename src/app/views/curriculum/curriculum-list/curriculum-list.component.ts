@@ -3,6 +3,7 @@ import {Curriculum} from '../shared/curriculum.model';
 import {CurriculumService} from '../shared/curriculum.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-curriculum-list',
   templateUrl: './curriculum-list.component.html',

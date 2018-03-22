@@ -9,9 +9,11 @@ import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicRoutingModule } from './topic-routing.module';
 import { HttpModule } from '@angular/http';
 import { TopicService } from 'app/views/topic/shared/topic.service';
+import { ModalModule } from "ngx-bootstrap";
 
 @NgModule({
   imports: [
+    ModalModule.forRoot(),
     CommonModule,
     TopicRoutingModule,
     HttpModule,
@@ -20,6 +22,10 @@ import { TopicService } from 'app/views/topic/shared/topic.service';
     FormsModule
   ],
   declarations: [
+    TopicFormComponent,
+    TopicListComponent
+  ],
+  exports: [
     TopicFormComponent,
     TopicListComponent
   ],

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { Topic } from '../shared/topic.model';
 import { TopicService } from '../shared/topic.service';
@@ -22,17 +22,19 @@ export class TopicFormComponent {
 
     topicoPai?: Topic;
     user: User;
+    id: any;
 
     topics: Topic[] = [];
 
     constructor(private topicService: TopicService,
                 private userService: UserService,
-                private router: Router) {
+                private router: Router,
+                private route: ActivatedRoute, ) {
 
         // topicService.getTopics().subscribe((data: any) => {
         //     this.topics = data;
         // })
-
+      this.id = parseInt(this.route.snapshot.paramMap.get('id'));
         userService.user.subscribe((user: User) => {
           this.user = user
         })
@@ -40,10 +42,12 @@ export class TopicFormComponent {
 
     onSubmit() {
       // verifica se é subtopico
+      console.log(this.id);
       if (this.topicoPai == null) {
         console.log('entrei')
         this.topicService.createTopic({'title': this.titulo,
           'description': this.descricao,
+          'curriculum': this.id,
           'author': this.user.pk}).subscribe(() => {
           this.router.navigate(['']);
         });
@@ -52,6 +56,7 @@ export class TopicFormComponent {
         this.topicService.createTopic({'title': this.titulo,
           'description': this.descricao,
           'author': this.user.pk,
+          'curriculum': this.id,
           'parent_topic': this.topicoPai.pk}).subscribe(() => {
           this.router.navigate(['']);
         });

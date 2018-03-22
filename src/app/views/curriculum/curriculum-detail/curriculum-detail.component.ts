@@ -9,6 +9,7 @@ import {Topic} from '../../topic/shared/topic.model';
 import {GroupService} from '../../group/shared/group.service';
 import {Group} from '../../group/shared/group.model';
 
+
 @Component({
   selector: 'app-curriculum-detail',
   templateUrl: './curriculum-detail.component.html',
@@ -36,14 +37,6 @@ export class CurriculumDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
-}
-
-@Component({
-  selector: 'app-curriculum-detail',
-  templateUrl: './curriculum-detail.component.html'
-})
-export class DemoModalStaticComponent {
 
 }
 

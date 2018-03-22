@@ -40,7 +40,7 @@ export class QuestionFormComponent {
     }
 
     onSubmit() {
-        if(this.topicoSelecionado != null) {
+        if (this.topicoSelecionado != null) {
             console.log(this.topicoSelecionado);
             console.log(this.topicoSelecionado[0]);
             console.log(this.topicoSelecionado[0].id);
