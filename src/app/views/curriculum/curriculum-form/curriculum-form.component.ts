@@ -18,8 +18,6 @@ export class CurriculumFormComponent {
   descricao: string;
   user: User;
 
-  curriculums: Curriculum[] = [];
-
   constructor(private curriculumService: CurriculumService,
     private router: Router, private userService: UserService) {
       userService.user.subscribe((user: User) => {

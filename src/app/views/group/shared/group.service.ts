@@ -5,27 +5,25 @@ import {HttpService} from '../../../shared/http.service';
 @Injectable()
 export class GroupService {
 
-  url = 'http://localhost:8000/api/';
-
   constructor(private http: HttpService) { }
 
   createGroup(obj: any) {
-    return this.http.post(this.url + 'group/', obj)
+    return this.http.post('group/', obj)
   }
 
   getGroups() {
-    return this.http.get(this.url + 'group/')
+    return this.http.get('group/')
   }
 
   getGroup(pk: number) {
-    return this.http.get(this.url + 'group/' + pk + '/')
+    return this.http.get('group/' + pk + '/')
   }
 
   updateGroup(obj: any, pk: number) {
-    return this.http.patch(this.url + 'group/' + pk + '/', obj)
+    return this.http.patch('group/' + pk + '/', obj)
   }
 
   deleteGroup(pk: number) {
-    return this.http.delete(this.url + 'group/' + pk + '/')
+    return this.http.delete('group/' + pk + '/')
   }
 }

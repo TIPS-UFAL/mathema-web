@@ -1,15 +1,20 @@
-import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
+import {User} from '../../user/shared/models';
+
 
 export abstract class Group {
-    pk: number;
-    titulo: string;
-    descricao: string;
-    groupoPai?: Group;
+    id: number;
+    title: string;
+    curriculum: number;
+    group_key: string;
+    teacher: User;
+    students: User[];
 
-    constructor(pk: number, titulo: string, descricao: string, groupoPai?: Group) {
-        this.pk = pk;
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.groupoPai = groupoPai;
-    }
+    constructor(id: number, title: string, curriculum: number, group_key: string,  teacher: User,  students: User[]) {
+        this.id = id;
+        this.title = title;
+        this.curriculum = curriculum;
+        this.group_key = group_key;
+        this.teacher = teacher;
+        this.students = students;
+      }
 }

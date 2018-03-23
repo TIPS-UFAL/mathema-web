@@ -10,8 +10,8 @@
       <div class="modal-body">
         <form  #groupForm="ngForm">
           <div class="form-group">
-            <label for="titulo">Título</label>
-            <input type="text" class="form-control" id="titulo" placeholder="Insira um título." required [(ngModel)]="titulo" name="titulo">
+            <label for="title">Título</label>
+            <input type="text" class="form-control" id="title" placeholder="Insira um título." required [(ngModel)]="title" name="title">
           </div>
           <button type="submit" class="btn btn-sm btn-primary" [disabled]="!groupForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Criar</button>
         </form>

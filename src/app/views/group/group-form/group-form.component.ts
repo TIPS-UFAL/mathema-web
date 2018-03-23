@@ -1,11 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Group } from '../shared/group.model';
 import { GroupService } from '../shared/group.service';
-import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
-import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service'
 import {UserService} from '../../user/shared/services';
 import {User} from '../../user/shared/models';
 
@@ -17,46 +15,27 @@ import {User} from '../../user/shared/models';
 export class GroupFormComponent {
   @ViewChild('gpModal') public gpModal: ModalDirective;
 
-  titulo: string;
-  descricao: string;
-  // suporte?: GroupSuport;
-  // atividades?: GroupActivity;
-  groupoPai?: Group;
+  title: string;
   user: User;
-
-  groups: Group[] = [];
+  idCurriculum: number;
+  idGroup: number;
 
   constructor(private groupService: GroupService,
               private userService: UserService,
-              private router: Router) {
-
-      groupService.getGroups().subscribe((data: any) => {
-          this.groups = data;
-      });
-
+              private router: Router,
+              private route: ActivatedRoute) {
+    this.idCurriculum = parseInt(this.route.snapshot.paramMap.get('id'));
       userService.user.subscribe((user: User) => {
         this.user = user
       });
   }
 
   onSubmit() {
-    // verifica se é subgroupo
-    if(this.groupoPai == null) {
-      console.log("entrei")
-      this.groupService.createGroup({'title': this.titulo,
-        'description': this.descricao,
-        'author': this.user.pk}).subscribe(() => {
-        this.router.navigate(['']);
+    this.groupService.createGroup({'title': this.title, 'curriculum': this.idCurriculum, 'teacher': this.user.pk})
+      .subscribe((group: Group) => {
+        this.idGroup = group.id;
+        this.router.navigate(['group/' + this.idGroup + '/']);
       });
-    } else {
-      console.log("n entrei");
-      this.groupService.createGroup({'title': this.titulo,
-        'description': this.descricao,
-        'author': this.user.pk,
-        'parent_group': this.groupoPai.pk}).subscribe(() => {
-        this.router.navigate(['']);
-      });
-    }
   }
 
   public show(): void {

@@ -1,13 +1,10 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {ActivatedRoute} from '@angular/router';
 import {CurriculumService} from '../shared/curriculum.service';
 import {Curriculum} from '../shared/curriculum.model';
 import {TopicService} from '../../topic/shared/topic.service';
 import {Topic} from '../../topic/shared/topic.model';
-import {GroupService} from '../../group/shared/group.service';
-import {Group} from '../../group/shared/group.model';
-import {ModalDirective} from 'ngx-bootstrap/modal';
 import {GroupFormComponent} from '../../group/group-form/group-form.component';
 
 
@@ -31,10 +28,10 @@ export class CurriculumDetailComponent implements OnInit {
     curriculumService.getCurriculum(id).subscribe((data: any) => {
       this.curriculum = data;
       console.log(this.curriculum);
-    })
+    });
     topicService.getTopics(id).subscribe((data: any) => {
       this.topics = data;
-    })
+    });
   }
 
   ngOnInit() {
