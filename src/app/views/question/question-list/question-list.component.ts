@@ -14,7 +14,8 @@ export class QuestionListComponent implements OnInit {
   public author
 
   constructor(private questionService: QuestionService, private router: Router) {
-    questionService.getQuestions(1).subscribe((data: any) => { // TODO
+    // TODO: pegar id do tópico
+    questionService.getQuestions(1).subscribe((data: any) => {
       this.questions = data
     })
   }
@@ -35,6 +36,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   checkSubmissions(question) {
-    this.router.navigate(['/answer/list'])
+    // this.router.navigate(['/answer/list'])
   }
 }

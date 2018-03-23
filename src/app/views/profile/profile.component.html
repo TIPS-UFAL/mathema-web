@@ -1,11 +1,10 @@
-<div class="container">
+<div class="animated fadeIn">
     <div class="row">
         <div class="col">
             <img src="assets/img/avatars/admin.png" class="img-avatar" style='height: 65%; width: 65%; margin-left:0px'/>
             <img/>
             <div class="row">
-                <button type="button" style='margin-right:16px; margin-top:16px' class="btn btn-info btn-sm"> <i class="fa fa-pencil append-icon"></i> Editar dados</button>
-                <button type="button" style='margin-top:16px' class="btn btn-danger btn-sm"> <i class="fa fa-close append-icon"></i> Excluir conta</button>
+                <button type="button" style='margin-left:16px; margin-top:16px' class="btn btn-info btn-sm" (click)="callEdit()"> <i class="fa fa-pencil append-icon"></i> Editar dados</button>
             </div>
         </div>
         <div class="col">
@@ -14,19 +13,19 @@
                 <tbody>
                     <tr>
                         <td><b>Nome</b></td>
-                        <td>{{ user?.first_name}} {{ user?.last_name }}</td>
+                        <td>{{ profile?.name }}</td>
                     </tr>
                     <tr>
                         <td><b>Usuário</b></td>
-                        <td>{{ user?.username }}</td>
+                        <td>{{ profile?.username }}</td>
                     </tr>
                     <tr>
                         <td><b>Email</b></td>
-                        <td>{{ user?.email }}</td>
+                        <td>{{ profile?.email }}</td>
                     </tr>
                     <tr>
                         <td><b>Categoria</b></td>
-                        <td>Professor</td>
+                        <td>{{ profile?.user_type }}</td>
                     </tr>
                 </tbody>
             </table>

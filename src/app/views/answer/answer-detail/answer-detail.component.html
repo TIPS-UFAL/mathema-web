@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
     <div class="card card-accent-primary" style="width: 100%;">
-        <form #activityForm="ngForm">   
+        <form #answerForm="ngForm">   
             <h5 class="card-header">Submissão #{{ pk }} - {{ activityTitle }}</h5>
             <div class="card-body">
                 <p class="card-text">Autor: {{ authorName }}</p>
@@ -13,7 +13,7 @@
                 <select id="grade" name="grade" class="form-control" [(ngModel)]="evaluation">
                     <option *ngFor="let g of grades" [value]="g"> {{ g }}</option>
                 </select>
-                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Avaliar</button>
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" (click)="onSubmit()" [disabled]="!answerForm.form.valid"><i class="fa fa-dot-circle-o"></i> Avaliar</button>
 			</div>
         </form>
     </div>
