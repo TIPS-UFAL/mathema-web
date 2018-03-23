@@ -1,20 +1,17 @@
-
-
-
-
-
-
-
+<app-group-form></app-group-form>
    <div class="row">
-     <div class="col-sm-0 col-md-0">
+     <div class="col-sm-12 col-md-12">
        <div class="card card-accent-primary">
          <div class="card-header">
-           <h2> {{curriculum?.title}}</h2>
+           <div class="row">
+             <h2 class="col-10 "> {{curriculum?.title}}</h2>
+             <button type="button" class="btn btn-outline-success btn-smng serve"
+                     tooltip="Criar nova turma a partir desse curriculo" (click)="gpModal.show()">
+               <i class="fa fa-plus fa-lg"></i> Criar Turma
+             </button>
+           </div>
          </div>
          <div class="card-body">
-
-
-
            <h5>{{curriculum?.description}}</h5>
            <br>
            <div class="table-responsive"></div>
@@ -44,17 +41,13 @@
              </tr>
              </tbody>
            </table>
-
-
-
          </div>
         </div>
        </div>
      </div><!--/.col-->
 
-
-
-
+   <!--/ MODAL - Criar Turma -->
+   <app-group-form #gpModal></app-group-form>
 
    <!--/ MODAL -->
    <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -67,28 +60,14 @@
            </button>
          </div>
          <div class="modal-body">
-
-
-
-
-           <form  #curriculumForm="ngForm">
+           <form  #groupForm="ngForm">
              <div class="form-group">
                <label for="titulo">Título</label>
                <input type="text" class="form-control" id="titulo" placeholder="Insira um título." required [(ngModel)]="titulo" name="titulo">
              </div>
 
-             <div class="form-group">
-               <label class="form-control-label" for="descricao">Descrição</label>
-               <textarea id="descricao" name="descricao" rows="4" class="form-control" placeholder="Descreva a estrutura do currículo." required
-                         [(ngModel)]="descricao" name="descricao"></textarea>
-             </div>
-
-             <button type="submit" class="btn btn-sm btn-primary" [disabled]="!curriculumForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Cadastrar</button>
+             <button type="submit" class="btn btn-sm btn-primary" [disabled]="!groupForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Cadastrar</button>
            </form>
-
-
-
-
          </div>
        </div>
      </div>

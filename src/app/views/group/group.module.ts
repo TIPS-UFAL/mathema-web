@@ -7,14 +7,14 @@ import { CommonModule } from '@angular/common';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { GroupListComponent } from './group-list/group-list.component';
 import { GroupRoutingModule } from './group-routing.module';
-import { HttpModule } from '@angular/http';
 import { GroupService } from 'app/views/group/shared/group.service';
+import {ModalModule} from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
+    ModalModule.forRoot(),
     CommonModule,
     GroupRoutingModule,
-    HttpModule,
     ChartsModule,
     BsDropdownModule,
     FormsModule
@@ -22,6 +22,9 @@ import { GroupService } from 'app/views/group/shared/group.service';
   declarations: [
     GroupFormComponent,
     GroupListComponent
+  ],
+  exports: [
+    GroupFormComponent
   ],
   providers: [ GroupService ]
 })

@@ -1,13 +1,15 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+
 import {ActivatedRoute} from '@angular/router';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import {CurriculumService} from '../shared/curriculum.service';
 import {Curriculum} from '../shared/curriculum.model';
 import {TopicService} from '../../topic/shared/topic.service';
 import {Topic} from '../../topic/shared/topic.model';
 import {GroupService} from '../../group/shared/group.service';
 import {Group} from '../../group/shared/group.model';
+import {ModalDirective} from 'ngx-bootstrap/modal';
+import {GroupFormComponent} from '../../group/group-form/group-form.component';
+
 
 @Component({
   selector: 'app-curriculum-detail',
@@ -15,6 +17,7 @@ import {Group} from '../../group/shared/group.model';
   styleUrls: ['./curriculum-detail.component.scss']
 })
 export class CurriculumDetailComponent implements OnInit {
+  @ViewChild('gpModal') public gpModal: GroupFormComponent;
 
   public curriculumId;
   topics: Topic[] = [];
@@ -36,14 +39,5 @@ export class CurriculumDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
-}
-
-@Component({
-  selector: 'app-curriculum-detail',
-  templateUrl: './curriculum-detail.component.html'
-})
-export class DemoModalStaticComponent {
-
 }
 
