@@ -2,29 +2,29 @@
       <div class="card-body">
         <form #topicForm="ngForm">
           <div class="form-group">
-            <label for="titulo">Título</label>
-            <input type="text" class="form-control" id="titulo" placeholder="Insira um título." required [(ngModel)]="titulo" name="titulo">
+            <label for="title">Título</label>
+            <input type="text" class="form-control" id="title" placeholder="Insira um título." required [(ngModel)]="title" name="title">
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="descricao">Descrição</label>
+            <label class="form-control-label" for="description">Descrição</label>
             <div class="">
-              <textarea id="descricao" name="descricao" rows="4" class="form-control" placeholder="Descreva o conteúdo abordado no tópico." required
-              [(ngModel)]="descricao" name="descricao"></textarea>
+              <textarea id="description" name="descricao" rows="4" class="form-control" placeholder="Descreva o conteúdo abordado no tópico." required
+              [(ngModel)]="description" name="descricao"></textarea>
             </div>
           </div>
 
-          <div class="form-group">
-              <div class="form-control-label">
-                  <label for="subtopico">
-                      <label for="subtopico">Tópico-pai</label>
-                  </label>
-                  <select id="topic" name="topic" class="form-control">
-                    <option value="">Não é um sub-tópico</option>
-                    <option *ngFor="let t of topics" [value]="t">{{ t.title }}</option>
-                  </select>
-              </div>
-          </div>
+          <!--<div class="form-group">-->
+              <!--<div class="form-control-label">-->
+                  <!--<label for="subtopico">-->
+                      <!--<label for="subtopico">Tópico-pai</label>-->
+                  <!--</label>-->
+                  <!--<select id="topic" name="topic" class="form-control">-->
+                    <!--<option value="">Não é um sub-tópico</option>-->
+                    <!--<option *ngFor="let t of topics" [value]="t">{{ t.title }}</option>-->
+                  <!--</select>-->
+              <!--</div>-->
+          <!--</div>-->
 
         <button type="submit" class="btn btn-sm btn-primary" [disabled]="!topicForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Cadastrar</button>
         </form>

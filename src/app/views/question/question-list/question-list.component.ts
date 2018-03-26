@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from 'app/views/question/shared/question.model';
 import { QuestionService } from 'app/views/question/shared/question.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Curriculum} from '../../curriculum/shared/curriculum.model';
+import {CurriculumService} from '../../curriculum/shared/curriculum.service';
+import {Topic} from '../../topic/shared/topic.model';
+import {TopicService} from '../../topic/shared/topic.service';
 
 @Component({
   selector: 'app-question-list',
@@ -10,11 +14,21 @@ import { Router } from '@angular/router';
 })
 export class QuestionListComponent implements OnInit {
 
-  questions: Question[] = []
-  public author
+  questions: Question[] = [];
+  topic: Topic;
+  id: any;
+  public author;
 
-  constructor(private questionService: QuestionService, private router: Router) {
-    questionService.getQuestions(1).subscribe((data: any) => { // TODO
+  constructor(private questionService: QuestionService,
+              private topicService: TopicService,
+              private route: ActivatedRoute,
+              private router: Router) {
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.topicService.getTopic(this.id).subscribe((data: any) => {
+      this.topic = data;
+      console.log(this.topic);
+    });
+    questionService.getQuestions(this.id).subscribe((data: any) => { // TODO
       this.questions = data
     })
   }

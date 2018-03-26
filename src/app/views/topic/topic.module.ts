@@ -9,21 +9,27 @@ import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicRoutingModule } from './topic-routing.module';
 import { HttpModule } from '@angular/http';
 import { TopicService } from 'app/views/topic/shared/topic.service';
-import { ModalModule } from "ngx-bootstrap";
+import { ModalModule } from 'ngx-bootstrap';
+import { TopicDetailComponent } from './topic-detail/topic-detail.component';
+import {QuestionModule} from '../question/question.module';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   imports: [
     ModalModule.forRoot(),
+    TooltipModule.forRoot(),
     CommonModule,
     TopicRoutingModule,
     HttpModule,
     ChartsModule,
     BsDropdownModule,
-    FormsModule
+    FormsModule,
+    QuestionModule
   ],
   declarations: [
     TopicFormComponent,
-    TopicListComponent
+    TopicListComponent,
+    TopicDetailComponent
   ],
   exports: [
     TopicFormComponent,

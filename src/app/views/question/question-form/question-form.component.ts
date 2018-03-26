@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { Question } from '../shared/question.model';
 import { QuestionService } from '../shared/question.service';
-import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
-import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service';
 import { Topic } from 'app/views/topic/shared/topic.model';
 import { TopicService } from 'app/views/topic/shared/topic.service';
 import {User} from '../../user/shared/models';
 import {UserService} from '../../user/shared/services';
+import {ModalDirective} from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-question-form',
@@ -16,47 +15,43 @@ import {UserService} from '../../user/shared/services';
 })
 
 export class QuestionFormComponent {
-
-    titulo: string;
-    descricao: string;
+    @ViewChild('qtModal') public qtModal: ModalDirective;
+    title: string;
+    description: string;
     // tipo: ActivityType;
     user: User;
+    id: any;
+    topic: Topic;
 
-    topics: Topic[] = [];
-
-    topicoSelecionado;
 
     constructor(private questionService: QuestionService,
-                private topicService: TopicService,
                 userService: UserService,
+                private route: ActivatedRoute,
                 private router: Router) {
-      topicService.getTopics(1).subscribe((data: any) => {
-        this.topics = data;
-      })
 
+      this.id = parseInt(this.route.snapshot.paramMap.get('id'));
       userService.user.subscribe((user: User) => {
         this.user = user
       })
     }
 
     onSubmit() {
-        if (this.topicoSelecionado != null) {
-            console.log(this.topicoSelecionado);
-            console.log(this.topicoSelecionado[0]);
-            console.log(this.topicoSelecionado[0].id);
-            this.questionService.createQuestion({'title': this.titulo,
-                                                'description': this.descricao,
-                                                'author': this.user.pk,
-                                                'topic': this.topicoSelecionado[0].id}).subscribe(() => {
-                                                    this.router.navigate(['']);
-                                                });
-        } else {
-            console.log('sem topico');
-            this.questionService.createQuestion({'title': this.titulo,
-                                                'description': this.descricao,
-                                                'author': this.user.pk}).subscribe(() => {
-                                                    this.router.navigate(['']);
-                                                });
-        }
+      this.questionService.createQuestion({
+        'title': this.title,
+        'description': this.description,
+        'author': this.user.pk,
+        'topic': this.id
+        }).subscribe(() => {
+          location.reload();
+        });
+
     }
+
+  public show(): void {
+    this.qtModal.show();
+  }
+
+  public hide(): void {
+    this.qtModal.hide();
+  }
 }

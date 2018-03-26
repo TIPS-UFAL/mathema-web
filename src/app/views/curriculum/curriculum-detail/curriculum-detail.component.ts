@@ -29,7 +29,7 @@ export class CurriculumDetailComponent implements OnInit {
     curriculumService.getCurriculum(id).subscribe((data: any) => {
       this.curriculum = data;
       console.log(this.curriculum);
-    })
+    });
     topicService.getTopics(id).subscribe((data: any) => {
       this.topics = data;
     })

@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 
 import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicFormComponent } from './topic-form/topic-form.component';
+import { TopicDetailComponent } from './topic-detail/topic-detail.component';
 import {NgxPermissionsGuard} from 'ngx-permissions';
+import {CurriculumDetailComponent} from '../curriculum/curriculum-detail/curriculum-detail.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,11 @@ const routes: Routes = [
         redirectTo: ''
       }
     },
-  }
+  },
+  {
+    path: ':id',
+    component: TopicDetailComponent,
+  },
 ];
 
 @NgModule({

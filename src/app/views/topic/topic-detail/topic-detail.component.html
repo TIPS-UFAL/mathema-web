@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <div class="card card-accent-primary">
+      <div class="card-header">
+        <div class="row">
+          <h2 class="col-10 ">{{topic?.title}}</h2>
+          <button type="button" class="btn btn-outline-success btn-smng serve"
+                  tooltip="Criar nova turma a partir desse curriculo" (click)="qtModal.show()">
+            <i class="fa fa-plus fa-lg"></i> Criar atividade
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <h5>{{topic?.description}}</h5>
+        <br>
+
+        <app-question-list></app-question-list>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-question-form #qtModal></app-question-form>
+

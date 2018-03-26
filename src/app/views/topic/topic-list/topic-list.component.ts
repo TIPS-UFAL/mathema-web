@@ -3,6 +3,7 @@ import { Topic } from 'app/views/topic/shared/topic.model';
 import { TopicService } from 'app/views/topic/shared/topic.service';
 import {ActivatedRoute} from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topic-list',
@@ -24,11 +25,17 @@ export class TopicListComponent implements OnInit {
   }
 
   constructor(private topicService: TopicService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
      topicService.getTopics(this.id).subscribe((data: any) => {
        this.topics = data;
      })
+  }
+
+  onSelect(topic) {
+    console.log('entrei no onSelect')
+    this.router.navigate(['/topic', topic.id]);
   }
 
   goTo(id: number) {

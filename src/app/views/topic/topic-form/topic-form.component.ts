@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 import { Topic } from '../shared/topic.model';
 import { TopicService } from '../shared/topic.service';
@@ -15,11 +15,10 @@ import {User} from '../../user/shared/models';
 
 export class TopicFormComponent {
 
-    titulo: string;
-    descricao: string;
+    title: string;
+    description: string;
     // suporte?: TopicSuport;
     // atividades?: TopicActivity;
-
     topicoPai?: Topic;
     user: User;
     id: any;
@@ -40,25 +39,29 @@ export class TopicFormComponent {
         })
     }
 
+
+
+
     onSubmit() {
-      // verifica se é subtopico
       console.log(this.id);
       if (this.topicoPai == null) {
         console.log('entrei')
-        this.topicService.createTopic({'title': this.titulo,
-          'description': this.descricao,
+        this.topicService.createTopic({
+          'title': this.title,
+          'description': this.description,
           'curriculum': this.id,
           'author': this.user.pk}).subscribe(() => {
-          this.router.navigate(['']);
+          this.router.navigate(['/curriculum', this.id]);
+          location.reload();
         });
       } else {
         console.log('n entrei')
-        this.topicService.createTopic({'title': this.titulo,
-          'description': this.descricao,
+        this.topicService.createTopic({'title': this.title,
+          'description': this.description,
           'author': this.user.pk,
           'curriculum': this.id,
           'parent_topic': this.topicoPai.pk}).subscribe(() => {
-          this.router.navigate(['']);
+          location.reload();
         });
       }
     }

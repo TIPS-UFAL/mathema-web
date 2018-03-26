@@ -1,32 +1,33 @@
-<div class="container-fluid">
-    <h3>Cadastro de Atividade</h3>
-      <div class="card-body">
-        <form #questionForm="ngForm">
-          <div class="form-group">
-            <label for="titulo">Título</label>
-            <input type="text" class="form-control" id="titulo" placeholder="Insira um título." required [(ngModel)]="titulo" name="titulo">
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" for="descricao">Descrição</label>
-            <div class="">
-              <textarea id="descricao" name="descricao" rows="4" class="form-control" placeholder="Descreva a atividade proposta." required
-              [(ngModel)]="descricao" name="descricao"></textarea>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="form-control-label">
-              <label for="subtopico">
-                <label for="subtopico">Topico</label>
-              </label>
-              <select multiple id="topic" name="topic" class="form-control" [(ngModel)]="topicoSelecionado" (ngModelChange)="text()">
-                <option *ngFor="let t of topics" [value]="t">{{ t.title }}</option>
-              </select>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-sm btn-primary" [disabled]="!questionForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Cadastrar</button>
-        </form>
+<div bsModal #qtModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myQuestionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-center">Criar Atividade</h4>
+        <button type="button" class="close pull-right" (click)="hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        <form  #questionForm="ngForm">
+
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" class="form-control" id="title" placeholder="Insira um título." required [(ngModel)]="title" name="titulo">
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="description">Descrição</label>
+            <div class="">
+              <textarea id="description" name="descricao" rows="4" class="form-control" placeholder="Descreva a atividade proposta." required
+                        [(ngModel)]="description" name="descricao"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-sm btn-primary" [disabled]="!questionForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Criar</button>
+        </form>
+
+
+      </div>
+    </div>
   </div>
+</div>
