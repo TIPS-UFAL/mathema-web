@@ -9,6 +9,7 @@ import { GroupListComponent } from './group-list/group-list.component';
 import { GroupRoutingModule } from './group-routing.module';
 import { GroupService } from 'app/views/group/shared/group.service';
 import {ModalModule} from 'ngx-bootstrap';
+import { GroupDetailComponent } from './group-detail/group-detail.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {ModalModule} from 'ngx-bootstrap';
   ],
   declarations: [
     GroupFormComponent,
-    GroupListComponent
+    GroupListComponent,
+    GroupDetailComponent
   ],
   exports: [
     GroupFormComponent

@@ -29,7 +29,6 @@ export class HttpService {
   }
 
 
-
   private createHeaders() {
     const headers: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,6 +36,4 @@ export class HttpService {
     });
     return { headers: headers };
   }
-
-
 }

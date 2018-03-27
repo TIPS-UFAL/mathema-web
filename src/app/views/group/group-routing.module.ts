@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { GroupListComponent } from './group-list/group-list.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import {NgxPermissionsGuard} from 'ngx-permissions';
+import {CurriculumDetailComponent} from '../curriculum/curriculum-detail/curriculum-detail.component';
+import {GroupDetailComponent} from './group-detail/group-detail.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,11 @@ const routes: Routes = [
         redirectTo: ''
       }
     },
-  }
+  },
+  {
+    path: ':id',
+    component: GroupDetailComponent,
+  },
 ];
 
 @NgModule({
