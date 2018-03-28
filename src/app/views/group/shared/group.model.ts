@@ -6,10 +6,10 @@ export abstract class Group {
     title: string;
     curriculum: number;
     group_key: string;
-    teacher: User;
-    students: User[];
+    teacher: number;
+    students: number[];
 
-    constructor(id: number, title: string, curriculum: number, group_key: string,  teacher: User,  students: User[]) {
+    constructor(id: number, title: string, curriculum: number, group_key: string,  teacher: number,  students: number[]) {
         this.id = id;
         this.title = title;
         this.curriculum = curriculum;
