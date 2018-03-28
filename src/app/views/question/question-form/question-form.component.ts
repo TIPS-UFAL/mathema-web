@@ -24,7 +24,13 @@ export class QuestionFormComponent {
 
     topics: Topic[] = [];
 
-    topicoSelecionado;
+    topicoSelecionado
+    tipoAtividade
+
+    // TODO: puxar tipos do model
+    tipos = ["problemas", "multipla escolha"]
+
+    // TODO: pegar id correto do curriculo
 
     constructor(private questionService: QuestionService,
                 private topicService: TopicService,
@@ -40,21 +46,14 @@ export class QuestionFormComponent {
     }
 
     onSubmit() {
-        if(this.topicoSelecionado != null) {
-            console.log(this.topicoSelecionado);
-            console.log(this.topicoSelecionado[0]);
-            console.log(this.topicoSelecionado[0].id);
+        if (this.topicoSelecionado != null && this.tipoAtividade != null) {
+            // var index = this.tipos.indexOf(this.tipoAtividade)
+            // index++
             this.questionService.createQuestion({'title': this.titulo,
                                                 'description': this.descricao,
                                                 'author': this.user.pk,
-                                                'topic': this.topicoSelecionado[0].id}).subscribe(() => {
-                                                    this.router.navigate(['']);
-                                                });
-        } else {
-            console.log('sem topico');
-            this.questionService.createQuestion({'title': this.titulo,
-                                                'description': this.descricao,
-                                                'author': this.user.pk}).subscribe(() => {
+                                                'topic': this.topicoSelecionado.id,
+                                                'type': 1}).subscribe(() => {
                                                     this.router.navigate(['']);
                                                 });
         }

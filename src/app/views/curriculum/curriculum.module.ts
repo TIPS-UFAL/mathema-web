@@ -13,6 +13,7 @@ import {CurriculumListComponent} from './curriculum-list/curriculum-list.compone
 import { CurriculumFormComponent } from './curriculum-form/curriculum-form.component';
 import { CurriculumDetailComponent } from './curriculum-detail/curriculum-detail.component';
 import {GroupModule} from '../group/group.module';
+import {TopicModule} from '../topic/topic.module';
 
 @NgModule({
   imports: [
@@ -24,6 +25,8 @@ import {GroupModule} from '../group/group.module';
     BsDropdownModule,
     FormsModule,
     GroupModule
+    FormsModule,
+    TopicModule
   ],
   declarations: [
     CurriculumFormComponent,

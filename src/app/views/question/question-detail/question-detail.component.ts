@@ -18,7 +18,11 @@ export class QuestionDetailComponent implements OnInit {
     public title: string
     public description: string
     public author
+    public category
     public solution
+
+    // TODO: puxar tipos do model
+    tipos = ["problemas", "multipla escolha"]
 
     user: User
 
@@ -36,6 +40,7 @@ export class QuestionDetailComponent implements OnInit {
         this.questionService.getQuestion(this.pk).subscribe((data: any) => {
             this.title = data.title
             this.description = data.description
+            this.category = this.tipos[data.activity_type-1]
             
             this.userService.findUser(parseInt(data.author)).subscribe((user: any) => {
                 this.author = user.username

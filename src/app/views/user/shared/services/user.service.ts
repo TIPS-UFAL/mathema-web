@@ -41,6 +41,13 @@ export class UserService {
   registerUser (user: any): Observable<any> {
     return this.http.post(this.url + 'rest-auth/' + 'registration/', user);
   }
+
+  updateUser(obj: any) {
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    const options: any = ({ headers: headers });
+
+    return this.http.patch(this.url + 'rest-auth/' + 'user/', obj, options)
+  }
 }
 
 

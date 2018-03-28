@@ -5,6 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { ProfileComponent } from './profile.component';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,9 @@ import { ProfileRoutingModule } from './profile-routing.module';
     BsDropdownModule,
     FormsModule
   ],
-  declarations: [ ProfileComponent ]
+  declarations: [
+    ProfileComponent,
+    ProfileEditComponent
+  ]
 })
 export class ProfileModule { }

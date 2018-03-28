@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 import { AnswerService } from '../shared/answer.service';
 import { Answer } from '../shared/answer.model';
 import { QuestionService } from '../../question/shared/question.service';
@@ -12,13 +12,14 @@ import { QuestionService } from '../../question/shared/question.service';
 
 export class AnswerListComponent implements OnInit {
 
-    answers: Answer[] = []
+    public answers = []
     public question
     
     constructor(answerService: AnswerService, private questionService: QuestionService,
-        private router: Router) {
+        private router: Router, private route: ActivatedRoute) {
         
-        answerService.getAnswers().subscribe((data: any) => {
+        // TODO: passar id da atividade
+        answerService.getAnswers(1).subscribe((data: any) => {
             this.answers = data
             console.log(data)
         })

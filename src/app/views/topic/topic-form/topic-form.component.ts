@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { Topic } from '../shared/topic.model';
 import { TopicService } from '../shared/topic.service';
@@ -17,42 +17,44 @@ export class TopicFormComponent {
 
     titulo: string;
     descricao: string;
-    // suporte?: TopicSuport;
-    // atividades?: TopicActivity;
 
     topicoPai?: Topic;
     user: User;
+    id: any;
 
     topics: Topic[] = [];
 
     constructor(private topicService: TopicService,
                 private userService: UserService,
-                private router: Router) {
+                private router: Router,
+                private route: ActivatedRoute, ) {
 
-        // topicService.getTopics().subscribe((data: any) => {
-        //     this.topics = data;
-        // })
-
-        userService.user.subscribe((user: User) => {
-          this.user = user
-        })
+      this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+      
+      userService.user.subscribe((user: User) => {
+        this.user = user
+      })
+      
+      topicService.getTopics(this.id).subscribe((data: any) => {
+        this.topics = data
+      })
     }
 
     onSubmit() {
       // verifica se é subtopico
-      if (this.topicoPai == null) {
-        console.log('entrei')
-        this.topicService.createTopic({'title': this.titulo,
-          'description': this.descricao,
-          'author': this.user.pk}).subscribe(() => {
-          this.router.navigate(['']);
-        });
-      } else {
-        console.log('n entrei')
+      if (this.topicoPai != null) {
         this.topicService.createTopic({'title': this.titulo,
           'description': this.descricao,
           'author': this.user.pk,
-          'parent_topic': this.topicoPai.pk}).subscribe(() => {
+          'parent_topic': this.topicoPai.pk,
+          'curriculum': this.id}).subscribe(() => {
+          this.router.navigate(['']);
+        });
+      } else {
+        this.topicService.createTopic({'title': this.titulo,
+          'description': this.descricao,
+          'author': this.user.pk,
+          'curriculum': this.id}).subscribe(() => {
           this.router.navigate(['']);
         });
       }

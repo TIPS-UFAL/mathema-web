@@ -1,0 +1,20 @@
+<div class="animated fadeIn">
+    <div class="card card-accent-primary" style="width: 100%;">
+        <form #profileForm="ngForm">   
+            <h5 class="card-header">Edição de perfil</h5>
+            <div class="card-body">
+                <p class="card-text">* Modifique o(s) campo(s) abaixo para editá-lo(s). Deixe em branco para manter o estado atual.</p>
+                <p class="card-text">Nome:</p>
+                <textarea id="name" name="name" rows="1" class="form-control" placeholder= "{{ profile?.name }}"
+                [(ngModel)]="name" name="name" maxlength="30"></textarea>
+                <p class="card-text" style="margin-top:14pt">Nome de usuário:</p>
+                <textarea id="username" name="username" rows="1" class="form-control" placeholder= "{{ profile?.username }}"
+                [(ngModel)]="username" name="username" maxlength="20"></textarea>
+                <p class="card-text" style="margin-top:14pt">Email:</p>
+                <textarea id="email" name="email" rows="1" class="form-control" placeholder= "{{ profile?.email }}"
+                [(ngModel)]="email" name="email"></textarea>
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" (click)="onEdit()"><i class="fa fa-dot-circle-o"></i> Salvar alterações</button>
+            </div>
+        </form>
+    </div>
+</div>
