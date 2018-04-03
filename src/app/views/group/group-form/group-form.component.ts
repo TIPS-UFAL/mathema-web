@@ -34,7 +34,7 @@ export class GroupFormComponent {
     this.groupService.createGroup({'title': this.title, 'curriculum': this.idCurriculum, 'teacher': this.user.pk})
       .subscribe((group: Group) => {
         this.idGroup = group.id;
-        this.router.navigate(['group/' + this.idGroup + '/']);
+        this.router.navigate(['group/c/' + this.idCurriculum + '/g/' + this.idGroup + '/']);
       });
   }
 

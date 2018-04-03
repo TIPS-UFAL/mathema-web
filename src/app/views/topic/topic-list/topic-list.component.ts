@@ -31,10 +31,6 @@ export class TopicListComponent implements OnInit {
      })
   }
 
-  goTo(id: number) {
-
-  }
-
   ngOnInit() {
   }
 

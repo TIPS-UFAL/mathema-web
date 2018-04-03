@@ -24,7 +24,7 @@ import {TopicModule} from '../topic/topic.module';
     ChartsModule,
     BsDropdownModule,
     FormsModule,
-    GroupModule
+    GroupModule,
     FormsModule,
     TopicModule
   ],
