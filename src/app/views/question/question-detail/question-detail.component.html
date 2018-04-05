@@ -3,7 +3,8 @@
         <form #activityForm="ngForm">
             <h5 class="card-header">{{ title }}</h5>
             <div class="card-body">
-                <p class="card-text">Autor: {{ author }} <!--puxar usuário pelo id no component--></p>
+                <p class="card-text">Autor: {{ author }}</p>
+                <p class="card-text">Categoria: {{ category }}</p>
                 <pre class="card-text">{{ description }}</pre>
                 <p class="card-text">Solução:</p>
                 <textarea id="solution" name="solution" rows="4" class="form-control" placeholder="A resposta será avaliada por seu professor." required

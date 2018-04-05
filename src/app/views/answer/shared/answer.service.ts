@@ -15,11 +15,17 @@ import { AuthenticationService } from '../../../auth/services'
     }
 
     createAnswer(obj: any) {
-        return this.http.post(this.url + 'answer/', obj)
+        const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        const options: any = ({ headers: headers });
+
+        return this.http.post(this.url + 'answer/', obj, options)
     }
 
-    getAnswers() {
-        return this.http.get(this.url + 'answer/')
+    getAnswers(id: number) {
+        const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        const options: any = ({ headers: headers });
+
+        return this.http.get(this.url + 'answer/' + id + '/', options)
     }
 
     getAnswer(id: number) {

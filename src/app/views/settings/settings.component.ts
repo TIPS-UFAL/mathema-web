@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Settings } from './settings';
+import { Settings } from './settings.model';
 
 @Component({
     selector: 'settings',

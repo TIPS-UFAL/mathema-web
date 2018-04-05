@@ -23,6 +23,15 @@ export class QuestionFormComponent {
     id: any;
     topic: Topic;
 
+    topics: Topic[] = [];
+
+    topicoSelecionado
+    tipoAtividade
+
+    // TODO: puxar tipos do model
+    tipos = ["problemas", "multipla escolha"]
+
+    // TODO: pegar id correto do curriculo
 
     constructor(private questionService: QuestionService,
                 private userService: UserService,
@@ -54,4 +63,16 @@ export class QuestionFormComponent {
   public hide(): void {
     this.qtModal.hide();
   }
+        if (this.topicoSelecionado != null && this.tipoAtividade != null) {
+            // var index = this.tipos.indexOf(this.tipoAtividade)
+            // index++
+            this.questionService.createQuestion({'title': this.titulo,
+                                                'description': this.descricao,
+                                                'author': this.user.pk,
+                                                'topic': this.topicoSelecionado.id,
+                                                'type': 1}).subscribe(() => {
+                                                    this.router.navigate(['']);
+                                                });
+        }
+    }
 }
