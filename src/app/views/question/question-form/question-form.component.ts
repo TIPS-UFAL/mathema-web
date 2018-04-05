@@ -25,11 +25,11 @@ export class QuestionFormComponent {
 
     topics: Topic[] = [];
 
-    topicoSelecionado
-    tipoAtividade
+    topicoSelecionado;
+    tipoAtividade;
 
     // TODO: puxar tipos do model
-    tipos = ["problemas", "multipla escolha"]
+    tipos = ['problemas', 'multipla escolha']
 
     // TODO: pegar id correto do curriculo
 
@@ -49,7 +49,8 @@ export class QuestionFormComponent {
         'title': this.title,
         'description': this.description,
         'author': this.user.pk,
-        'topic': this.id
+        'topic': this.id,
+        'type': 1
         }).subscribe((data: any) => {
         this.router.navigate(['/question/', data.id]);
         });
@@ -63,16 +64,16 @@ export class QuestionFormComponent {
   public hide(): void {
     this.qtModal.hide();
   }
-        if (this.topicoSelecionado != null && this.tipoAtividade != null) {
-            // var index = this.tipos.indexOf(this.tipoAtividade)
-            // index++
-            this.questionService.createQuestion({'title': this.titulo,
-                                                'description': this.descricao,
-                                                'author': this.user.pk,
-                                                'topic': this.topicoSelecionado.id,
-                                                'type': 1}).subscribe(() => {
-                                                    this.router.navigate(['']);
-                                                });
-        }
-    }
+    //     if (this.topicoSelecionado != null && this.tipoAtividade != null) {
+    //         // var index = this.tipos.indexOf(this.tipoAtividade)
+    //         // index++
+    //         this.questionService.createQuestion({'title': this.titulo,
+    //                                             'description': this.descricao,
+    //                                             'author': this.user.pk,
+    //                                             'topic': this.topicoSelecionado.id,
+    //                                             'type': 1}).subscribe(() => {
+    //                                                 this.router.navigate(['']);
+    //                                             });
+    //     }
+    // }
 }

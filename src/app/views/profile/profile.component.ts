@@ -27,11 +27,11 @@ export class ProfileComponent {
             userService.findUser(data.pk).subscribe((user: any) => {
                 this.profile.name = user.username
             })
-            
-            if(data.user_type == 2) {
-                this.profile.user_type = "Professor"
+
+            if (data.user_type == 2) {
+                this.profile.user_type = 'Professor'
             } else {
-                this.profile.user_type = "Aluno"
+                this.profile.user_type = 'Aluno'
             }
         })
     }
