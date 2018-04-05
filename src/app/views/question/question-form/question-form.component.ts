@@ -25,7 +25,7 @@ export class QuestionFormComponent {
 
 
     constructor(private questionService: QuestionService,
-                userService: UserService,
+                private userService: UserService,
                 private route: ActivatedRoute,
                 private router: Router) {
 
@@ -41,8 +41,8 @@ export class QuestionFormComponent {
         'description': this.description,
         'author': this.user.pk,
         'topic': this.id
-        }).subscribe(() => {
-          location.reload();
+        }).subscribe((data: any) => {
+        this.router.navigate(['/question/', data.id]);
         });
 
     }

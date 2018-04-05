@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 import { Topic } from '../shared/topic.model';
@@ -7,6 +7,7 @@ import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
 import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service'
 import {UserService} from '../../user/shared/services';
 import {User} from '../../user/shared/models';
+import {ModalDirective} from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-topic-form',
@@ -14,7 +15,7 @@ import {User} from '../../user/shared/models';
 })
 
 export class TopicFormComponent {
-
+    @ViewChild('topicModal') public topicModal: ModalDirective;
     title: string;
     description: string;
     // suporte?: TopicSuport;
@@ -43,26 +44,31 @@ export class TopicFormComponent {
 
 
     onSubmit() {
-      console.log(this.id);
       if (this.topicoPai == null) {
-        console.log('entrei')
         this.topicService.createTopic({
           'title': this.title,
           'description': this.description,
           'curriculum': this.id,
-          'author': this.user.pk}).subscribe(() => {
-          this.router.navigate(['/curriculum', this.id]);
-          location.reload();
+          'author': this.user.pk}).subscribe((data: any) => {
+          this.router.navigate(['/topic/', data.id]);
         });
       } else {
-        console.log('n entrei')
-        this.topicService.createTopic({'title': this.title,
+        this.topicService.createTopic({
+          'title': this.title,
           'description': this.description,
           'author': this.user.pk,
           'curriculum': this.id,
-          'parent_topic': this.topicoPai.pk}).subscribe(() => {
-          location.reload();
+          'parent_topic': this.topicoPai.pk}).subscribe((data: any) => {
+          this.router.navigate(['/topic/', data.id]);
         });
       }
     }
+
+  public show(): void {
+    this.topicModal.show();
+  }
+
+  public hide(): void {
+    this.topicModal.hide();
+  }
 }

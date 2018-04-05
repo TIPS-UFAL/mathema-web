@@ -2,7 +2,8 @@
   <thead class="thead-default">
   <tr>
     <th><h4 class="text-xs-center">Topicos</h4></th>
-    <th><button class="btn btn-outline-success btn-lg btn-block" (click)="lgModal.show()">Criar Topico</button></th>
+    <th></th>
+    <!--<th class="td-165"><button class="btn btn-outline-success btn-lg btn-block" (click)="lgModal.show()">Criar Topico</button></th>-->
   </tr>
   </thead>
   <tbody>
@@ -25,28 +26,12 @@
 
 
 
-<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-center">Criar Topico</h4>
-        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
 
 
 
 
         <!--/ CONTEUDO MODAL-->
-        <app-topic-form></app-topic-form>
         <!--/ CONTEUDO MODAL-->
 
 
 
-      </div>
-    </div>
-  </div>
-</div>

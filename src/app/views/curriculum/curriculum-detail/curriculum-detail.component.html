@@ -4,7 +4,13 @@
      <div class="col-sm-12 col-md-12">
        <div class="card card-accent-primary">
          <div class="card-header">
-           <h2> {{curriculum?.title}}</h2>
+           <div class="row">
+            <h2 class="col-10"> {{curriculum?.title}}</h2>
+             <button type="button" class="btn btn-outline-success btn-smng serve"
+                     tooltip="Criar nova turma a partir desse curriculo" (click)="topicModal.show()">
+               <i class="fa fa-plus fa-lg"></i> Criar Topico
+             </button>
+           </div>
          </div>
          <div class="card-body">
 
@@ -26,5 +32,5 @@
 
 
    <!--/ MODAL CRIAR TOPICO-->
-
+   <app-topic-form #topicModal></app-topic-form>
    <!--/ MODAL CRIAR TOPICO-->

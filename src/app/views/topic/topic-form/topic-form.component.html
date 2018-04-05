@@ -1,32 +1,34 @@
-<div class="container-fluid">
-      <div class="card-body">
-        <form #topicForm="ngForm">
+<div bsModal #topicModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-center">Criar Topico</h4>
+        <button type="button" class="close pull-right" (click)="topicModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  #topicForm="ngForm">
+
           <div class="form-group">
             <label for="title">Título</label>
-            <input type="text" class="form-control" id="title" placeholder="Insira um título." required [(ngModel)]="title" name="title">
+            <input type="text" class="form-control" id="title" placeholder="Insira um título." required [(ngModel)]="title" name="titulo">
           </div>
 
           <div class="form-group">
             <label class="form-control-label" for="description">Descrição</label>
             <div class="">
-              <textarea id="description" name="descricao" rows="4" class="form-control" placeholder="Descreva o conteúdo abordado no tópico." required
-              [(ngModel)]="description" name="descricao"></textarea>
+              <textarea id="description" name="descricao" rows="4" class="form-control" placeholder="Descreva o topico." required
+                        [(ngModel)]="description" name="descricao"></textarea>
             </div>
           </div>
 
-          <!--<div class="form-group">-->
-              <!--<div class="form-control-label">-->
-                  <!--<label for="subtopico">-->
-                      <!--<label for="subtopico">Tópico-pai</label>-->
-                  <!--</label>-->
-                  <!--<select id="topic" name="topic" class="form-control">-->
-                    <!--<option value="">Não é um sub-tópico</option>-->
-                    <!--<option *ngFor="let t of topics" [value]="t">{{ t.title }}</option>-->
-                  <!--</select>-->
-              <!--</div>-->
-          <!--</div>-->
-
-        <button type="submit" class="btn btn-sm btn-primary" [disabled]="!topicForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Cadastrar</button>
+          <button type="submit" class="btn btn-sm btn-primary" [disabled]="!topicForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Criar</button>
         </form>
+
+
       </div>
+    </div>
   </div>
+</div>
+

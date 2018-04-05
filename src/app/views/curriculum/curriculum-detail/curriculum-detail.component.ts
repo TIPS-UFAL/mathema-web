@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
@@ -8,6 +8,8 @@ import {TopicService} from '../../topic/shared/topic.service';
 import {Topic} from '../../topic/shared/topic.model';
 import {GroupService} from '../../group/shared/group.service';
 import {Group} from '../../group/shared/group.model';
+import {QuestionFormComponent} from '../../question/question-form/question-form.component';
+import {TopicFormComponent} from '../../topic/topic-form/topic-form.component';
 
 
 @Component({
@@ -16,6 +18,7 @@ import {Group} from '../../group/shared/group.model';
   styleUrls: ['./curriculum-detail.component.scss']
 })
 export class CurriculumDetailComponent implements OnInit {
+  @ViewChild('topicModal') public topicModal: TopicFormComponent;
 
   public curriculumId;
   topics: Topic[] = [];
