@@ -17,6 +17,7 @@ export class GroupDetailComponent implements OnInit {
   group: Group;
   curriculum: Curriculum;
   students: User[] = [];
+  isCollapsed: boolean[] = [];
 
   constructor(private groupService: GroupService,
               private userService: UserService,
@@ -33,14 +34,68 @@ export class GroupDetailComponent implements OnInit {
   }
 
   getStudents() {
-    for (let student of this.group.students) {
+    for (const student of this.group.students) {
       this.userService.findUser(student).subscribe( (data: any) => {
         this.students.push(data);
+        this.isCollapsed.push(true);
       });
     }
   }
 
-  /*Estatísticas a implementar:*/
+  /*Estatísticas específicas de cada aluno a implementar:*/
+  //line
+  public lineChartDataLog: Array<any> = [
+    {data: [0, 0, 0, 20, 50, 80, 85], label: 'Pontuação'},
+  ];
+  public lineChartLabelsLog: Array<any> = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'];
+  public lineChartOptionsLog: any = {
+    animation: false,
+    responsive: true
+  };
+  public lineChartColoursLog: Array<any> = [
+    {
+      backgroundColor: 'rgba(33,168,216,0.2)',
+      borderColor: 'rgba(33,168,216,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+  ];
+  public lineChartLegendLog = true;
+  public lineChartTypeLog = 'line';
+
+
+
+  // Radar
+  public radarChartLabelsMat: string[] = ['Fração', 'Potencia', 'Fatoração', 'Funções', 'Exponencial'];
+
+  public radarChartDataMat: any = [
+    {data: [100, 72, 50, 81, 0], label: 'Matematica'}
+  ];
+  public radarChartColoursMat: Array<any> = [
+    {
+      backgroundColor: 'rgba(78,189,116,0.2)',
+      borderColor: 'rgba(78,189,116,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+  ];
+  public radarChartTypeMat = 'radar';
+
+  // events
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
+
+
+  /*Estatísticas gerais da turma a implementar:*/
 
   public brandPrimary = '#20a8d8';
   public brandSuccess = '#4dbd74';
@@ -65,15 +120,6 @@ export class GroupDetailComponent implements OnInit {
 
     const rgba = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + opacity / 100 + ')';
     return rgba;
-  }
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
   }
 
   // lineChart1

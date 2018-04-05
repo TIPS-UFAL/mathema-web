@@ -8,7 +8,7 @@ import { GroupFormComponent } from './group-form/group-form.component';
 import { GroupListComponent } from './group-list/group-list.component';
 import { GroupRoutingModule } from './group-routing.module';
 import { GroupService } from 'app/views/group/shared/group.service';
-import {ModalModule, TabsModule} from 'ngx-bootstrap';
+import {CollapseModule, ModalModule, TabsModule} from 'ngx-bootstrap';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import {TopicModule} from '../topic/topic.module';
 import {NgxPermissionsModule} from 'ngx-permissions';
@@ -18,6 +18,7 @@ import {NgxPermissionsModule} from 'ngx-permissions';
     ModalModule.forRoot(),
     TabsModule.forRoot(),
     NgxPermissionsModule.forRoot(),
+    CollapseModule.forRoot(),
     CommonModule,
     GroupRoutingModule,
     ChartsModule,

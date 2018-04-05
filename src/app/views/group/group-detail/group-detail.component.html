@@ -12,18 +12,52 @@
           <tabset>
             <tab heading="Tópicos" id="topics"><app-topic-list></app-topic-list></tab>
             <tab heading="Alunos" id="students">
-              <tr *ngFor="let student of students">
-                <td>
-                  <div><h5>{{ student?.username }}</h5></div>
-                  <div class="small text-muted">
+                <ul *ngFor="let student of students; let i = index">
+                  <div class="card">
+                    <h5 class="card-header">{{ student?.username }}</h5>
+                    <div class="card-body">
+                      <button type="button" (click)="isCollapsed[i] = !isCollapsed[i]">Estatistics</button>
+                      <div class="animated fadeIn card-text" [collapse]="isCollapsed[i]">
+                        <div class="card-columns cols-2">
+                          <div class="card">
+                            <div class="card-header">
+                              Curso
+                            </div>
+                            <div class="card-body">
+                              <div class="chart-wrapper">
+                                <canvas baseChart class="chart"
+                                        [datasets]="lineChartDataLog"
+                                        [labels]="lineChartLabelsLog"
+                                        [options]="lineChartOptionsLog"
+                                        [colors]="lineChartColoursLog"
+                                        [legend]="lineChartLegendLog"
+                                        [chartType]="lineChartTypeLog"
+                                        (chartHover)="chartHovered($event)"
+                                        (chartClick)="chartClicked($event)"></canvas>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <div class="card-header">
+                              Habilidades
+                            </div>
+                            <div class="card-body">
+                              <div class="chart-wrapper">
+                                <canvas baseChart class="chart"
+                                        [datasets]="radarChartDataMat"
+                                        [labels]="radarChartLabelsMat"
+                                        [colors]="radarChartColoursMat"
+                                        [chartType]="radarChartTypeMat"
+                                        (chartHover)="chartHovered($event)"
+                                        (chartClick)="chartClicked($event)"></canvas>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </td>
-                <td>
-                  <div class="text-center">
-                    <button type="button" class="btn btn-outline-primary btn-lg-4 btn-block">Ver</button>
-                  </div>
-                </td>
-              </tr>
+                </ul>
             </tab>
             <tab heading="Estatísticas" id="statistics" *ngxPermissionsExcept="'STUDENT'">
               <div class="animated fadeIn">
