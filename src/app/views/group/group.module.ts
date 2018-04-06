@@ -7,21 +7,32 @@ import { CommonModule } from '@angular/common';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { GroupListComponent } from './group-list/group-list.component';
 import { GroupRoutingModule } from './group-routing.module';
-import { HttpModule } from '@angular/http';
 import { GroupService } from 'app/views/group/shared/group.service';
+import {CollapseModule, ModalModule, TabsModule} from 'ngx-bootstrap';
+import { GroupDetailComponent } from './group-detail/group-detail.component';
+import {TopicModule} from '../topic/topic.module';
+import {NgxPermissionsModule} from 'ngx-permissions';
 
 @NgModule({
   imports: [
+    ModalModule.forRoot(),
+    TabsModule.forRoot(),
+    NgxPermissionsModule.forRoot(),
+    CollapseModule.forRoot(),
     CommonModule,
     GroupRoutingModule,
-    HttpModule,
     ChartsModule,
     BsDropdownModule,
-    FormsModule
+    FormsModule,
+    TopicModule
   ],
   declarations: [
     GroupFormComponent,
-    GroupListComponent
+    GroupListComponent,
+    GroupDetailComponent
+  ],
+  exports: [
+    GroupFormComponent
   ],
   providers: [ GroupService ]
 })
