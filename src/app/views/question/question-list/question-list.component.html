@@ -1,11 +1,8 @@
 <div class="container-fluid">
-  <h3>Atividades<br><br></h3>
   <ul *ngFor="let question of questions">
     <div class="card" style="width: 100%;">
-      <h5 class="card-header">#{{ question?.id }} - {{ question?.title }}</h5>
+      <h5 class="card-header">{{ question?.title }}</h5>
       <div class="card-body">
-        <p class="card-text">Curriculum: {{ question?.curriculum }}</p>
-        <p class="card-text">Topico: {{ question?.topic?.title }}</p>
         <li href="#" (click) = "onSelect(question)" class="btn btn-primary">Abrir</li>
         <li href="#" (click) = "checkSubmissions(question)" class="btn btn-primary">Ver submissões</li>
       </div>

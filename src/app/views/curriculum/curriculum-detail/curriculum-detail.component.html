@@ -8,6 +8,10 @@
                  tooltip="Criar nova turma a partir desse curriculo" (click)="gpModal.show()">
            <i class="fa fa-plus fa-lg"></i> Criar Turma
          </button>
+         <button type="button" class="btn btn-outline-success btn-smng serve"
+                 tooltip="Criar nova turma a partir desse curriculo" (click)="topicModal.show()">
+           <i class="fa fa-plus fa-lg"></i> Criar Topico
+         </button>
        </div>
      </div>
      <div class="card-body">
@@ -23,5 +27,5 @@
    <app-group-form #gpModal></app-group-form>
 
    <!--/ MODAL CRIAR TOPICO-->
-
+   <app-topic-form #topicModal></app-topic-form>
    <!--/ MODAL CRIAR TOPICO-->

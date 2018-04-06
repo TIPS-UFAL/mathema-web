@@ -10,9 +10,15 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { QuestionRoutingModule } from './question-routing.module';
 import { QuestionService } from 'app/views/question/shared/question.service';
+import {TopicFormComponent} from '../topic/topic-form/topic-form.component';
+import {TopicListComponent} from '../topic/topic-list/topic-list.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   imports: [
+    ModalModule.forRoot(),
+    TooltipModule.forRoot(),
     CommonModule,
     QuestionRoutingModule,
     HttpModule,
@@ -24,6 +30,10 @@ import { QuestionService } from 'app/views/question/shared/question.service';
     QuestionFormComponent,
     QuestionListComponent,
     QuestionDetailComponent
+  ],
+  exports: [
+    QuestionFormComponent,
+    QuestionListComponent
   ],
   providers: [ QuestionService ]
 })

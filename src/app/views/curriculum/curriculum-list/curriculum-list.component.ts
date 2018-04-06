@@ -13,7 +13,8 @@ export class CurriculumListComponent implements OnInit {
 
   curriculums: Curriculum[] = [];
 
-  constructor(private curriculumService: CurriculumService, private router: Router) {
+  constructor(private curriculumService: CurriculumService,
+              private router: Router) {
     curriculumService.getCurriculums().subscribe((data: any) => {
       this.curriculums = data;
       console.log(this.curriculums);

@@ -5,6 +5,6 @@ export class Profile {
     username: string
     email: string
     user_type: string
-    
+
     constructor(){ }
 }

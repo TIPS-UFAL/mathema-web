@@ -2,18 +2,18 @@ import { Topic } from "../../topic/shared/topic.model";
 
 export abstract class Question {
     pk: number;
-    titulo: string;
-    descricao: string;
-    topicos: Topic[];
-    autor: string;
-    tipo: string;
+    title: string;
+    description: string;
+    topics: Topic[];
+    author: string;
+    type: string;
 
-    constructor(pk: number, titulo: string, descricao: string, topicos: Topic[], autor: string, tipo: string) {
+    constructor(pk: number, title: string, descricao: string, topicos: Topic[], autor: string, tipo: string) {
         this.pk = pk;
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.topicos = topicos;
-        this.autor = autor;
-        this.tipo = tipo;
+        this.title = title;
+        this.description = descricao;
+        this.topics = topicos;
+        this.author = autor;
+        this.type = tipo;
     }
 }

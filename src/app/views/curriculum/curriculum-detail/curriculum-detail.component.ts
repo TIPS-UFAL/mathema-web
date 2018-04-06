@@ -1,11 +1,14 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CurriculumService} from '../shared/curriculum.service';
 import {Curriculum} from '../shared/curriculum.model';
 import {TopicService} from '../../topic/shared/topic.service';
 import {Topic} from '../../topic/shared/topic.model';
 import {GroupFormComponent} from '../../group/group-form/group-form.component';
+import {GroupService} from '../../group/shared/group.service';
+import {Group} from '../../group/shared/group.model';
+import {QuestionFormComponent} from '../../question/question-form/question-form.component';
+import {TopicFormComponent} from '../../topic/topic-form/topic-form.component';
 
 
 @Component({
@@ -15,6 +18,7 @@ import {GroupFormComponent} from '../../group/group-form/group-form.component';
 })
 export class CurriculumDetailComponent implements OnInit {
   @ViewChild('gpModal') public gpModal: GroupFormComponent;
+  @ViewChild('topicModal') public topicModal: TopicFormComponent;
 
   public curriculumId;
   topics: Topic[] = [];
