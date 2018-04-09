@@ -50,7 +50,6 @@ export class AnswerDetailComponent implements OnInit {
 	}
 
 	onSubmit() {
-		// TODO: criar campo no model para note
 		if(this.evaluation != null) {
 			this.answerService.updateAnswer({
 				'answer': this.answer,

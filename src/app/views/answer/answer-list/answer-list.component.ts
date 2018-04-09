@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router'
 import { AnswerService } from '../shared/answer.service';
 import { Answer } from '../shared/answer.model';
 import { QuestionService } from '../../question/shared/question.service';
+import { UserService } from '../../user/shared/services/user.service'
 
 @Component({
     selector: 'app-answer-list',
@@ -12,36 +13,31 @@ import { QuestionService } from '../../question/shared/question.service';
 
 export class AnswerListComponent implements OnInit {
 
-    public answers = []
-    public question
+    //TODO: colocar data no cadastro da submissão
+    
+    public answers: Answer[]
+    public question_id
     
     constructor(answerService: AnswerService, private questionService: QuestionService,
-        private router: Router, private route: ActivatedRoute) {
+        private userService: UserService, private router: Router, private route: ActivatedRoute) {
         
-        // TODO: passar id da atividade
-        answerService.getAnswers(1).subscribe((data: any) => {
+        this.question_id = this.route.snapshot.paramMap.get('question_id')
+        answerService.getAnswers(this.question_id).subscribe((data: any) => {
             this.answers = data
-            console.log(data)
+
+            for (let answer of this.answers) {
+                this.userService.findUser(answer.author).subscribe((user: any) => {
+                    answer.author = user.username
+                })
+            }
         })
     }
 
-    goTo(id: number) {
+    goTo(id: number) { }
 
-    }
-
-    ngOnInit() {
-        
-    }
+    ngOnInit() { }
 
     onSelect(answer) {
-        console.log(answer.id)
-        console.log(answer.answer)
-        console.log(answer.activity)
-        console.log(answer.author)
-        console.log(answer.evaluation)
-        
         this.router.navigate(['/answer', answer.id])
-
-        //TODO: colocar data no cadastro da submissão
     }
  }

@@ -25,11 +25,14 @@ import { AuthenticationService } from '../../../auth/services'
         const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authenticationService.token });
         const options: any = ({ headers: headers });
 
-        return this.http.get(this.url + 'answer/' + id + '/', options)
+        return this.http.get(this.url + 'answer/list/' + id + '/', options)
     }
 
     getAnswer(id: number) {
-        return this.http.get(this.url + 'answer/' + id + '/')
+        const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        const options: any = ({ headers: headers });
+
+        return this.http.get(this.url + 'answer/' + id + '/', options)
     }
 
     updateAnswer(obj: any, id: number) {

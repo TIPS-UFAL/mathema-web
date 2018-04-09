@@ -28,7 +28,7 @@ export class QuestionListComponent implements OnInit {
       this.topic = data;
       console.log(this.topic);
     });
-    questionService.getQuestions(this.id).subscribe((data: any) => { // TODO
+    questionService.getQuestions(this.id).subscribe((data: any) => {
       this.questions = data
     })
   }
@@ -49,6 +49,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   checkSubmissions(question) {
-    this.router.navigate(['/answer/list'])
+    this.router.navigate(['/answer/list', {question_id: question.id}])
   }
 }

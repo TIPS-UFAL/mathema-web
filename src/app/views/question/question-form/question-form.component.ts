@@ -31,8 +31,6 @@ export class QuestionFormComponent {
     // TODO: puxar tipos do model
     tipos = ['problemas', 'multipla escolha']
 
-    // TODO: pegar id correto do curriculo
-
     constructor(private questionService: QuestionService,
                 private userService: UserService,
                 private route: ActivatedRoute,
@@ -45,6 +43,7 @@ export class QuestionFormComponent {
     }
 
     onSubmit() {
+      // TODO: pegar id correto do curriculo
       this.questionService.createQuestion({
         'title': this.title,
         'description': this.description,
