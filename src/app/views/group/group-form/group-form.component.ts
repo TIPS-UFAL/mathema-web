@@ -16,6 +16,7 @@ export class GroupFormComponent {
   @ViewChild('gpModal') public gpModal: ModalDirective;
 
   title: string;
+  visible: boolean;
   user: User;
   idCurriculum: number;
   idGroup: number;

@@ -1,14 +1,31 @@
 <div class="container-fluid">
-  <h3>Tópicos<br><br></h3>
-  <ul *ngFor="let group of groups">
+  <div class="row">
+    <h3 class="col">Turmas<br><br></h3>
+    <div class="col-md-3">
+      <div class="input-group" dropdown>
+        <input type="text" #groupKey class="form-control" placeholder="Chave"
+               tooltip="Já possui uma chave de grupo?">
+        <span class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="searchKey(groupKey.value)">Submit</button>
+        </span>
+      </div>
+      <!--<alert type="danger">-->
+        <!--<strong>Oh snap!</strong> Change a few things up and try submitting again.-->
+      <!--</alert>-->
+    </div>
+  </div>
+  <form class="navbar-form navbar-left">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Procurar..." [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+    </div>
+  </form>
+  <ul *ngFor="let group of groups | filter : searchText : 'title'">
     <div class="card" style="width: 100%;">
-      <h5 class="card-header">Titulo: {{ group.title }}</h5>
+      <h5 class="card-header">Titulo: {{ group?.title }} <{{ group?.group_key }}></h5>
       <div class="card-body">
-        <p class="card-text">Descrição: {{ group.description}}</p>
-        <p class="card-text">Curriculum: {{ group.curriculum}}</p>
-        <p class="card-text">Groupo Pai: {{ group.parentGroup}}</p>
-        <p class="card-text">Activity: {{ group.activity}}</p>
-        <a href="#" class="btn btn-primary">Editar(há implementar)</a>
+        <p class="card-text">Curriculum: </p>
+        <p class="card-text">Descrição: </p>
+        <a href="" routerLinkActive="active" [routerLink]="['/group/detail']" class="btn btn-primary">Ver Detalhes</a>
       </div>
     </div>
   </ul>
