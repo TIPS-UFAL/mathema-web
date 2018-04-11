@@ -14,8 +14,8 @@ import {UserService} from '../../user/shared/services';
 
 export class CurriculumFormComponent {
 
-  titulo: string;
-  descricao: string;
+  title: string;
+  description: string;
   user: User;
 
   constructor(private curriculumService: CurriculumService,
@@ -26,9 +26,13 @@ export class CurriculumFormComponent {
   }
 
   onSubmit() {
-    this.curriculumService.createCurriculum({'title': this.titulo, 'description': this.descricao, 'author': this.user.pk})
-        .subscribe(() => {
-          this.router.navigate(['']);
+    this.curriculumService.createCurriculum({
+      'title': this.title,
+      'description': this.description,
+      'author': this.user.pk
+    })
+        .subscribe((data: any) => {
+          this.router.navigate(['/curriculum/list']);
         });
   }
 }

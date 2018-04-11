@@ -1,14 +1,14 @@
-<div bsModal #topicModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div bsModal #curriculumEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-center">Criar Topico</h4>
-        <button type="button" class="close pull-right" (click)="topicModal.hide()" aria-label="Close">
+        <h4 class="modal-title pull-center">Editar Curriculo</h4>
+        <button type="button" class="close pull-right" (click)="curriculumEditModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form #topicForm="ngForm">
+        <form #curriculumEditForm="ngForm">
 
           <div class="form-group">
             <label for="title">Título</label>
@@ -23,7 +23,7 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-sm btn-primary" [disabled]="!topicForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Criar</button>
+          <button type="submit" class="btn btn-sm btn-primary" [disabled]="!curriculumEditForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i>Editar</button>
         </form>
 
 

@@ -1,12 +1,14 @@
-<div class="container-fluid">
-    <h3>Submissões<br><br></h3>
-    <ul *ngFor="let answer of answers">
-      <div class="card" style="width: 100%;">
-        <h5 class="card-header">#{{ answer?.id }} - {{ answer?.author }}</h5>
-        <div class="card-body">
-          <p class="card-text">Data: (fazer)</p>
-          <li href="#" (click) = "onSelect(answer)" class="btn btn-primary">Ver</li>
+<div class="animated fadeIn">
+  <div class="container-fluid">
+      <h3>Submissões<br><br></h3>
+      <ul *ngFor="let answer of answers">
+        <div class="card" style="width: 100%;">
+          <h5 class="card-header">#{{ answer?.id }} - {{ answer?.author }}</h5>
+          <div class="card-body">
+            <p class="card-text">Data: (fazer)</p>
+            <li href="#" (click) = "onSelect(answer)" class="btn btn-primary">Ver</li>
+          </div>
         </div>
-      </div>
-    </ul>
+      </ul>
+  </div>
 </div>

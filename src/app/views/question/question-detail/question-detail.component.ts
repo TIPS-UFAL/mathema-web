@@ -22,7 +22,7 @@ export class QuestionDetailComponent implements OnInit {
     public solution
 
     // TODO: puxar tipos do model
-    tipos = ["problemas", "multipla escolha"]
+    tipos = ['problemas', 'multipla escolha']
 
     user: User
 
@@ -40,8 +40,8 @@ export class QuestionDetailComponent implements OnInit {
         this.questionService.getQuestion(this.pk).subscribe((data: any) => {
             this.title = data.title
             this.description = data.description
-            this.category = this.tipos[data.activity_type-1]
-            
+            this.category = this.tipos[data.activity_type - 1]
+
             this.userService.findUser(parseInt(data.author)).subscribe((user: any) => {
                 this.author = user.username
             })
@@ -49,7 +49,7 @@ export class QuestionDetailComponent implements OnInit {
     }
 
     onSubmit() {
-        
+
         this.answerService.createAnswer({
             'answer': this.solution,
             'activity': this.pk,
@@ -58,6 +58,6 @@ export class QuestionDetailComponent implements OnInit {
             this.answerRoute.navigate(['']);
         })
 
-        this.solution = ""
+        this.solution = ''
     }
 }

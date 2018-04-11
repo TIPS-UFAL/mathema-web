@@ -13,6 +13,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { TopicDetailComponent } from './topic-detail/topic-detail.component';
 import {QuestionModule} from '../question/question.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { TopicEditFormComponent } from './topic-edit-form/topic-edit-form.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
   declarations: [
     TopicFormComponent,
     TopicListComponent,
-    TopicDetailComponent
+    TopicDetailComponent,
+    TopicEditFormComponent
   ],
   exports: [
     TopicFormComponent,

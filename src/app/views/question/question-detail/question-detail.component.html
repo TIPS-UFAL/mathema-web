@@ -1,16 +1,18 @@
-<div class="container-fluid">
-    <div class="card card-accent-primary" style="width: 100%;">
-        <form #activityForm="ngForm">
-            <h5 class="card-header">{{ title }}</h5>
-            <div class="card-body">
-                <p class="card-text">Autor: {{ author }}</p>
-                <p class="card-text">Categoria: {{ category }}</p>
-                <pre class="card-text">{{ description }}</pre>
-                <p class="card-text">Solução:</p>
-                <textarea id="solution" name="solution" rows="4" class="form-control" placeholder="A resposta será avaliada por seu professor." required
-                [(ngModel)]="solution" name="solution"></textarea>
-                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" [disabled]="!activityForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Submeter</button>
-            </div>
-        </form>
-    </div>
+<div class="animated fadeIn">
+  <div class="container-fluid">
+      <div class="card card-accent-primary">
+          <form #activityForm="ngForm">
+              <h5 class="card-header">{{ title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">Autor: {{ author }}</p>
+                  <p class="card-text">Categoria: {{ category }}</p>
+                  <p class="card-text">{{ description }}</p>
+                  <p class="card-text">Solução:</p>
+                  <textarea id="solution" name="solution" rows="4" class="form-control" placeholder="A resposta será avaliada por seu professor." required
+                  [(ngModel)]="solution" name="solution"></textarea>
+                  <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" [disabled]="!activityForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Submeter</button>
+              </div>
+          </form>
+      </div>
+  </div>
 </div>

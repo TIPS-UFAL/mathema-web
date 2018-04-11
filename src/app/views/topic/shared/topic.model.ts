@@ -4,12 +4,12 @@ export abstract class Topic {
     pk: number;
     title: string;
     description: string;
-    parent_topic?: Topic;
+    curriculum: Curriculum;
 
-    constructor(pk: number, title: string, description: string, parent_topic?: Topic) {
+    constructor(pk: number, title: string, description: string, curriculum: Curriculum) {
         this.pk = pk;
         this.title = title;
         this.description = description;
-        this.parent_topic = parent_topic;
+        this.curriculum = curriculum;
     }
 }
