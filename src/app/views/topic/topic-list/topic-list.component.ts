@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import { Topic } from 'app/views/topic/shared/topic.model';
 import { TopicService } from 'app/views/topic/shared/topic.service';
 import {ActivatedRoute} from '@angular/router';
@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
   templateUrl: './topic-list.component.html',
   styleUrls: ['./topic-list.component.scss']
 })
-export class TopicListComponent implements OnInit {
+export class TopicListComponent implements OnChanges {
 
   topics: Topic[] = [];
-  id: any;
+
   @ViewChild('childModal') public childModal: ModalDirective;
+  @Input() curriculumId: number;
 
   public showChildModal():void {
     this.childModal.show();
@@ -26,23 +27,19 @@ export class TopicListComponent implements OnInit {
 
   constructor(private topicService: TopicService,
               private route: ActivatedRoute,
-              private router: Router) {
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-     topicService.getTopics(this.id).subscribe((data: any) => {
-       this.topics = data;
-     })
-  }
+              private router: Router) { }
 
   onSelect(topic) {
-    console.log('entrei no onSelect')
     this.router.navigate(['/topic', topic.id]);
   }
 
-  goTo(id: number) {
-
-  }
-
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.curriculumId !== undefined) {
+      console.log('oi', this.curriculumId);
+      this.topicService.getTopics(this.curriculumId).subscribe((data: any) => {
+        this.topics = data;
+      })
+    }
   }
 
 }

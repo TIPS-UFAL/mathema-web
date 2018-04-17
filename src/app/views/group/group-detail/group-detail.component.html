@@ -10,7 +10,7 @@
         <br>
         <div>
           <tabset>
-            <tab heading="Tópicos" id="topics"><app-topic-list></app-topic-list></tab>
+            <tab heading="Tópicos" id="topics"><app-topic-list [curriculumId]="curriculum?.id"></app-topic-list></tab>
             <tab heading="Alunos" id="students">
                 <ul *ngFor="let student of students; let i = index">
                   <div class="card">
