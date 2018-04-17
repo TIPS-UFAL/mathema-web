@@ -37,12 +37,15 @@
 
   <app-question-form #qtModal></app-question-form>
 
-  <!--/ MODAL EDITAR CURRICULO-->
-  <app-topic-edit-form #topicEditModal></app-topic-edit-form>
-  <!--/ MODAL EDITAR CURRICULO-->
+  <!--/ MODAL EDITAR TOPICO-->
+  <app-topic-edit-form #topicEditModal
+                       [topicTitle] = "topic.title"
+                       [topicDescription] = "topic.description">
+  </app-topic-edit-form>
+  <!--/ MODAL EDITAR TOPICO-->
 
 
-  <!--/ MODAL DELETAR CURRICULO-->
+  <!--/ MODAL DELETAR TOPICO-->
   <div class="modal fade" bsModal #topicDeleteModal="bs-modal"
        tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
@@ -64,5 +67,5 @@
     </div>
   </div>
 </div>
-<!--/ MODAL DELETAR CURRICULO-->
+<!--/ MODAL DELETAR TOPICO-->
 

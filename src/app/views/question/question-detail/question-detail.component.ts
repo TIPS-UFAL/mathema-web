@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from '../shared/question.service';
 import { Question } from '../shared/question.model';
 import { UserService } from '../../user/shared/services';
 import { AnswerService } from '../../answer/shared/answer.service';
 import { User } from '../../user/shared/models';
+import {TopicFormComponent} from '../../topic/topic-form/topic-form.component';
+import {QuestionFormComponent} from '../question-form/question-form.component';
 
 @Component({
     selector: 'app-question-detail',
@@ -13,37 +15,41 @@ import { User } from '../../user/shared/models';
 })
 
 export class QuestionDetailComponent implements OnInit {
+  @ViewChild('questionEditModal') public questionEditModal: QuestionFormComponent;
 
-    public pk
-    public title: string
-    public description: string
-    public author
-    public category
-    public solution
+  public pk;
+  public title: string;
+  public description: string;
+  public author;
+  public category;
+  public solution;
 
-    // TODO: puxar tipos do model
-    tipos = ['problemas', 'multipla escolha']
+  // TODO: puxar tipos do model
+  tipos = ['problemas', 'multipla escolha'];
 
-    user: User
+  user: User;
 
-    constructor(private route: ActivatedRoute, private answerRoute: Router,
-                private questionService: QuestionService, private userService: UserService,
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private answerRoute: Router,
+                private questionService: QuestionService,
+                private userService: UserService,
                 private answerService: AnswerService) {
         this.userService.getUser().subscribe((user: User) => {
-            this.user = user
+            this.user = user;
         })
     }
 
     ngOnInit() {
-        this.pk = parseInt(this.route.snapshot.paramMap.get('id'))
+        this.pk = parseInt(this.route.snapshot.paramMap.get('id'));
 
         this.questionService.getQuestion(this.pk).subscribe((data: any) => {
-            this.title = data.title
-            this.description = data.description
-            this.category = this.tipos[data.activity_type - 1]
+            this.title = data.title;
+            this.description = data.description;
+            this.category = this.tipos[data.activity_type - 1];
 
             this.userService.findUser(parseInt(data.author)).subscribe((user: any) => {
-                this.author = user.username
+                this.author = user.username;
             })
           });
     }
@@ -59,5 +65,11 @@ export class QuestionDetailComponent implements OnInit {
         })
 
         this.solution = ''
+    }
+
+    onDelete() {
+      this.questionService.deleteQuestion(this.pk).subscribe((data: any) => {
+        this.router.navigate(['/curriculum/list/']);
+      });
     }
 }

@@ -25,7 +25,7 @@ export class CurriculumDetailComponent implements OnInit {
   public curriculumId;
   topics: Topic[] = [];
   curriculum: Curriculum;
-  id: any
+  id: any;
 
   constructor(private curriculumService: CurriculumService,
               private route: ActivatedRoute,
@@ -40,6 +40,10 @@ export class CurriculumDetailComponent implements OnInit {
     topicService.getTopics(this.id).subscribe((data: any) => {
       this.topics = data;
     });
+
+
+
+
   }
 
   ngOnInit() {

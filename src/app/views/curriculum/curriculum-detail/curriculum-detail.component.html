@@ -44,7 +44,10 @@
      <!--/ MODAL CRIAR TOPICO-->
 
       <!--/ MODAL EDITAR CURRICULO-->
-      <app-curriculum-edit-form #curriculumEditModal></app-curriculum-edit-form>
+      <app-curriculum-edit-form #curriculumEditModal
+                                [curriculumTitle]="curriculum.title"
+                                [curriculumDescription]="curriculum.description">
+      </app-curriculum-edit-form>
       <!--/ MODAL EDITAR CURRICULO-->
 
       <!--/ MODAL DELETAR CURRICULO-->

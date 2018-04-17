@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
+import {Component, ViewChild, OnInit, Input} from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
 import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service'
@@ -16,10 +16,13 @@ import {CurriculumDetailComponent} from '../curriculum-detail/curriculum-detail.
 })
 export class CurriculumEditFormComponent implements OnInit {
   @ViewChild('curriculumEditModal') public curriculumEditModal: ModalDirective;
+  @Input() curriculumTitle: string;
+  @Input() curriculumDescription: string;
 
   id: any;
-  title: string;
+  title= this.curriculumTitle;
   description: string;
+
   user: User;
 
   constructor(private curriculumService: CurriculumService,
@@ -33,6 +36,8 @@ export class CurriculumEditFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title = this.curriculumTitle;
+    this.description = this.curriculumDescription;
   }
 
   onSubmit() {

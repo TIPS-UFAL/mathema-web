@@ -2,26 +2,24 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
 import {User} from '../../user/shared/models';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CurriculumService} from '../../curriculum/shared/curriculum.service';
 import {UserService} from '../../user/shared/services';
-import {TopicService} from '../shared/topic.service';
-
+import {QuestionService} from '../shared/question.service';
 
 @Component({
-  selector: 'app-topic-edit-form',
-  templateUrl: './topic-edit-form.component.html',
+  selector: 'app-question-edit-form',
+  templateUrl: './question-edit-form.component.html'
 })
-export class TopicEditFormComponent implements OnInit {
-  @ViewChild('topicEditModal') public topicEditModal: ModalDirective;
-  @Input() topicTitle: string;
-  @Input() topicDescription: string;
+export class QuestionEditFormComponent implements OnInit {
+  @ViewChild('questionEditModal') public questionEditModal: ModalDirective;
+  @Input() questionTitle: string;
+  @Input() questionDescription: string;
 
   id: any;
   title: string;
   description: string;
   user: User;
 
-  constructor(private topicService: TopicService,
+  constructor(private questionService: QuestionService,
               private userService: UserService,
               private router: Router,
               private route: ActivatedRoute) {
@@ -32,12 +30,12 @@ export class TopicEditFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.title = this.topicTitle;
-    this.description = this.topicDescription;
+    this.title = this.questionTitle;
+    this.description = this.questionDescription;
   }
 
   onSubmit() {
-    this.topicService.updateTopic({
+    this.questionService.updateQuestion({
         'title': this.title,
         'description': this.description
       },
@@ -48,10 +46,11 @@ export class TopicEditFormComponent implements OnInit {
   }
 
   public show(): void {
-    this.topicEditModal.show();
+    this.questionEditModal.show();
   }
 
   public hide(): void {
-    this.topicEditModal.hide();
+    this.questionEditModal.hide();
   }
+
 }

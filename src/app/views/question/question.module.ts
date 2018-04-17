@@ -14,6 +14,7 @@ import {TopicFormComponent} from '../topic/topic-form/topic-form.component';
 import {TopicListComponent} from '../topic/topic-list/topic-list.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import { QuestionEditFormComponent } from './question-edit-form/question-edit-form.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
   declarations: [
     QuestionFormComponent,
     QuestionListComponent,
-    QuestionDetailComponent
+    QuestionDetailComponent,
+    QuestionEditFormComponent
   ],
   exports: [
     QuestionFormComponent,

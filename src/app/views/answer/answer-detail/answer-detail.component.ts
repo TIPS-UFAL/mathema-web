@@ -5,59 +5,61 @@ import { QuestionService } from '../../question/shared/question.service';
 import { UserService } from '../../user/shared/services';
 
 @Component({
-	selector: 'app-answer-detail',
-	templateUrl: './answer-detail.component.html',
-	styleUrls: ['./answer-detail.component.scss']
+    selector: 'app-answer-detail',
+    templateUrl: './answer-detail.component.html',
+    styleUrls: ['./answer-detail.component.scss']
 })
 
 export class AnswerDetailComponent implements OnInit {
 
-	public pk
-	public activity
-	public activityTitle
-	public author
-	public authorName
-	public answer
-	public grades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	public pk;
+	public activity;
+	public activityTitle;
+	public author;
+	public authorName;
+	public answer;
+	public grades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-	public note
-	public evaluation
-	
-	constructor(private route: ActivatedRoute, private answerService: AnswerService,
-				private questionService: QuestionService, private userService: UserService,
-				private answerRoute: Router) {
-		
+	public note;
+	public evaluation;
+
+	constructor(private route: ActivatedRoute,
+							private answerService: AnswerService,
+							private questionService: QuestionService,
+							private userService: UserService,
+							private answerRoute: Router) {
+
 	}
 
 	ngOnInit() {
-		this.pk = parseInt(this.route.snapshot.paramMap.get('id'))
+		this.pk = parseInt(this.route.snapshot.paramMap.get('id'));
 
 		this.answerService.getAnswer(this.pk).subscribe((data: any) => {
 
-			this.questionService.getQuestion(data.activity).subscribe((activity: any) => {
-				this.activityTitle = activity.title
+		this.questionService.getQuestion(data.activity).subscribe((activity: any) => {
+				this.activityTitle = activity.title;
 			})
 
 			this.userService.findUser(data.author).subscribe((user: any) => {
-				this.authorName = user.username
+				this.authorName = user.username;
 			})
 
-			this.author = data.author
-			this.answer = data.answer
+			this.author = data.author;
+			this.answer = data.answer;
 
-			console.log(data)
+			console.log(data);
 		})
 	}
 
 	onSubmit() {
-		if(this.evaluation != null) {
+		if (this.evaluation != null) {
 			this.answerService.updateAnswer({
 				'answer': this.answer,
 				'activity': this.activity,
 				'author': this.author,
 				'evaluation': this.evaluation
 			}, this.pk).subscribe(() => {
-				this.answerRoute.navigate['']
+				this.answerRoute.navigate[''];
 			})
 		}
 	}
