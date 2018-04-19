@@ -1,0 +1,23 @@
+<div bsModal #answerEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h4 class="modal-title pull-center">Editar Submissão</h4>
+		  <button type="button" class="close pull-right" (click)="answerEditModal.hide()" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <form #answerEditForm="ngForm">
+			<div class="form-group">
+			  <div class="">
+				<textarea id="solution" name="solution" rows="4" class="form-control" placeholder="Escreva sua nova resposta." required
+                      [(ngModel)]="answer" name="solution"></textarea>
+			  </div>
+			</div>
+			<button type="submit" class="btn btn-sm btn-primary" [disabled]="!answerEditForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i>Editar</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+</div>

@@ -1,38 +1,75 @@
-<div class="animated fadeIn">
-  <div class="row">
-    <div class="col-sm-12 col-md-12">
-      <div class="card card-accent-primary">
-          <form #activityForm="ngForm">
-            <div class="card-header">
-              <div class="row">
-                <h2 class="col">{{title}}</h2>
-                <div id="button-group" class="ml-auto">
-                  <div class="btn-group" dropdown>
-                    <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
-                      <i class="fa fa-wrench fa-sm"></i> Configuração
-                    </button>
-                    <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem"><button type="button" class="dropdown-item" (click)="questionEditModal.show()">Editar</button></li>
-                      <li role="menuitem"><button type="button" class="dropdown-item" (click)="questionDeleteModal.show()">Deletar</button></li>
-                    </ul>
+<div><tabset>
+  <tab heading="Atividade">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="card card-accent-primary">
+              <form #activityForm="ngForm">
+                <div class="card-header">
+                  <div class="row">
+                    <h2 class="col">{{title}}</h2>
+                    <div id="button-group" class="ml-auto">
+                      <div class="btn-group" dropdown>
+                        <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
+                          <i class="fa fa-wrench fa-sm"></i> Configuração
+                        </button>
+                        <ul *dropdownMenu class="dropdown-menu" role="menu">
+                          <li role="menuitem"><button type="button" class="dropdown-item" (click)="questionEditModal.show()">Editar</button></li>
+                          <li role="menuitem"><button type="button" class="dropdown-item" (click)="questionDeleteModal.show()">Deletar</button></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="card-body">
+                      <p class="card-text">Autor: {{ author }}</p>
+                      <p class="card-text">Categoria: {{ category }}</p>
+                      <pre class="card-text">{{ description }}</pre>
+                      <p class="card-text" [hidden]="!alreadyAnswered">Você já respondeu essa atividade! Verifique a aba "Submissões".</p>
+                      <p class="card-text" [hidden]="alreadyAnswered">Solução:</p>
+                      <textarea id="solution" name="solution" rows="4" class="form-control" placeholder="A resposta será avaliada por seu professor." required
+                      [(ngModel)]="solution" name="solution" [hidden]="alreadyAnswered"></textarea>
+                      <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" [disabled]="!activityForm.form.valid" (click)="onSubmit()" [hidden]="alreadyAnswered"><i class="fa fa-dot-circle-o"></i> Submeter</button>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </tab>
+  <tab heading="Submissões">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <p class="card-text" [hidden]="alreadyAnswered">Você ainda não respondeu essa atividade.</p>
+          <ul *ngFor="let answer of answers">
+            <div class="card card-accent-primary">
+              <div class="card-header">
+                <div class="row">
+                  <h5 class="col">Data: (fazer)</h5>
+                  <div id="button-group" class="ml-auto">
+                    <div class="btn-group" dropdown>
+                      <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
+                        <i class="fa fa-wrench fa-sm"></i> Configuração
+                      </button>
+                      <ul *dropdownMenu class="dropdown-menu" role="menu">
+                        <li role="menuitem"><button type="button" class="dropdown-item" (click)="answerEditModal.show(answer)">Editar</button></li>
+                        <li role="menuitem"><button type="button" class="dropdown-item" (click)="answerDeleteModal.show(answer)">Deletar</button></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
               <div class="card-body">
-                  <p class="card-text">Autor: {{ author }}</p>
-                  <p class="card-text">Categoria: {{ category }}</p>
-                  <p class="card-text">{{ description }}</p>
-                  <p class="card-text">Solução:</p>
-                  <textarea id="solution" name="solution" rows="4" class="form-control" placeholder="A resposta será avaliada por seu professor." required
-                  [(ngModel)]="solution" name="solution"></textarea>
-                  <button type="submit" class="btn btn-sm btn-primary" style="margin-top:14pt" [disabled]="!activityForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Submeter</button>
+                <pre class="card-text">{{ answer?.answer }}</pre>
               </div>
-          </form>
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </tab>
+</tabset></div>
 
 
 <!--/ MODAL EDITAR ATIVIDADE-->
@@ -64,3 +101,12 @@
   </div>
 </div>
 <!--/ MODAL DELETAR ATIVIDADE-->
+
+
+<!-- MODAL EDITAR SUBMISSÃO -->
+<app-answer-edit-form #answerEditModal></app-answer-edit-form>
+<!-- MODAL EDITAR SUBMISSÃO -->
+
+<!-- MODAL DELETAR SUBMISSÃO -->
+<app-answer-delete-form #answerDeleteModal></app-answer-delete-form>
+<!-- MODAL DELETAR SUBMISSÃO -->
