@@ -50,6 +50,10 @@ export const routes: Routes = [
         loadChildren: './views/answer/answer.module#AnswerModule'
       },
       {
+        path: 'support',
+        loadChildren: './views/support/support.module#SupportModule'
+      },
+      {
         path: 'quiz',
         loadChildren: './views/quiz/quiz.module#QuizModule'
       },

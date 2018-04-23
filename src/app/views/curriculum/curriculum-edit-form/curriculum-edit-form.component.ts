@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, Input} from '@angular/core';
+import {Component, ViewChild, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
 import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service'
@@ -14,7 +14,7 @@ import {CurriculumDetailComponent} from '../curriculum-detail/curriculum-detail.
   selector: 'app-curriculum-edit-form',
   templateUrl: './curriculum-edit-form.component.html'
 })
-export class CurriculumEditFormComponent implements OnInit {
+export class CurriculumEditFormComponent implements OnChanges {
   @ViewChild('curriculumEditModal') public curriculumEditModal: ModalDirective;
   @Input() curriculumTitle: string;
   @Input() curriculumDescription: string;
@@ -35,9 +35,11 @@ export class CurriculumEditFormComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
-  ngOnInit() {
-    this.title = this.curriculumTitle;
-    this.description = this.curriculumDescription;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.curriculumTitle !== undefined && changes.curriculumDescription !== undefined) {
+      this.title = this.curriculumTitle;
+      this.description = this.curriculumDescription;
+    }
   }
 
   onSubmit() {

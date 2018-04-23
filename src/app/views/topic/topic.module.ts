@@ -14,6 +14,7 @@ import { TopicDetailComponent } from './topic-detail/topic-detail.component';
 import {QuestionModule} from '../question/question.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TopicEditFormComponent } from './topic-edit-form/topic-edit-form.component';
+import {SupportModule} from '../support/support.module';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { TopicEditFormComponent } from './topic-edit-form/topic-edit-form.compon
     ChartsModule,
     BsDropdownModule,
     FormsModule,
-    QuestionModule
+    QuestionModule,
+    SupportModule
   ],
   declarations: [
     TopicFormComponent,

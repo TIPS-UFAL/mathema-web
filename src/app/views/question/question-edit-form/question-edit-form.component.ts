@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
 import {User} from '../../user/shared/models';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,7 +9,7 @@ import {QuestionService} from '../shared/question.service';
   selector: 'app-question-edit-form',
   templateUrl: './question-edit-form.component.html'
 })
-export class QuestionEditFormComponent implements OnInit {
+export class QuestionEditFormComponent implements OnChanges {
   @ViewChild('questionEditModal') public questionEditModal: ModalDirective;
   @Input() questionTitle: string;
   @Input() questionDescription: string;
@@ -29,9 +29,11 @@ export class QuestionEditFormComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
-  ngOnInit() {
-    this.title = this.questionTitle;
-    this.description = this.questionDescription;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.questionTitle !== undefined && changes.questionDescription !== undefined) {
+      this.title = this.questionTitle;
+      this.description = this.questionDescription;
+    }
   }
 
   onSubmit() {

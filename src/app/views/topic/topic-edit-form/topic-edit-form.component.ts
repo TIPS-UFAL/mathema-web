@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
 import {User} from '../../user/shared/models';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,7 +11,7 @@ import {TopicService} from '../shared/topic.service';
   selector: 'app-topic-edit-form',
   templateUrl: './topic-edit-form.component.html',
 })
-export class TopicEditFormComponent implements OnInit {
+export class TopicEditFormComponent implements OnChanges {
   @ViewChild('topicEditModal') public topicEditModal: ModalDirective;
   @Input() topicTitle: string;
   @Input() topicDescription: string;
@@ -31,9 +31,11 @@ export class TopicEditFormComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
-  ngOnInit() {
-    this.title = this.topicTitle;
-    this.description = this.topicDescription;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.topicTitle !== undefined && changes.topicDescription !== undefined) {
+      this.title = this.topicTitle;
+      this.description = this.topicDescription;
+    }
   }
 
   onSubmit() {

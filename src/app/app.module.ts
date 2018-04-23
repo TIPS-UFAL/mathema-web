@@ -106,7 +106,7 @@ import {NgxPermissionsModule} from 'ngx-permissions';
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
-    GroupComponent
+    GroupComponent,
   ],
   providers: [
     AuthenticationService,

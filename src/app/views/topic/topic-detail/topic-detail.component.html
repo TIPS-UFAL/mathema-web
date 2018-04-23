@@ -10,6 +10,10 @@
                       tooltip="Criar nova turma a partir desse curriculo" (click)="qtModal.show()">
                 <i class="fa fa-plus fa-sm"></i> Criar Atividade
               </button>
+              <button type="button" class="btn btn-success btn-md ng serve"
+                      tooltip="Criar nova turma a partir desse curriculo" (click)="supportFormModal.show()">
+                <i class="fa fa-plus fa-sm"></i> Criar Suporte
+              </button>
               <div class="btn-group" dropdown>
                 <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
                   <i class="fa fa-wrench fa-sm"></i> Configuração
@@ -36,11 +40,12 @@
 
 
   <app-question-form #qtModal></app-question-form>
+  <app-support-form #supportFormModal></app-support-form>
 
   <!--/ MODAL EDITAR TOPICO-->
   <app-topic-edit-form #topicEditModal
-                       [topicTitle] = "topic.title"
-                       [topicDescription] = "topic.description">
+                       [topicTitle] = "topic?.title"
+                       [topicDescription] = "topic?.description">
   </app-topic-edit-form>
   <!--/ MODAL EDITAR TOPICO-->
 

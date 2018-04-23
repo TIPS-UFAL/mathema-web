@@ -1,4 +1,4 @@
-import { Topic } from "../../topic/shared/topic.model";
+import { Topic } from '../../topic/shared/topic.model';
 
 export abstract class Question {
     pk: number;

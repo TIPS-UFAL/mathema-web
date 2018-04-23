@@ -8,6 +8,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import {QuestionFormComponent} from '../../question/question-form/question-form.component';
 import {CurriculumFormComponent} from '../../curriculum/curriculum-form/curriculum-form.component';
 import {TopicFormComponent} from '../topic-form/topic-form.component';
+import {SupportFormComponent} from '../../support/support-form/support-form.component';
 
 
 
@@ -18,6 +19,7 @@ import {TopicFormComponent} from '../topic-form/topic-form.component';
 })
 export class TopicDetailComponent implements OnInit {
   @ViewChild('qtModal') public qtModal: QuestionFormComponent;
+  @ViewChild('supportFormModal') public supportFormModal: SupportFormComponent;
   @ViewChild('topicEditModal') public topicEditModal: TopicFormComponent;
 
   topic: Topic;
