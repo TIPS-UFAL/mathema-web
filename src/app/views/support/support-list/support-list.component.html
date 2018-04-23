@@ -1,3 +1,10 @@
-<p>
-  support-list works!
-</p>
+<div class="container-fluid">
+  <ul *ngFor="let support of supports">
+    <div class="card" style="width: 100%;">
+      <h5 class="card-header">{{ support?.title }}</h5>
+      <div class="card-body">
+        <li href="#" (click) = "onSelect(support)" class="btn btn-primary">Abrir</li>
+      </div>
+    </div>
+  </ul>
+</div>

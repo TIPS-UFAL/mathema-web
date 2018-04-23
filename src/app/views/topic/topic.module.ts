@@ -15,11 +15,13 @@ import {QuestionModule} from '../question/question.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TopicEditFormComponent } from './topic-edit-form/topic-edit-form.component';
 import {SupportModule} from '../support/support.module';
+import {TabsModule} from 'ngx-bootstrap/tabs';
 
 @NgModule({
   imports: [
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
+    TabsModule.forRoot(),
     CommonModule,
     TopicRoutingModule,
     HttpModule,

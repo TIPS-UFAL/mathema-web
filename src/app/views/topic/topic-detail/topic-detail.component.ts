@@ -9,6 +9,7 @@ import {QuestionFormComponent} from '../../question/question-form/question-form.
 import {CurriculumFormComponent} from '../../curriculum/curriculum-form/curriculum-form.component';
 import {TopicFormComponent} from '../topic-form/topic-form.component';
 import {SupportFormComponent} from '../../support/support-form/support-form.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 

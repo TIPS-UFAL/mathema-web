@@ -28,11 +28,30 @@
         </div>
         <div class="card-body">
 
+
           <h5>{{topic?.description}}</h5>
           <br>
+          <div><tabset>
+            <tab heading="Atividade">
+              <div class="animated fadeIn">
 
-          <app-question-list></app-question-list>
 
+                <app-question-list></app-question-list>
+
+
+              </div>
+            </tab>
+          <tab heading="Suportes">
+            <div class="animated fadeIn">
+
+
+              <app-support-list></app-support-list>
+
+
+            </div>
+          </tab>
+
+          </tabset></div>
         </div>
       </div>
     </div>
