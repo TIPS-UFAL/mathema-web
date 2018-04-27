@@ -5,7 +5,46 @@
       <div class="card-body">
         <li href="#" (click) = "onSelect(question)" class="btn btn-primary">Abrir</li>
         <li href="#" (click) = "checkSubmissions(question)" class="btn btn-primary">Ver submissões</li>
+        <div class="btn-group" dropdown>
+          <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
+            <i class="fa fa-wrench fa-sm"></i> Configuração
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem"><button type="button" class="dropdown-item" (click)="questionEditFormModal.show()">Editar</button></li>
+            <li role="menuitem"><button type="button" class="dropdown-item" (click)="questionDeleteModal.show()">Deletar</button></li>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <app-question-edit-form #questionEditFormModal
+                           [questionTitle] = "question?.title"
+                           [questionDescription] = "question?.description"
+                           [questionType] = "question?.type"
+                           [questionId] = "question?.id">
+    </app-question-edit-form>
+
+    <!--/ MODAL DELETAR ATIVIDADE-->
+    <div class="modal fade" bsModal #questionDeleteModal="bs-modal"
+         tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Deletar Atividade</h4>
+          </div>
+          <div class="modal-body">
+            Certeza que deseja excluir essa Atividade? Essa é uma operaçao irreversivel<br><br>
+            <div class="row">
+              <div class="col" id="button-delete-group">
+                <button id="delete-button-yes" type="button" class="btn btn-success btn-sx ng serve" (click)="onDelete(question?.id)">Sim</button>
+                <button id="delete-button-no" type="button" class="btn btn-danger btn-xs ng serve"  (click)="questionDeleteModal.hide()">Não</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ MODAL DELETAR ATIVIDADE-->
+
   </ul>
 </div>

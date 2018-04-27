@@ -35,7 +35,8 @@ import { SupportEditFormComponent } from './support-edit-form/support-edit-form.
   ],
   exports: [
     SupportFormComponent,
-    SupportListComponent
+    SupportListComponent,
+    SupportDetailComponent
   ],
   providers: [ SupportService ]
 })

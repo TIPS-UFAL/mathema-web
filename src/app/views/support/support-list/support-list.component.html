@@ -3,8 +3,57 @@
     <div class="card" style="width: 100%;">
       <h5 class="card-header">{{ support?.title }}</h5>
       <div class="card-body">
-        <li href="#" (click) = "onSelect(support)" class="btn btn-primary">Abrir</li>
+        <li href="#" (click)="supportDetailModal.show()" class="btn btn-primary">Abrir</li>
+        <div class="btn-group" dropdown>
+          <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
+            <i class="fa fa-wrench fa-sm"></i> Configuração
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem"><button type="button" class="dropdown-item" (click)="supportEditFormModal.show()">Editar</button></li>
+            <li role="menuitem"><button type="button" class="dropdown-item" (click)="supportDeleteModal.show()">Deletar</button></li>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <app-support-detail #supportDetailModal
+                        [supportTitle] = "support?.title"
+                        [supportContent] = "support?.content"
+                        [supportType] = "support?.type">
+    </app-support-detail>
+
+    <app-support-edit-form #supportEditFormModal
+                           [supportTitle] = "support?.title"
+                           [supportContent] = "support?.content"
+                           [supportType] = "support?.type"
+                           [supportId] = "support?.id">
+    </app-support-edit-form>
+
+
+    <!--/ MODAL DELETAR SUPORTE-->
+    <div class="modal fade" bsModal #supportDeleteModal="bs-modal"
+         tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Deletar Suporte</h4>
+          </div>
+          <div class="modal-body">
+            Certeza que deseja excluir esse Suporte? Essa é uma operaçao irreversivel<br><br>
+            <div class="row">
+              <div class="col" id="button-delete-group">
+                <button id="delete-button-yes" type="button" class="btn btn-success btn-sx ng serve" (click)="onDelete(support?.id)">Sim</button>
+                <button id="delete-button-no" type="button" class="btn btn-danger btn-xs ng serve"  (click)="supportDeleteModal.hide()">Não</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--/ MODAL DELETAR SUPORTE-->
+
   </ul>
 </div>
+
+
+

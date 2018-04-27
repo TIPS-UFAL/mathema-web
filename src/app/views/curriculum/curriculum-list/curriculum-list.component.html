@@ -5,9 +5,9 @@
       <div class="row">
         <div class="col-sm-12 col-lg-12">
           <div class="card">
-            <h5 class="card-header">Titulo: {{ curriculum?.title }}</h5>
+            <h5 class="card-header">{{ curriculum?.title }}</h5>
             <div class="card-body">
-              <p class="card-text">Descrição: {{ curriculum?.description}}</p>
+              <p class="card-text">{{ curriculum?.description}}</p>
               <div id="view-curriculum-div">
                 <li (click)="onSelect(curriculum)" class="btn btn-primary" id="view-curriculum-button">Ver</li>
               </div>

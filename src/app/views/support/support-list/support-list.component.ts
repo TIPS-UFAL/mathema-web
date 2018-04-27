@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Support } from 'app/views/support/shared/support.model';
 import { SupportService } from 'app/views/support/shared/support.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -6,6 +6,8 @@ import {Curriculum} from '../../curriculum/shared/curriculum.model';
 import {CurriculumService} from '../../curriculum/shared/curriculum.service';
 import {Topic} from '../../topic/shared/topic.model';
 import {TopicService} from '../../topic/shared/topic.service';
+import {SupportDetailComponent} from '../support-detail/support-detail.component';
+import {SupportEditFormComponent} from '../support-edit-form/support-edit-form.component';
 
 @Component({
   selector: 'app-support-list',
@@ -13,6 +15,8 @@ import {TopicService} from '../../topic/shared/topic.service';
   styleUrls: ['./support-list.component.scss']
 })
 export class SupportListComponent implements OnInit {
+  @ViewChild('supportDetailModal') public supportDetailModal: SupportDetailComponent;
+  @ViewChild('supportEditFormModal') public supportEditFormModal: SupportEditFormComponent;
 
   supports: Support[] = [];
   topic: Topic;
@@ -33,22 +37,14 @@ export class SupportListComponent implements OnInit {
     })
   }
 
-  goTo(id: number) {
-
-  }
-
   ngOnInit() {
   }
 
-  onSelect(support) {
-    console.log('oi');
-    console.log(support.id);
-    console.log(support.title);
-    console.log(support.description);
-    this.router.navigate(['/support', support.id]);
+  onDelete(supportId) {
+    console.log(supportId);
+    this.supportService.deleteSupport(supportId).subscribe((data: any) => {
+      this.router.navigate(['/topic/' + this.id]);
+    });
   }
 
-  checkSubmissions(support) {
-    this.router.navigate(['/answer/list', {support_id: support.id}]);
-  }
 }

@@ -13,11 +13,14 @@ export class QuestionEditFormComponent implements OnChanges {
   @ViewChild('questionEditModal') public questionEditModal: ModalDirective;
   @Input() questionTitle: string;
   @Input() questionDescription: string;
+  @Input() questionType: string;
+  @Input() questionId: string;
 
   id: any;
   title: string;
   description: string;
   user: User;
+  qId: any;
 
   constructor(private questionService: QuestionService,
               private userService: UserService,
@@ -33,6 +36,7 @@ export class QuestionEditFormComponent implements OnChanges {
     if (changes.questionTitle !== undefined && changes.questionDescription !== undefined) {
       this.title = this.questionTitle;
       this.description = this.questionDescription;
+      this.qId = this.questionId;
     }
   }
 
@@ -41,7 +45,7 @@ export class QuestionEditFormComponent implements OnChanges {
         'title': this.title,
         'description': this.description
       },
-      this.id)
+      this.qId)
       .subscribe((data: any) => {
         this.router.navigate(['']);
       });

@@ -41,11 +41,14 @@ export class QuestionListComponent implements OnInit {
   }
 
   onSelect(question) {
-    console.log('oi')
-    console.log(question.id)
-    console.log(question.title)
-    console.log(question.description)
     this.router.navigate(['/question', question.id])
+  }
+
+  onDelete(questionId) {
+    console.log(questionId);
+    this.questionService.deleteQuestion(questionId).subscribe((data: any) => {
+      this.router.navigate(['/topic/' + this.id]);
+    });
   }
 
   checkSubmissions(question) {

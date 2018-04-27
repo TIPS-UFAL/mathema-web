@@ -10,6 +10,7 @@ import {CurriculumFormComponent} from '../../curriculum/curriculum-form/curricul
 import {TopicFormComponent} from '../topic-form/topic-form.component';
 import {SupportFormComponent} from '../../support/support-form/support-form.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import {SupportDetailComponent} from '../../support/support-detail/support-detail.component';
 
 
 
@@ -21,6 +22,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 export class TopicDetailComponent implements OnInit {
   @ViewChild('qtModal') public qtModal: QuestionFormComponent;
   @ViewChild('supportFormModal') public supportFormModal: SupportFormComponent;
+  @ViewChild('supportDetailModal') public supportDetailModal: SupportDetailComponent;
   @ViewChild('topicEditModal') public topicEditModal: TopicFormComponent;
 
   topic: Topic;
@@ -35,6 +37,9 @@ export class TopicDetailComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
     topicService.getTopic(this.id).subscribe((data: any) => {
       this.topic = data;
+      console.log('log pre log bugado');
+      console.log('pk of topic:' + this.topic.pk);
+      console.log('log pos log bugado');
     });
     questionService.getQuestions(this.id).subscribe((data: any) => {
       this.questions = data;

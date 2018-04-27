@@ -31,9 +31,6 @@ export class TopicFormComponent {
         })
     }
 
-
-
-
     onSubmit() {
         this.topicService.createTopic({
           'title': this.title,

@@ -29,7 +29,7 @@ export class CurriculumListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelect(curriculum){
+  onSelect(curriculum) {
     this.router.navigate(['/curriculum', curriculum.id]);
   }
 }
