@@ -23,7 +23,7 @@ export class GroupDetailComponent implements OnInit {
               private userService: UserService,
               private curriculumService: CurriculumService,
               private route: ActivatedRoute) {
-    const idGroup = parseInt(this.route.snapshot.paramMap.get('idGroup'));
+    const idGroup = this.route.snapshot.paramMap.get('idGroup');
     groupService.getGroup(idGroup).subscribe((data: any) => {
       this.group = data;
       this.curriculumService.getCurriculum(this.group.curriculum).subscribe( (curr: any) => {

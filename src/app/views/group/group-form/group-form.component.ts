@@ -19,7 +19,7 @@ export class GroupFormComponent {
   visible: boolean;
   user: User;
   idCurriculum: number;
-  idGroup: number;
+  idGroup: string;
 
   constructor(private groupService: GroupService,
               private userService: UserService,
@@ -34,8 +34,8 @@ export class GroupFormComponent {
   onSubmit() {
     this.groupService.createGroup({'title': this.title, 'curriculum': this.idCurriculum, 'teacher': this.user.pk})
       .subscribe((group: Group) => {
-        this.idGroup = group.id;
-        this.router.navigate(['group/c/' + this.idCurriculum + '/g/' + this.idGroup + '/']);
+        this.idGroup = group.group_key;
+        this.router.navigate(['group/' + this.idGroup + '/']);
       });
   }
 

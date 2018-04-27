@@ -15,7 +15,7 @@ export class GroupService {
     return this.http.get('group/')
   }
 
-  getGroup(pk: number) {
+  getGroup(pk: string) {
     return this.http.get('group/' + pk + '/')
   }
 
@@ -27,7 +27,4 @@ export class GroupService {
     return this.http.delete('group/' + pk + '/')
   }
 
-  searchGroup(gk: string) {
-    return this.http.get('group?group_key=' + gk)
-  }
 }

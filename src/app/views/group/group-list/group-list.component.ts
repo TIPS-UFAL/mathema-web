@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import { Group } from 'app/views/group/shared/group.model';
 import { GroupService } from 'app/views/group/shared/group.service';
 import {Router} from '@angular/router';
+import {BsModalService, ModalDirective} from 'ngx-bootstrap';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 @Component({
   selector: 'app-group-list',
@@ -9,12 +11,15 @@ import {Router} from '@angular/router';
   styleUrls: ['./group-list.component.scss']
 })
 export class GroupListComponent implements OnInit {
+  @ViewChild('errorModal') public errorModal:ModalDirective;
 
   groups: Group[] = [];
   filtered: Group[];
+  errorModalRef: BsModalRef;
 
   constructor(private groupService: GroupService,
-              private router: Router) {
+              private router: Router,
+              private modalService: BsModalService) {
     groupService.getGroups().subscribe((data: any) => {
       this.groups = data;
     })
@@ -23,9 +28,12 @@ export class GroupListComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchKey(gk: string) {
-    this.groupService.searchGroup(gk).subscribe((group: Group) => {
-      this.router.navigate(['group/c/' + group.curriculum + '/g/' + group.id + '/']);
-    })
+  searchKey(gk: string, errorTemplate: TemplateRef<any>) {
+    console.log(gk);
+    this.groupService.getGroup(gk).subscribe((group: Group) => {
+      this.router.navigate(['group/' + group.group_key + '/']);
+    }, (err) => {
+      this.errorModal.show();
+    });
   }
 }

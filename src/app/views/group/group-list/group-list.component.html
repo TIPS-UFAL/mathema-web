@@ -6,12 +6,24 @@
         <input type="text" #groupKey class="form-control" placeholder="Chave"
                tooltip="Já possui uma chave de grupo?">
         <span class="input-group-append">
-          <button type="button" class="btn btn-primary" (click)="searchKey(groupKey.value)">Submit</button>
+          <button type="button" class="btn btn-primary" (click)="searchKey(groupKey.value, errorModal)">Submit</button>
         </span>
       </div>
-      <!--<alert type="danger">-->
-        <!--<strong>Oh snap!</strong> Change a few things up and try submitting again.-->
-      <!--</alert>-->
+      <div bsModal #errorModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Erro</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="errorModal.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Chave não encontrada, tente novamente!
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <form class="navbar-form navbar-left">
@@ -25,7 +37,7 @@
       <div class="card-body">
         <p class="card-text">Curriculum: </p>
         <p class="card-text">Descrição: </p>
-        <a href="" routerLinkActive="active" [routerLink]="['/group', group?.id]" class="btn btn-primary">Ver Detalhes</a>
+        <a href="" routerLinkActive="active" [routerLink]="['/group', group?.group_key]" class="btn btn-primary">Ver Detalhes</a>
       </div>
     </div>
   </ul>
