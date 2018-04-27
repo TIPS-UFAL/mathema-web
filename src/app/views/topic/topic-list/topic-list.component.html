@@ -1,23 +1,38 @@
-<table class="table table-responsive table-hover table-outline mb-0">
-  <thead class="thead-default">
+<div class="animated fadeIn">
+  <table class="table table-responsive table-hover table-outline mb-0">
+    <thead class="thead-default">
     <tr>
-      <th><h4 class="text-xs-center">Topicos {{curriculumId}}</h4></th>
+      <th><h4 class="text-xs-center">Topicos</h4></th>
+      <th></th>
+      <!--<th class="td-165"><button class="btn btn-outline-success btn-lg btn-block" (click)="lgModal.show()">Criar Topico</button></th>-->
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
 
-  <tr *ngFor="let topic of topics">
-    <td>
-      <div><h5>{{ topic?.title }}</h5></div>
-      <div class="small text-muted">
-      </div>
-    </td>
-    <td>
-      <div class="text-xs-center">
-        <button type="button" (click)="onSelect(topic)" class="btn btn-outline-primary btn-lg-4 btn-block">Ver</button>
-      </div>
-    </td>
-  </tr>
+    <tr *ngFor="let topic of topics">
+      <td>
+        <div><h5>{{ topic.title }}</h5></div>
+        <div class="small text-muted">
+        </div>
+      </td>
+      <td>
+        <div class="text-xs-center">
+          <button type="button" (click)="onSelect(topic)" class="btn btn-outline-primary btn-lg-4 btn-block">Ver</button>
+        </div>
+      </td>
+    </tr>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+        <!--/ CONTEUDO MODAL-->
+        <!--/ CONTEUDO MODAL-->
+
+
+

@@ -1,27 +1,96 @@
-<div class="row">
-  <div class="col-sm-12 col-md-12">
-    <div class="card card-accent-primary">
-      <div class="card-header">
-        <div class="row">
-          <h2 class="col-10">{{topic?.title}}</h2>
-          <button type="button" class="btn btn-outline-success btn-smng serve"
-                  tooltip="Criar nova turma a partir desse curriculo" (click)="qtModal.show()">
-            <i class="fa fa-plus fa-lg"></i> Criar Atividade
-          </button>
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card card-accent-primary">
+        <div class="card-header">
+          <div class="row">
+            <h2 class="col">{{topic?.title}}</h2>
+            <div id="button-group" class="ml-auto">
+              <button type="button" class="btn btn-success btn-md ng serve"
+                      tooltip="Criar nova turma a partir desse curriculo" (click)="qtModal.show()">
+                <i class="fa fa-plus fa-sm"></i> Criar Atividade
+              </button>
+              <button type="button" class="btn btn-success btn-md ng serve"
+                      tooltip="Criar nova turma a partir desse curriculo" (click)="supportFormModal.show()">
+                <i class="fa fa-plus fa-sm"></i> Criar Suporte
+              </button>
+              <div class="btn-group" dropdown>
+                <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
+                  <i class="fa fa-wrench fa-sm"></i> Configuração
+                </button>
+                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                  <li role="menuitem"><button type="button" class="dropdown-item" (click)="topicEditModal.show()">Editar</button></li>
+                  <li role="menuitem"><button type="button" class="dropdown-item" (click)="topicDeleteModal.show()">Deletar</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+
+          <h5>{{topic?.description}}</h5>
+          <br>
+          <div><tabset>
+            <tab heading="Atividade">
+              <div class="animated fadeIn">
+
+
+                <app-question-list></app-question-list>
+
+
+              </div>
+            </tab>
+          <tab heading="Suportes">
+            <div class="animated fadeIn">
+
+
+              <app-support-list></app-support-list>
+
+
+            </div>
+          </tab>
+
+          </tabset></div>
         </div>
       </div>
-      <div class="card-body">
+    </div>
+  </div>
 
-        <h5>{{topic?.description}}</h5>
-        <br>
 
-        <app-question-list></app-question-list>
+  <app-question-form #qtModal></app-question-form>
+  <app-support-form #supportFormModal></app-support-form>
 
+
+  <!--/ MODAL EDITAR TOPICO-->
+  <app-topic-edit-form #topicEditModal
+                       [topicTitle] = "topic?.title"
+                       [topicDescription] = "topic?.description">
+  </app-topic-edit-form>
+  <!--/ MODAL EDITAR TOPICO-->
+
+
+  <!--/ MODAL DELETAR TOPICO-->
+  <div class="modal fade" bsModal #topicDeleteModal="bs-modal"
+       tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Deletar Topico</h4>
+        </div>
+        <div class="modal-body">
+          Certeza que deseja excluir esse topico? Todas as atividades
+          embaixo deste topico tambem serão deletados. Essa é uma operaçao irreversivel<br><br>
+          <div class="row">
+            <div class="col" id="button-delete-group">
+              <button id="delete-button-yes" type="button" class="btn btn-success btn-sx ng serve" (click)="onDelete()">Sim</button>
+              <button id="delete-button-no" type="button" class="btn btn-danger btn-xs ng serve"  (click)="topicDeleteModal.hide()">Não</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<app-question-form #qtModal></app-question-form>
+<!--/ MODAL DELETAR TOPICO-->
 

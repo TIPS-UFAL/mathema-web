@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuestionService } from '../shared/question.service';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { Question } from '../shared/question.model';
-import { UserService } from '../../user/shared/services';
+import { QuestionService } from '../shared/question.service';
+import { Answer } from '../../answer/shared/answer.model';
 import { AnswerService } from '../../answer/shared/answer.service';
 import { User } from '../../user/shared/models';
+import { UserService } from '../../user/shared/services';
+import { QuestionFormComponent } from '../question-form/question-form.component';
+import { TopicFormComponent } from '../../topic/topic-form/topic-form.component';
+import { AnswerEditFormComponent } from '../../answer/answer-edit-form/answer-edit-form.component';
 
 @Component({
     selector: 'app-question-detail',
@@ -13,43 +18,59 @@ import { User } from '../../user/shared/models';
 })
 
 export class QuestionDetailComponent implements OnInit {
+  @ViewChild('questionEditModal') public questionEditModal: QuestionFormComponent
+  @ViewChild('answerEditModal') public answerEditModal: AnswerEditFormComponent
 
-    public pk
-    public title: string
-    public description: string
-    public author
-    public category
-    public solution
+  public pk;
+  public title: string;
+  public description: string;
+  public author;
+  public category;
+  public solution;
+  public answers = [];
 
-    // TODO: puxar tipos do model
-    tipos = ["problemas", "multipla escolha"]
+  // TODO: puxar tipos do model
+  tipos = ['problemas', 'multipla escolha'];
 
-    user: User
+  user: User;
 
-    constructor(private route: ActivatedRoute, private answerRoute: Router,
-                private questionService: QuestionService, private userService: UserService,
-                private answerService: AnswerService) {
-        this.userService.getUser().subscribe((user: User) => {
-            this.user = user
-        })
-    }
+  alreadyAnswered = false;
+
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private answerRoute: Router,
+                private questionService: QuestionService,
+                private userService: UserService,
+                private answerService: AnswerService) { }
 
     ngOnInit() {
-        this.pk = parseInt(this.route.snapshot.paramMap.get('id'))
+        this.pk = parseInt(this.route.snapshot.paramMap.get('id'));
 
         this.questionService.getQuestion(this.pk).subscribe((data: any) => {
-            this.title = data.title
-            this.description = data.description
-            this.category = this.tipos[data.activity_type-1]
-            
-            this.userService.findUser(parseInt(data.author)).subscribe((user: any) => {
-                this.author = user.username
-            })
-          });
+            this.title = data.title;
+            this.description = data.description;
+            this.category = this.tipos[data.activity_type - 1];
+
+            this.userService.findUser(parseInt(data.author)).subscribe((questionAuthor: any) => {
+                this.author = questionAuthor.username;
+            });
+
+            this.userService.user.subscribe((user: User) => {
+                this.user = user;
+            });
+
+            this.answerService.getAnswers(this.pk).subscribe((answersList: any) => {
+                for (let answer of answersList) {
+                    if (this.user.pk == answer.author) {
+                        this.alreadyAnswered = true;
+                        this.answers.push(answer);
+                    }
+                }
+            });
+        });
     }
 
     onSubmit() {
-        
         this.answerService.createAnswer({
             'answer': this.solution,
             'activity': this.pk,
@@ -58,6 +79,12 @@ export class QuestionDetailComponent implements OnInit {
             this.answerRoute.navigate(['']);
         })
 
-        this.solution = ""
+        this.solution = '';
+    }
+
+    onDelete() {
+      this.questionService.deleteQuestion(this.pk).subscribe((data: any) => {
+        this.router.navigate(['/curriculum/list/']);
+      });
     }
 }

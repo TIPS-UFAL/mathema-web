@@ -14,6 +14,7 @@ import { CurriculumFormComponent } from './curriculum-form/curriculum-form.compo
 import { CurriculumDetailComponent } from './curriculum-detail/curriculum-detail.component';
 import {GroupModule} from '../group/group.module';
 import {TopicModule} from '../topic/topic.module';
+import { CurriculumEditFormComponent } from './curriculum-edit-form/curriculum-edit-form.component';
 
 @NgModule({
   imports: [
@@ -25,13 +26,16 @@ import {TopicModule} from '../topic/topic.module';
     BsDropdownModule,
     FormsModule,
     GroupModule,
-    FormsModule,
     TopicModule
   ],
   declarations: [
     CurriculumFormComponent,
     CurriculumListComponent,
-    CurriculumDetailComponent
+    CurriculumDetailComponent,
+    CurriculumEditFormComponent
+  ],
+  exports: [
+    CurriculumEditFormComponent
   ],
   providers: [ CurriculumService ]
 })

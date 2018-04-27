@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-curriculum-list',
   templateUrl: './curriculum-list.component.html',
-  styleUrls: ['./curriculum-list.component.css']
+  styleUrls: ['./curriculum-list.component.scss']
 })
 export class CurriculumListComponent implements OnInit {
 
@@ -29,7 +29,7 @@ export class CurriculumListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelect(curriculum){
+  onSelect(curriculum) {
     this.router.navigate(['/curriculum', curriculum.id]);
   }
 }

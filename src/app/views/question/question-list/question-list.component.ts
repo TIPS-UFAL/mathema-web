@@ -28,7 +28,7 @@ export class QuestionListComponent implements OnInit {
       this.topic = data;
       console.log(this.topic);
     });
-    questionService.getQuestions(this.id).subscribe((data: any) => { // TODO
+    questionService.getQuestions(this.id).subscribe((data: any) => {
       this.questions = data
     })
   }
@@ -41,14 +41,17 @@ export class QuestionListComponent implements OnInit {
   }
 
   onSelect(question) {
-    console.log('oi')
-    console.log(question.id)
-    console.log(question.title)
-    console.log(question.description)
     this.router.navigate(['/question', question.id])
   }
 
+  onDelete(questionId) {
+    console.log(questionId);
+    this.questionService.deleteQuestion(questionId).subscribe((data: any) => {
+      this.router.navigate(['/topic/' + this.id]);
+    });
+  }
+
   checkSubmissions(question) {
-    this.router.navigate(['/answer/list'])
+    this.router.navigate(['/answer/list', {question_id: question.id}])
   }
 }

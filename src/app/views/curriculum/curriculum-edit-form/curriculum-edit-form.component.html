@@ -1,0 +1,34 @@
+<div bsModal #curriculumEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-center">Editar Curriculo</h4>
+        <button type="button" class="close pull-right" (click)="curriculumEditModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #curriculumEditForm="ngForm">
+
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" class="form-control" id="title" value="TESTE" required [(ngModel)]="title" name="titulo">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="description">Descrição</label>
+            <div class="">
+
+              <textarea id="description" name="descricao" rows="10" class="form-control" required
+                        [(ngModel)]="description" name="descricao"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-sm btn-primary" [disabled]="!curriculumEditForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i>Editar</button>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+

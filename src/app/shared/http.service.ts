@@ -25,7 +25,7 @@ export class HttpService {
   }
 
   patch(url: string, obj: any) {
-    return this.http.patch(this.url + url, this.createHeaders());
+    return this.http.patch(this.url + url, obj, this.createHeaders());
   }
 
 

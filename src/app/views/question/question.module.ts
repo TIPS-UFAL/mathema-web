@@ -13,23 +13,29 @@ import { QuestionService } from 'app/views/question/shared/question.service';
 import {TopicFormComponent} from '../topic/topic-form/topic-form.component';
 import {TopicListComponent} from '../topic/topic-list/topic-list.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import { QuestionEditFormComponent } from './question-edit-form/question-edit-form.component';
+import { AnswerModule } from '../answer/answer.module';
 
 @NgModule({
   imports: [
     ModalModule.forRoot(),
+    TabsModule.forRoot(),
     TooltipModule.forRoot(),
     CommonModule,
     QuestionRoutingModule,
     HttpModule,
     ChartsModule,
     BsDropdownModule,
-    FormsModule
+    FormsModule,
+    AnswerModule
   ],
   declarations: [
     QuestionFormComponent,
     QuestionListComponent,
-    QuestionDetailComponent
+    QuestionDetailComponent,
+    QuestionEditFormComponent
   ],
   exports: [
     QuestionFormComponent,

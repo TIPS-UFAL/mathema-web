@@ -25,15 +25,6 @@
 
           <div class="form-group">
             <div class="form-control-label">
-                <label for="topico">Tópico</label>
-              <select id="topic" name="formTopic" class="form-control" [(ngModel)]="topicoSelecionado">
-                <option *ngFor="let t of topics" [ngValue]="t">{{ t.title }}</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="form-control-label">
                 <label for="tipo">Categoria</label>
               <select id="tipo" name="formTipo" class="form-control" [(ngModel)]="tipoAtividade">
                 <option *ngFor="let t of tipos" [ngValue]="t">{{ t }}</option>

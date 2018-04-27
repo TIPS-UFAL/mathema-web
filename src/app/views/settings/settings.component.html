@@ -1,3 +1,22 @@
 <div class="animated fadeIn">
-    <h3>Configurações</h3>
+    <div class="card card-accent-primary">
+        <form #passwordChangeForm="ngForm">
+            <h5 class="card-header">Mudança de senha:</h5>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                    <input type="text" class="form-control" placeholder="Senha atual" [(ngModel)]="this.currentPassword" id="currentPassword" name="inputCurrentPassword" #inputCurrentPassword="ngModel" required />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                    <input type="text" class="form-control" placeholder="Nova senha" [(ngModel)]="this.newPassword" id="newPassword" name="inputNewPassword" #inputNewPassword="ngModel" required />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                    <input type="text" class="form-control" placeholder="Confirme a nova senha" [(ngModel)]="this.newPassword2" id="newPassword2" name="inputNewPassword2" #inputNewPassword2="ngModel" required />
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary" [disabled]="!passwordChangeForm.form.valid" (click)="save()"><i class="fa fa-dot-circle-o"></i> Salvar</button>
+            </div>
+        </form>
+    </div>
 </div>

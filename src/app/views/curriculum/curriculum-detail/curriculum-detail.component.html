@@ -1,31 +1,77 @@
-<div class="row">
- <div class="col-sm-12 col-md-12">
-   <div class="card card-accent-primary">
-     <div class="card-header">
-       <div class="row">
-         <h2 class="col-10 "> {{curriculum?.title}}</h2>
-         <button type="button" class="btn btn-outline-success btn-smng serve"
-                 tooltip="Criar nova turma a partir desse curriculo" (click)="gpModal.show()">
-           <i class="fa fa-plus fa-lg"></i> Criar Turma
-         </button>
-         <button type="button" class="btn btn-outline-success btn-smng serve"
-                 tooltip="Criar nova turma a partir desse curriculo" (click)="topicModal.show()">
-           <i class="fa fa-plus fa-lg"></i> Criar Topicobl
-         </button>
+<div class="animated fadeIn">
+  <div class="row">
+   <div class="col-sm-12 col-md-12">
+     <div class="card card-accent-primary">
+       <div class="card-header">
+         <div class="row">
+           <h2 class="col"> {{curriculum?.title}}</h2>
+           <div id="button-group" class="ml-auto">
+             <button type="button" class="btn btn-success btn-md ng serve"
+                     tooltip="Criar nova turma a partir desse curriculo" (click)="gpModal.show()">
+               <i class="fa fa-plus fa-sm"></i> Criar Turma
+             </button>
+             <button type="button" class="btn btn-success btn-md ng serve"
+                     tooltip="Criar novo topico a partir desse curriculo" (click)="topicModal.show()">
+               <i class="fa fa-plus fa-sm"></i> Criar Topico
+             </button>
+             <div class="btn-group" dropdown>
+               <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
+                 <i class="fa fa-wrench fa-sm"></i> Configuração
+               </button>
+               <ul *dropdownMenu class="dropdown-menu" role="menu">
+                 <li role="menuitem"><button type="button" class="dropdown-item" (click)="curriculumEditModal.show()">Editar</button></li>
+                 <li role="menuitem"><button type="button" class="dropdown-item" (click)="curriculumDeleteModal.show()">Deletar</button></li>
+               </ul>
+             </div>
+           </div>
+         </div>
        </div>
+       <div class="card-body">
+         <h5>{{curriculum?.description}}</h5>
+         <br>
+         <app-topic-list></app-topic-list>
+       </div>
+      </div>
      </div>
-     <div class="card-body">
-       <h5>{{curriculum?.description}}</h5>
-       <br>
-       <app-topic-list [curriculumId]="curriculum?.id"></app-topic-list>
-     </div>
-    </div>
    </div>
- </div><!--/.col-->
 
-   <!--/ MODAL - Criar Turma -->
-   <app-group-form #gpModal></app-group-form>
+     <!--/ MODAL - CRIAR TURMA -->
+     <app-group-form #gpModal></app-group-form>
+     <!--/ MODAL - CRIAR TURMA  -->
 
-   <!--/ MODAL CRIAR TOPICO-->
-   <app-topic-form #topicModal></app-topic-form>
-   <!--/ MODAL CRIAR TOPICO-->
+     <!--/ MODAL CRIAR TOPICO-->
+     <app-topic-form #topicModal></app-topic-form>
+     <!--/ MODAL CRIAR TOPICO-->
+
+      <!--/ MODAL EDITAR CURRICULO-->
+      <app-curriculum-edit-form #curriculumEditModal
+                                [curriculumTitle]="curriculum?.title"
+                                [curriculumDescription]="curriculum?.description">
+      </app-curriculum-edit-form>
+      <!--/ MODAL EDITAR CURRICULO-->
+
+      <!--/ MODAL DELETAR CURRICULO-->
+  <div class="modal fade" bsModal #curriculumDeleteModal="bs-modal"
+       tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Deletar Curriculo</h4>
+        </div>
+        <div class="modal-body">
+          Certeza que deseja excluir esse curriculo? Todos os topicos e atividades
+          embaixo deste curriculo tambem serão deletados. Essa é uma operaçao irreversivel<br><br>
+          <div class="row">
+            <div class="col" id="button-delete-group">
+                <button id="delete-button-yes" type="button" class="btn btn-success btn-sx ng serve" (click)="onDelete()">Sim</button>
+                <button id="delete-button-no" type="button" class="btn btn-danger btn-xs ng serve"  (click)="curriculumDeleteModal.hide()">Não</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!--/ MODAL DELETAR CURRICULO-->
+
+

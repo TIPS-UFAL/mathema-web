@@ -1,16 +1,20 @@
-<div class="container">
-  <h3>Currículos<br><br></h3>
-  <ul *ngFor="let curriculum of curriculums">
-    <div class="row">
-      <div class="col-sm-12 col-lg-12">
-        <div class="card">
-          <h5 class="card-header">Titulo: {{ curriculum?.title }}</h5>
-          <div class="card-body">
-            <p class="card-text">Descrição: {{ curriculum?.description}}</p>
-            <li (click)="onSelect(curriculum)" class="btn btn-primary">Ver</li>
+<div class="animated fadeIn">
+  <div class="container">
+    <h3>Currículos<br><br></h3>
+    <ul *ngFor="let curriculum of curriculums">
+      <div class="row">
+        <div class="col-sm-12 col-lg-12">
+          <div class="card">
+            <h5 class="card-header">{{ curriculum?.title }}</h5>
+            <div class="card-body">
+              <p class="card-text">{{ curriculum?.description}}</p>
+              <div id="view-curriculum-div">
+                <li (click)="onSelect(curriculum)" class="btn btn-primary" id="view-curriculum-button">Ver</li>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </ul>
+    </ul>
+  </div>
 </div>

@@ -1,0 +1,19 @@
+<div class="modal fade" bsModal #answerDeleteModal="bs-modal"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Deletar Submissão</h4>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja deletar esta submissão? Essa operação é irreversível!<br><br>
+        <div class="row">
+          <div class="col" id="button-delete-group">
+            <button id="delete-button-yes" type="button" class="btn btn-success btn-sx ng serve" (click)="onDelete(answer)">Sim</button>
+            <button id="delete-button-no" type="button" class="btn btn-danger btn-xs ng serve"  (click)="answerDeleteModal.hide()">Não</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
