@@ -2,7 +2,15 @@
   <div class="col-sm-12 col-md-12">
     <div class="card card-accent-primary">
       <div class="card-header">
-        <h2> {{group?.title}} - [{{group?.group_key}}]</h2>
+        <div class="row">
+          <h2> {{group?.title}} - [{{group?.group_key}}]</h2>
+          <div id="button-group" class="ml-auto">
+            <button type="button" class="btn btn-success btn-md ng serve"
+                    tooltip="Participar dessa turma" (click)="CadastrarAluno()">
+              <i class="fa fa-plus fa-sm"></i> Entrar
+            </button>
+          </div>
+        </div>
         <h5>Curriculum: {{curriculum?.title}}</h5>
       </div>
       <div class="card-body">

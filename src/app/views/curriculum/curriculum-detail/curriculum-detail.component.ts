@@ -1,5 +1,4 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CurriculumService} from '../shared/curriculum.service';
 import {Curriculum} from '../shared/curriculum.model';

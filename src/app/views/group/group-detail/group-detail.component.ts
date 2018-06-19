@@ -42,6 +42,9 @@ export class GroupDetailComponent implements OnInit {
     }
   }
 
+  CadastrarAluno() {
+
+  }
   /*Estatísticas específicas de cada aluno a implementar:*/
   //line
   public lineChartDataLog: Array<any> = [
