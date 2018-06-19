@@ -15,6 +15,8 @@ import {UserService} from '../../user/shared/services';
 })
 export class GroupDetailComponent implements OnInit {
   group: Group;
+  user: User;
+  enrolled: boolean = false;
   curriculum: Curriculum;
   students: User[] = [];
   isCollapsed: boolean[] = [];
@@ -29,7 +31,12 @@ export class GroupDetailComponent implements OnInit {
       this.curriculumService.getCurriculum(this.group.curriculum).subscribe( (curr: any) => {
         this.curriculum = curr;
       });
+      this.userService.getUser().subscribe(data => {
+        this.user = data;
+        this.groupService.getGroupStudent(this.user.pk, this.group.group_key).subscribe(data => this.enrolled = true, err => this.enrolled = false);
+      });
       this.getStudents();
+
     });
   }
 
@@ -42,9 +49,17 @@ export class GroupDetailComponent implements OnInit {
     }
   }
 
-  CadastrarAluno() {
-
+  enroll() {
+    if(!this.enrolled) {
+      this.groupService.createGroupStudent({'student': this.user.pk, 'group': this.group.group_key}).subscribe(data => {
+        alert('Cadastrado com Sucesso!');
+        this.enrolled = true;
+      }, err => {
+        alert('Oops! Algum erro aconteceu!');
+      });
+    }
   }
+
   /*Estatísticas específicas de cada aluno a implementar:*/
   //line
   public lineChartDataLog: Array<any> = [

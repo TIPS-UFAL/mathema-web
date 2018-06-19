@@ -5,9 +5,13 @@
         <div class="row">
           <h2> {{group?.title}} - [{{group?.group_key}}]</h2>
           <div id="button-group" class="ml-auto">
-            <button type="button" class="btn btn-success btn-md ng serve"
-                    tooltip="Participar dessa turma" (click)="CadastrarAluno()">
+            <button *ngIf="!enrolled" type="button" class="btn btn-success btn-md"
+                    tooltip="Participar dessa turma" (click)="enroll()">
               <i class="fa fa-plus fa-sm"></i> Entrar
+            </button>
+            <button *ngIf="enrolled" type="button" class="btn btn-secondary btn-md"
+                    tooltip="Cadastrado!">
+              <i class="fa fa-check fa-sm"></i>
             </button>
           </div>
         </div>
