@@ -6,6 +6,7 @@ import {SupportService} from '../shared/support.service';
 import {UserService} from '../../user/shared/services';
 import {User} from '../../user/shared/models';
 import {ModalDirective} from 'ngx-bootstrap';
+import {Quill} from 'quill';
 
 @Component({
   selector: 'app-support-edit-form',
@@ -18,6 +19,12 @@ export class SupportEditFormComponent implements OnChanges {
   @Input() supportContent: string;
   @Input() supportType: string;
   @Input() supportId: number;
+
+  public editor;
+  public editorContent = `<h3>I am Example content</h3>`;
+  public editorOptions = {
+    placeholder: 'insert content...'
+  };
 
   title: string;
   type: string;
@@ -66,4 +73,22 @@ export class SupportEditFormComponent implements OnChanges {
   public hide(): void {
     this.supportEditFormModal.hide();
   }
+
+  onEditorBlured(quill) {
+    console.log('editor blur!', quill);
+  }
+
+  onEditorFocused(quill) {
+    console.log('editor focus!', quill);
+  }
+
+  onEditorCreated(quill) {
+    this.editor = quill;
+    console.log('quill is ready! this is current quill instance object', quill);
+  }
+
+  onContentChanged({ quill, html, text }) {
+    console.log('quill content is changed!', quill, html, text);
+  }
+
 }

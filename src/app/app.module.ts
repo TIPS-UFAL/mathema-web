@@ -86,19 +86,20 @@ import {CurriculumService} from './views/curriculum/shared/curriculum.service';
 import {QuizService} from './views/quiz/shared/quiz.service';
 import { GroupComponent } from './views/group/group.component';
 import {NgxPermissionsModule} from 'ngx-permissions';
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BsDropdownModule.forRoot(),
-    TabsModule.forRoot(),
     ChartsModule,
     FormsModule,
     CurriculumModule,
     HttpClientModule,
     SharedModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     NgxPermissionsModule.forRoot()
   ],
   declarations: [

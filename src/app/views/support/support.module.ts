@@ -4,6 +4,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 import { SupportFormComponent } from './support-form/support-form.component';
 import { SupportListComponent } from './support-list/support-list.component';
@@ -18,6 +19,7 @@ import { SupportEditFormComponent } from './support-edit-form/support-edit-form.
 
 @NgModule({
   imports: [
+    QuillEditorModule,
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
     CommonModule,
@@ -25,7 +27,7 @@ import { SupportEditFormComponent } from './support-edit-form/support-edit-form.
     HttpModule,
     ChartsModule,
     BsDropdownModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     SupportFormComponent,

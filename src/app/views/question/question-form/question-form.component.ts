@@ -29,7 +29,8 @@ export class QuestionFormComponent {
     tipoAtividade;
 
     // TODO: puxar tipos do model
-    tipos = ['problemas', 'multipla escolha']
+    tipos = ['problemas', 'multipla escolha'];
+    difficulty = ['iniciante', 'intermediario', 'avançado'];
 
     constructor(private questionService: QuestionService,
                 private userService: UserService,

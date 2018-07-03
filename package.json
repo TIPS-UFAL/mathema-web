@@ -1,10 +1,10 @@
 {
-  "name": "@coreui/angular",
-  "version": "1.0.0",
+  "name": "@mathema/angular",
+  "version": "3.0.0",
   "description": "",
   "author": "",
-  "url": "http://coreui.io",
-  "copyright": "Copyright 2017 creativeLabs Łukasz Holeczek",
+  "url": "",
+  "copyright": "Copyright 2017 TIPS UFAL",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -39,6 +39,7 @@
     "ng2-charts": "1.6.0",
     "ngx-bootstrap": "^1.9.3",
     "ngx-permissions": "^4.0.0",
+    "ngx-quill-editor": "^2.2.2",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^5.5.6",
     "simple-line-icons": "^2.4.1",

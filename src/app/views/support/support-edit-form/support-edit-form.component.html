@@ -1,5 +1,5 @@
 <div bsModal #supportEditFormModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title pull-center">Editar Suporte</h4>
@@ -8,7 +8,6 @@
         </button>
       </div>
       <div class="modal-body">
-
         <form #supportEditForm="ngForm">
 
           <div class="form-group">
@@ -25,13 +24,12 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-control-label" for="content">Conteudo</label>
-            <div class="">
-              <textarea id="content" name="conteudo" rows="4" class="form-control" placeholder="Insira o conteudo" required
-                        [(ngModel)]="content" name="conteudo"></textarea>
-            </div>
-          </div>
+        <quill-editor [(ngModel)]="content"
+                      [options]="editorOptions"
+                      (blur)="onEditorBlured($event)"
+                      (focus)="onEditorFocused($event)"
+                      (ready)="onEditorCreated($event)"
+                      (change)="onContentChanged($event)"></quill-editor>
 
           <button type="submit" class="btn btn-sm btn-primary" [disabled]="!supportEditForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Criar</button>
         </form>
@@ -41,4 +39,36 @@
     </div>
   </div>
 </div>
+
+
+
+
+        <!--<form #supportEditForm="ngForm">-->
+
+          <!--<div class="form-group">-->
+            <!--<label for="title">Título</label>-->
+            <!--<input type="text" class="form-control" id="title" placeholder="Insira um título." required [(ngModel)]="title" name="titulo">-->
+          <!--</div>-->
+
+          <!--<div class="form-group">-->
+            <!--<div class="form-control-label">-->
+              <!--<label for="type">Tipo</label>-->
+              <!--<select id="type" name="formTipo" class="form-control" [(ngModel)]="type">-->
+                <!--<option *ngFor="let t of tipos" [ngValue]="t">{{ t }}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="form-group">-->
+            <!--<label class="form-control-label" for="content">Conteudo</label>-->
+            <!--<div class="">-->
+              <!--<textarea id="content" name="conteudo" rows="4" class="form-control" placeholder="Insira o conteudo" required-->
+                        <!--[(ngModel)]="content" name="conteudo"></textarea>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<button type="submit" class="btn btn-sm btn-primary" [disabled]="!supportEditForm.form.valid" (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Criar</button>-->
+        <!--</form>-->
+
+
 
