@@ -25,7 +25,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'c/:id/g/:idGroup',
+    path: ':idGroup',
     component: GroupDetailComponent,
   },
 ];

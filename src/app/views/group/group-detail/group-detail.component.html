@@ -2,7 +2,19 @@
   <div class="col-sm-12 col-md-12">
     <div class="card card-accent-primary">
       <div class="card-header">
-        <h2> {{group?.title}} - [{{group?.group_key}}]</h2>
+        <div class="row">
+          <h2> {{group?.title}} - [{{group?.group_key}}]</h2>
+          <div id="button-group" class="ml-auto">
+            <button *ngIf="!enrolled" type="button" class="btn btn-success btn-md"
+                    tooltip="Participar dessa turma" (click)="enroll()">
+              <i class="fa fa-plus fa-sm"></i> Entrar
+            </button>
+            <button *ngIf="enrolled" type="button" class="btn btn-secondary btn-md"
+                    tooltip="Cadastrado!">
+              <i class="fa fa-check fa-sm"></i>
+            </button>
+          </div>
+        </div>
         <h5>Curriculum: {{curriculum?.title}}</h5>
       </div>
       <div class="card-body">
@@ -10,7 +22,7 @@
         <br>
         <div>
           <tabset>
-            <tab heading="Tópicos" id="topics"><app-topic-list></app-topic-list></tab>
+            <tab heading="Tópicos" id="topics"><app-topic-list [curriculumId]="curriculum?.id"></app-topic-list></tab>
             <tab heading="Alunos" id="students">
                 <ul *ngFor="let student of students; let i = index">
                   <div class="card">

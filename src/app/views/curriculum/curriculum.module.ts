@@ -1,11 +1,11 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import {HttpModule} from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { CurriculumRoutingModule } from './curriculum-routing.module';
 import {CurriculumService} from './shared/curriculum.service';
@@ -26,7 +26,6 @@ import { CurriculumEditFormComponent } from './curriculum-edit-form/curriculum-e
     BsDropdownModule,
     FormsModule,
     GroupModule,
-    FormsModule,
     TopicModule
   ],
   declarations: [

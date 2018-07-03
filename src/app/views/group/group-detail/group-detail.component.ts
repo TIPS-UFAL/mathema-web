@@ -15,6 +15,8 @@ import {UserService} from '../../user/shared/services';
 })
 export class GroupDetailComponent implements OnInit {
   group: Group;
+  user: User;
+  enrolled: boolean = false;
   curriculum: Curriculum;
   students: User[] = [];
   isCollapsed: boolean[] = [];
@@ -23,13 +25,18 @@ export class GroupDetailComponent implements OnInit {
               private userService: UserService,
               private curriculumService: CurriculumService,
               private route: ActivatedRoute) {
-    const idGroup = parseInt(this.route.snapshot.paramMap.get('idGroup'));
+    const idGroup = this.route.snapshot.paramMap.get('idGroup');
     groupService.getGroup(idGroup).subscribe((data: any) => {
       this.group = data;
       this.curriculumService.getCurriculum(this.group.curriculum).subscribe( (curr: any) => {
         this.curriculum = curr;
       });
+      this.userService.getUser().subscribe(data => {
+        this.user = data;
+        this.groupService.getGroupStudent(this.user.pk, this.group.group_key).subscribe(data => this.enrolled = true, err => this.enrolled = false);
+      });
       this.getStudents();
+
     });
   }
 
@@ -38,6 +45,17 @@ export class GroupDetailComponent implements OnInit {
       this.userService.findUser(student).subscribe( (data: any) => {
         this.students.push(data);
         this.isCollapsed.push(true);
+      });
+    }
+  }
+
+  enroll() {
+    if(!this.enrolled) {
+      this.groupService.createGroupStudent({'student': this.user.pk, 'group': this.group.group_key}).subscribe(data => {
+        alert('Cadastrado com Sucesso!');
+        this.enrolled = true;
+      }, err => {
+        alert('Oops! Algum erro aconteceu!');
       });
     }
   }

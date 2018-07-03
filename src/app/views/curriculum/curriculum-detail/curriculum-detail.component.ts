@@ -40,10 +40,6 @@ export class CurriculumDetailComponent implements OnInit {
     topicService.getTopics(this.id).subscribe((data: any) => {
       this.topics = data;
     });
-
-
-
-
   }
 
   ngOnInit() {
