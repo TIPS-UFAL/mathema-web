@@ -26,8 +26,8 @@
           <div class="form-group">
             <div class="form-control-label">
                 <label for="tipo">Categoria</label>
-              <select id="tipo" name="formTipo" class="form-control" [(ngModel)]="tipoAtividade">
-                <option *ngFor="let t of tipos" [ngValue]="t">{{ t }}</option>
+              <select id="tipo" name="formTipo" class="form-control" [(ngModel)]="type">
+                <option *ngFor="let t of types" [ngValue]="t">{{ t }}</option>
               </select>
             </div>
           </div>
@@ -35,8 +35,8 @@
           <div class="form-group">
             <div class="form-control-label">
               <label for="difficulty">Dificuldade</label>
-              <select id="difficulty" name="formDifficulty" class="form-control" [(ngModel)]="difficultyActivity">
-                <option *ngFor="let d of difficulty" [ngValue]="d">{{ d }}</option>
+              <select id="difficulty" name="formDifficulty" class="form-control" [(ngModel)]="difficulty">
+                <option *ngFor="let d of difficultys" [ngValue]="d">{{ d }}</option>
               </select>
             </div>
           </div>

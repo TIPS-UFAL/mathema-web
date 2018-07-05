@@ -14,13 +14,19 @@ export class QuestionEditFormComponent implements OnChanges {
   @Input() questionTitle: string;
   @Input() questionDescription: string;
   @Input() questionType: string;
+  @Input() questionDifficulty: string;
   @Input() questionId: string;
 
   id: any;
   title: string;
   description: string;
+  type: string;
+  difficulty: string;
   user: User;
   qId: any;
+
+  types = ['problemas', 'multipla escolha'];
+  difficultys = ['iniciante', 'intermediario', 'avançado'];
 
   constructor(private questionService: QuestionService,
               private userService: UserService,
@@ -36,6 +42,8 @@ export class QuestionEditFormComponent implements OnChanges {
     if (changes.questionTitle !== undefined && changes.questionDescription !== undefined) {
       this.title = this.questionTitle;
       this.description = this.questionDescription;
+      this.type = this.questionType;
+      this.difficulty = this.questionDifficulty;
       this.qId = this.questionId;
     }
   }
@@ -43,9 +51,11 @@ export class QuestionEditFormComponent implements OnChanges {
   onSubmit() {
     this.questionService.updateQuestion({
         'title': this.title,
-        'description': this.description
+        'description': this.description,
+        'type': this.type,
+        'difficulty': this.difficulty
       },
-      this.qId)
+      this.id)
       .subscribe((data: any) => {
         this.router.navigate(['']);
       });

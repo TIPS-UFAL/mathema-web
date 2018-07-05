@@ -37,9 +37,6 @@ export class TopicDetailComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
     topicService.getTopic(this.id).subscribe((data: any) => {
       this.topic = data;
-      console.log('log pre log bugado');
-      console.log('pk of topic:' + this.topic.pk);
-      console.log('log pos log bugado');
     });
     questionService.getQuestions(this.id).subscribe((data: any) => {
       this.questions = data;

@@ -1,10 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import { Question } from '../shared/question.model';
 import { QuestionService } from '../shared/question.service';
 import { Topic } from 'app/views/topic/shared/topic.model';
-import { TopicService } from 'app/views/topic/shared/topic.service';
 import {User} from '../../user/shared/models';
 import {UserService} from '../../user/shared/services';
 import {ModalDirective} from 'ngx-bootstrap';
@@ -18,19 +16,17 @@ export class QuestionFormComponent {
     @ViewChild('qtModal') public qtModal: ModalDirective;
     title: string;
     description: string;
-    // tipo: ActivityType;
     user: User;
     id: any;
+    type;
+    difficulty;
     topic: Topic;
-
     topics: Topic[] = [];
-
     topicoSelecionado;
-    tipoAtividade;
 
     // TODO: puxar tipos do model
-    tipos = ['problemas', 'multipla escolha'];
-    difficulty = ['iniciante', 'intermediario', 'avançado'];
+    types = ['problemas', 'multipla escolha'];
+    difficultys = ['iniciante', 'intermediario', 'avançado'];
 
     constructor(private questionService: QuestionService,
                 private userService: UserService,
@@ -50,7 +46,8 @@ export class QuestionFormComponent {
         'description': this.description,
         'author': this.user.pk,
         'topic': this.id,
-        'type': 1
+        'type': this.type,
+        'difficulty': this.difficulty
         }).subscribe((data: any) => {
         this.router.navigate(['/question/', data.id]);
         });
