@@ -4,8 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Group } from '../shared/group.model';
 import { GroupService } from '../shared/group.service';
-import { Curriculum } from 'app/views/curriculum/shared/curriculum.model';
-import { CurriculumService } from 'app/views/curriculum/shared/curriculum.service'
 import {UserService} from '../../user/shared/services';
 import {User} from '../../user/shared/models';
 

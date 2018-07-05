@@ -21,12 +21,14 @@ export class QuestionDetailComponent implements OnInit {
   @ViewChild('questionEditModal') public questionEditModal: QuestionFormComponent
   @ViewChild('answerEditModal') public answerEditModal: AnswerEditFormComponent
 
-  public pk;
-  public title: string;
-  public description: string;
-  public author;
-  public category;
-  public solution;
+  question: Question;
+  pk;
+  title: string;
+  description: string;
+  difficulty: string;
+  author;
+  category;
+  solution;
   public answers = [];
 
   // TODO: puxar tipos do model
@@ -47,9 +49,7 @@ export class QuestionDetailComponent implements OnInit {
         this.pk = parseInt(this.route.snapshot.paramMap.get('id'));
 
         this.questionService.getQuestion(this.pk).subscribe((data: any) => {
-            this.title = data.title;
-            this.description = data.description;
-            this.category = this.tipos[data.activity_type - 1];
+            this.question = data;
 
             this.userService.findUser(parseInt(data.author)).subscribe((questionAuthor: any) => {
                 this.author = questionAuthor.username;
@@ -60,7 +60,7 @@ export class QuestionDetailComponent implements OnInit {
             });
 
             this.answerService.getAnswers(this.pk).subscribe((answersList: any) => {
-                for (let answer of answersList) {
+                for (const answer of answersList) {
                     if (this.user.pk == answer.author) {
                         this.alreadyAnswered = true;
                         this.answers.push(answer);
