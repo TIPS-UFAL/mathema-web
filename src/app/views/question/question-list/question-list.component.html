@@ -1,12 +1,19 @@
 <div class="container-fluid">
   <ul *ngFor="let question of questions">
-    <div class="card" style="width: 100%;">
-      <h5 class="card-header">{{ question?.title }}</h5>
+    <div class="card" style="width: 100%;"
+         [ngClass]= getCardClass(question?.difficulty)>
+
+      <h5 class="card-header">
+        <div class="row">
+          <div class="col">{{ question?.title}}</div>
+          <div class="col">{{ question?.difficulty}}</div>
+        </div>
+      </h5>
       <div class="card-body">
-        <li href="#" (click) = "onSelect(question)" class="btn btn-primary">Abrir</li>
-        <li href="#" (click) = "checkSubmissions(question)" class="btn btn-primary">Ver submissões</li>
+        <li href="#" (click) = "onSelect(question)" class="btn" [ngClass]="getBtnClass(question?.difficulty)">Abrir</li>
+        <li href="#" (click) = "checkSubmissions(question)" class="btn" [ngClass]="getBtnClass(question?.difficulty)">Ver submissões</li>
         <div class="btn-group" dropdown>
-          <button  dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-md ng serve ">
+          <button  dropdownToggle type="button" class="btn dropdown-toggle btn-md ng serve" [ngClass]="getBtnClass(question?.difficulty)">
             <i class="fa fa-wrench fa-sm"></i> Configuração
           </button>
           <ul *dropdownMenu class="dropdown-menu" role="menu">

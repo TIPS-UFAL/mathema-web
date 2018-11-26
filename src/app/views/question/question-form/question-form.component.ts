@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-
+import {QuestionConst} from '../shared/question-const';
 import { QuestionService } from '../shared/question.service';
 import { Topic } from 'app/views/topic/shared/topic.model';
 import {User} from '../../user/shared/models';
@@ -12,8 +12,9 @@ import {ModalDirective} from 'ngx-bootstrap';
     templateUrl: './question-form.component.html'
 })
 
-export class QuestionFormComponent {
+export class QuestionFormComponent implements OnInit {
     @ViewChild('qtModal') public qtModal: ModalDirective;
+    @Output() eventClicked = new EventEmitter<Event>();
     title: string;
     description: string;
     user: User;
@@ -23,10 +24,8 @@ export class QuestionFormComponent {
     topic: Topic;
     topics: Topic[] = [];
     topicoSelecionado;
+    questionConst: QuestionConst;
 
-    // TODO: puxar tipos do model
-    types = ['problemas', 'multipla escolha'];
-    difficultys = ['iniciante', 'intermediario', 'avançado'];
 
     constructor(private questionService: QuestionService,
                 private userService: UserService,
@@ -39,6 +38,11 @@ export class QuestionFormComponent {
       })
     }
 
+    ngOnInit() {
+      this.questionConst = new QuestionConst();
+    }
+
+
     onSubmit() {
       // TODO: pegar id correto do curriculo
       this.questionService.createQuestion({
@@ -49,9 +53,8 @@ export class QuestionFormComponent {
         'type': this.type,
         'difficulty': this.difficulty
         }).subscribe((data: any) => {
-        this.router.navigate(['/question/', data.id]);
+        this.eventClicked.emit(data);
         });
-
     }
 
   public show(): void {
@@ -61,16 +64,4 @@ export class QuestionFormComponent {
   public hide(): void {
     this.qtModal.hide();
   }
-    //     if (this.topicoSelecionado != null && this.tipoAtividade != null) {
-    //         // var index = this.tipos.indexOf(this.tipoAtividade)
-    //         // index++
-    //         this.questionService.createQuestion({'title': this.titulo,
-    //                                             'description': this.descricao,
-    //                                             'author': this.user.pk,
-    //                                             'topic': this.topicoSelecionado.id,
-    //                                             'type': 1}).subscribe(() => {
-    //                                                 this.router.navigate(['']);
-    //                                             });
-    //     }
-    // }
 }

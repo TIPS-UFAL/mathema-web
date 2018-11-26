@@ -24,6 +24,7 @@ export class TopicDetailComponent implements OnInit {
   @ViewChild('supportFormModal') public supportFormModal: SupportFormComponent;
   @ViewChild('supportDetailModal') public supportDetailModal: SupportDetailComponent;
   @ViewChild('topicEditModal') public topicEditModal: TopicFormComponent;
+  public clickedEvent: Event;
 
   topic: Topic;
   questions: Question[] = [];
@@ -50,6 +51,10 @@ export class TopicDetailComponent implements OnInit {
     this.topicService.deleteTopic(this.id).subscribe((data: any) => {
       this.router.navigate(['/curriculum/list/']);
     });
+  }
+
+  childEventClicked(event: Event) {
+    this.clickedEvent = event;
   }
 
 }
