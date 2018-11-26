@@ -36,7 +36,7 @@
               <div class="animated fadeIn">
 
 
-                <app-question-list></app-question-list>
+                <app-question-list [event]="clickedEvent"></app-question-list>
 
 
               </div>
@@ -58,7 +58,7 @@
   </div>
 
 
-  <app-question-form #qtModal></app-question-form>
+  <app-question-form #qtModal (eventClicked)="childEventClicked($event)"></app-question-form>
   <app-support-form #supportFormModal></app-support-form>
 
 
