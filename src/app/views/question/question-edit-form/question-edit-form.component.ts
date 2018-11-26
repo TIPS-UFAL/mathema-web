@@ -1,16 +1,18 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
 import {User} from '../../user/shared/models';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../user/shared/services';
 import {QuestionService} from '../shared/question.service';
+import {QuestionConst} from '../shared/question-const';
 
 @Component({
   selector: 'app-question-edit-form',
   templateUrl: './question-edit-form.component.html'
 })
-export class QuestionEditFormComponent implements OnChanges {
+export class QuestionEditFormComponent implements OnInit, OnChanges {
   @ViewChild('questionEditModal') public questionEditModal: ModalDirective;
+  @Output() eventClicked = new EventEmitter<Event>();
   @Input() questionTitle: string;
   @Input() questionDescription: string;
   @Input() questionType: string;
@@ -24,9 +26,7 @@ export class QuestionEditFormComponent implements OnChanges {
   difficulty: string;
   user: User;
   qId: any;
-
-  types = ['problemas', 'multipla escolha'];
-  difficultys = ['iniciante', 'intermediario', 'avançado'];
+  questionConst: QuestionConst;
 
   constructor(private questionService: QuestionService,
               private userService: UserService,
@@ -37,6 +37,10 @@ export class QuestionEditFormComponent implements OnChanges {
     });
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
   }
+
+  ngOnInit() {
+    this.questionConst = new QuestionConst();
+    }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.questionTitle !== undefined && changes.questionDescription !== undefined) {
@@ -55,9 +59,9 @@ export class QuestionEditFormComponent implements OnChanges {
         'type': this.type,
         'difficulty': this.difficulty
       },
-      this.id)
+      this.qId)
       .subscribe((data: any) => {
-        this.router.navigate(['']);
+        this.eventClicked.emit(event);
       });
   }
 

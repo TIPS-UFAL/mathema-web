@@ -25,10 +25,12 @@
     </div>
 
     <app-question-edit-form #questionEditFormModal
+                            (eventClicked)="updateQuestions()"
                            [questionTitle] = "question?.title"
                            [questionDescription] = "question?.description"
                            [questionType] = "question?.type"
                            [questionId] = "question?.id">
+
     </app-question-edit-form>
 
     <!--/ MODAL DELETAR ATIVIDADE-->

@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 import {Support} from '../shared/support.model';
@@ -14,6 +14,7 @@ import {ModalDirective} from 'ngx-bootstrap';
 
 export class SupportFormComponent {
   @ViewChild('supportFormModal') public supportFormModal: ModalDirective;
+  @Output() eventClicked = new EventEmitter<Event>()
   title: string;
   type: string;
   content: string;
@@ -45,7 +46,7 @@ export class SupportFormComponent {
       'content': this.content,
       'topic': this.id,
       'author': this.user.pk}).subscribe((data: any) => {
-      this.router.navigate(['/support/', data.id]);
+      this.eventClicked.emit(event);
     });
   }
 

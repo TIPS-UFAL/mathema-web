@@ -20,11 +20,11 @@ export class ProfileComponent {
                 private router: Router) {
 
         userService.getUser().subscribe((data: any) => {
-            this.profile.pk = data.pk
+            this.profile.id = data.id
             this.profile.username = data.username
             this.profile.email = data.email
 
-            userService.findUser(data.pk).subscribe((user: any) => {
+            userService.findUser(data.id).subscribe((user: any) => {
                 this.profile.name = user.username
             })
 
@@ -39,6 +39,6 @@ export class ProfileComponent {
     callEdit() {
         // TODO: quando modifica algum dado, perde autenticação
         // console.log("alou")
-        // this.router.navigate(['/profile', this.profile.pk])
+        // this.router.navigate(['/profile', this.profile.id])
     }
 }

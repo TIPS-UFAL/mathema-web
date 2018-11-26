@@ -27,7 +27,7 @@
             <div class="form-control-label">
               <label for="tipo">Categoria</label>
               <select id="tipo" name="formTipo" class="form-control" required [(ngModel)]="type">
-                <option *ngFor="let t of types" [ngValue]="t">{{ t }}</option>
+                <option *ngFor="let t of questionConst.types" [ngValue]="t">{{ t }}</option>
               </select>
             </div>
           </div>
@@ -36,7 +36,7 @@
             <div class="form-control-label">
               <label for="difficulty">Dificuldade</label>
               <select id="difficulty" name="formDifficulty" class="form-control" required [(ngModel)]="difficulty">
-                <option *ngFor="let d of difficultys" [ngValue]="d">{{ d }}</option>
+                <option *ngFor="let d of questionConst.difficulties" [ngValue]="d">{{ d }}</option>
               </select>
             </div>
           </div>

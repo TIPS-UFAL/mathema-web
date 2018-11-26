@@ -53,7 +53,7 @@ export class QuestionFormComponent implements OnInit {
         'type': this.type,
         'difficulty': this.difficulty
         }).subscribe((data: any) => {
-        this.eventClicked.emit(data);
+          this.eventClicked.emit(event);
         });
     }
 
