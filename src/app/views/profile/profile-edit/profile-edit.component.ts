@@ -1,8 +1,8 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
-import { Profile } from "../profile.model";
-import { ActivatedRoute, Router } from "@angular/router";
-import { AuthenticationService } from "../../../auth/services";
-import { UserService } from "../../user/shared/services";
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { Profile } from '../profile.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../../../auth/services';
+import { UserService } from '../../user/shared/services';
 
 @Component({
 	selector: 'app-profile-edit',
@@ -11,31 +11,31 @@ import { UserService } from "../../user/shared/services";
 })
 
 export class ProfileEditComponent implements OnInit{
-	
+
 	profile = new Profile()
 
 	public name
 	public username
 	public email
 
-	constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
 				private authenticationService: AuthenticationService,
 				private userService: UserService,
 				private router: Router) {
 
 		userService.getUser().subscribe((data: any) => {
-			this.profile.pk = data.pk
-			this.profile.username = data.username
-			this.profile.email = data.email
+			this.profile.id = data.id;
+			this.profile.username = data.username;
+			this.profile.email = data.email;
 
-			userService.findUser(data.pk).subscribe((user: any) => {
-				this.profile.name = user.username
+			userService.findUser(data.id).subscribe((user: any) => {
+				this.profile.name = user.username;
 			})
 		})
 	}
-	
+
 	ngOnInit() {
-		this.profile.pk = parseInt(this.route.snapshot.paramMap.get("pk"))
+		this.profile.id = parseInt(this.route.snapshot.paramMap.get("id"))
 
 		console.log(this.profile)
 	}

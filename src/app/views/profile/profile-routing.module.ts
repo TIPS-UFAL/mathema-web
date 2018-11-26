@@ -13,7 +13,7 @@ const routes: Routes = [
     }
   },
   {
-    path: ':pk',
+    path: ':id',
     component: ProfileEditComponent,
     data: {
       title: 'Edição'
