@@ -6,7 +6,7 @@ import { AuthenticationService } from '../../../auth/services'
 
 @Injectable() export class AnswerService {
 
-    url = 'http://localhost:8000/api/';
+    url = 'https://mathema-api.herokuapp.com/api/';
 
     constructor(
         private http: HttpClient,

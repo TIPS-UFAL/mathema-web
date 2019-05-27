@@ -10,7 +10,7 @@ import {NgxPermissionsService} from 'ngx-permissions';
 export class AuthenticationService {
     token: string;
     permissions = ['ADMIN', 'STUDENT', 'TEACHER']; // permissions that exists in the system
-    url = 'http://localhost:8000/api/';
+    url = 'https://mathema-api.herokuapp.com/api/';
     headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     options: any = { headers: this.headers };
 

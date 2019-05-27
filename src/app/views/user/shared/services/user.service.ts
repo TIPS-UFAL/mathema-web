@@ -11,7 +11,7 @@ import {User} from '../models';
 @Injectable()
 export class UserService {
   public user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
-  public url = 'http://localhost:8000/api/';
+  public url = 'https://mathema-api.herokuapp.com/api/';
 
   constructor(
     private http: HttpClient,
