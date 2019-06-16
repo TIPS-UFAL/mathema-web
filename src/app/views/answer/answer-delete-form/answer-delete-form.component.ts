@@ -10,9 +10,9 @@ import { Answer } from '../shared/answer.model';
   templateUrl: './answer-delete-form.component.html'
 })
 export class AnswerDeleteFormComponent implements OnInit {
-  @ViewChild('answerDeleteModal') public answerDeleteModal: ModalDirective;
+  @ViewChild('answerDeleteModal', /* TODO: add static flag */ {static: false}) public answerDeleteModal: ModalDirective;
 
-	id: any;
+  id: any;
 
 	constructor(private answerService: AnswerService,
 				private router: Router,

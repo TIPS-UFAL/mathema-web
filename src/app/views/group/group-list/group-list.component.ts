@@ -2,8 +2,8 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import { Group } from 'app/views/group/shared/group.model';
 import { GroupService } from 'app/views/group/shared/group.service';
 import {Router} from '@angular/router';
-import {BsModalService, ModalDirective} from 'ngx-bootstrap';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import {BsModalService, ModalDirective, BsModalRef} from 'ngx-bootstrap';
+// import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 @Component({
   selector: 'app-group-list',
@@ -11,7 +11,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
   styleUrls: ['./group-list.component.scss']
 })
 export class GroupListComponent implements OnInit {
-  @ViewChild('errorModal') public errorModal:ModalDirective;
+  @ViewChild('errorModal', /* TODO: add static flag */ {static: false}) public errorModal:ModalDirective;
 
   groups: Group[] = [];
   filtered: Group[];

@@ -14,7 +14,7 @@ import {Quill} from 'quill';
 })
 
 export class SupportEditFormComponent implements OnChanges {
-  @ViewChild('supportEditFormModal') public supportEditFormModal: ModalDirective;
+  @ViewChild('supportEditFormModal', /* TODO: add static flag */ {static: false}) public supportEditFormModal: ModalDirective;
   @Input() supportTitle: string;
   @Input() supportContent: string;
   @Input() supportType: string;

@@ -18,8 +18,8 @@ import { AnswerEditFormComponent } from '../../answer/answer-edit-form/answer-ed
 })
 
 export class QuestionDetailComponent implements OnInit {
-  @ViewChild('questionEditModal') public questionEditModal: QuestionFormComponent
-  @ViewChild('answerEditModal') public answerEditModal: AnswerEditFormComponent
+  @ViewChild('questionEditModal', /* TODO: add static flag */ {static: false}) public questionEditModal: QuestionFormComponent
+  @ViewChild('answerEditModal', /* TODO: add static flag */ {static: false}) public answerEditModal: AnswerEditFormComponent
 
   question: Question;
   pk;

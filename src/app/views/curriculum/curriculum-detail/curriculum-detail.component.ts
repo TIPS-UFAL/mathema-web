@@ -15,9 +15,9 @@ import {CurriculumFormComponent} from '../curriculum-form/curriculum-form.compon
   styleUrls: ['./curriculum-detail.component.scss']
 })
 export class CurriculumDetailComponent implements OnInit {
-  @ViewChild('gpModal') public gpModal: GroupFormComponent;
-  @ViewChild('topicModal') public topicModal: TopicFormComponent;
-  @ViewChild('curriculumEditModal') public curriculumEditModal: CurriculumFormComponent;
+  @ViewChild('gpModal', /* TODO: add static flag */ {static: false}) public gpModal: GroupFormComponent;
+  @ViewChild('topicModal', /* TODO: add static flag */ {static: false}) public topicModal: TopicFormComponent;
+  @ViewChild('curriculumEditModal', /* TODO: add static flag */ {static: false}) public curriculumEditModal: CurriculumFormComponent;
 
   topics: Topic[] = [];
   curriculum: Curriculum;

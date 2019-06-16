@@ -12,7 +12,7 @@ import {TopicService} from '../shared/topic.service';
   templateUrl: './topic-edit-form.component.html',
 })
 export class TopicEditFormComponent implements OnChanges {
-  @ViewChild('topicEditModal') public topicEditModal: ModalDirective;
+  @ViewChild('topicEditModal', {static: false}) public topicEditModal: ModalDirective;
   @Input() topicTitle: string;
   @Input() topicDescription: string;
 

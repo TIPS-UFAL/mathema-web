@@ -14,7 +14,7 @@ import {Curriculum} from '../../curriculum/shared/curriculum.model';
 })
 
 export class SupportDetailComponent implements OnChanges {
-  @ViewChild('supportDetailModal') public supportDetailModal: ModalDirective;
+  @ViewChild('supportDetailModal', /* TODO: add static flag */ {static: false}) public supportDetailModal: ModalDirective;
   @Input() supportTitle: string;
   @Input() supportContent: string;
   @Input() supportType: string;

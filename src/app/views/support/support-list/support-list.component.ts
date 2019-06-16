@@ -15,8 +15,8 @@ import {SupportEditFormComponent} from '../support-edit-form/support-edit-form.c
   styleUrls: ['./support-list.component.scss']
 })
 export class SupportListComponent implements OnInit {
-  @ViewChild('supportDetailModal') public supportDetailModal: SupportDetailComponent;
-  @ViewChild('supportEditFormModal') public supportEditFormModal: SupportEditFormComponent;
+  @ViewChild('supportDetailModal', /* TODO: add static flag */ {static: false}) public supportDetailModal: SupportDetailComponent;
+  @ViewChild('supportEditFormModal', /* TODO: add static flag */ {static: false}) public supportEditFormModal: SupportEditFormComponent;
 
   supports: Support[] = [];
   topic: Topic;

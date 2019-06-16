@@ -13,7 +13,7 @@ import {ModalDirective} from 'ngx-bootstrap';
 })
 
 export class SupportFormComponent {
-  @ViewChild('supportFormModal') public supportFormModal: ModalDirective;
+  @ViewChild('supportFormModal', /* TODO: add static flag */ {static: false}) public supportFormModal: ModalDirective;
   @Output() eventClicked = new EventEmitter<Event>()
   title: string;
   type: string;

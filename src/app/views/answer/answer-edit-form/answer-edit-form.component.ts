@@ -10,7 +10,7 @@ import { Answer } from '../shared/answer.model';
   templateUrl: './answer-edit-form.component.html'
 })
 export class AnswerEditFormComponent implements OnInit {
-  @ViewChild('answerEditModal') public answerEditModal: ModalDirective;
+  @ViewChild('answerEditModal', /* TODO: add static flag */ {static: false}) public answerEditModal: ModalDirective;
 	@Input() answerText: string;
 
 	id: any;

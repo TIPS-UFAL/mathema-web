@@ -2,11 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-/*import { HttpModule } from '@angular/http';
+/*import { HttpClientModule } from '@angular/common/http';
 
 import { fakeBackendProvider } from './_helpers/index';
-import { MockBackend, MockConnection } from '@angular/http/testing';
-import { BaseRequestOptions } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/common/http/testing';
+import { BaseRequestOptions } from '@angular/common/http';
 
 import { routing }        from './app.routing';
 
@@ -70,7 +70,7 @@ import { AppRoutingModule } from './app.routing';
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { CurriculumModule } from './views/curriculum/curriculum.module';
 import {AuthenticationService} from './auth/services';
