@@ -23,59 +23,59 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'dashboard-professor',
-        loadChildren: './views/dashboard-professor/dashboard-professor.module#DashboardProfessorModule'
+        loadChildren: () => import('./views/dashboard-professor/dashboard-professor.module').then(m => m.DashboardProfessorModule)
       },
       {
         path: 'curriculum',
-        loadChildren: './views/curriculum/curriculum.module#CurriculumModule'
+        loadChildren: () => import('./views/curriculum/curriculum.module').then(m => m.CurriculumModule)
       },
       {
         path: 'group',
-        loadChildren: './views/group/group.module#GroupModule'
+        loadChildren: () => import('./views/group/group.module').then(m => m.GroupModule)
       },
       {
         path: 'topic',
-        loadChildren: './views/topic/topic.module#TopicModule'
+        loadChildren: () => import('./views/topic/topic.module').then(m => m.TopicModule)
       },
       {
         path: 'question',
-        loadChildren: './views/question/question.module#QuestionModule'
+        loadChildren: () => import('./views/question/question.module').then(m => m.QuestionModule)
       },
       {
         path: 'answer',
-        loadChildren: './views/answer/answer.module#AnswerModule'
+        loadChildren: () => import('./views/answer/answer.module').then(m => m.AnswerModule)
       },
       {
         path: 'support',
-        loadChildren: './views/support/support.module#SupportModule'
+        loadChildren: () => import('./views/support/support.module').then(m => m.SupportModule)
       },
       {
         path: 'quiz',
-        loadChildren: './views/quiz/quiz.module#QuizModule'
+        loadChildren: () => import('./views/quiz/quiz.module').then(m => m.QuizModule)
       },
       {
         path: 'charts',
-        loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
+        loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
       },
       {
         path: 'subject',
-        loadChildren: './views/subject/subject.module#SubjectModule'
+        loadChildren: () => import('./views/subject/subject.module').then(m => m.SubjectModule)
       },
       {
         path: 'messages',
-        loadChildren: './views/messages/messages.module#MessagesModule'
+        loadChildren: () => import('./views/messages/messages.module').then(m => m.MessagesModule)
       },
       {
         path: 'profile',
-        loadChildren: './views/profile/profile.module#ProfileModule'
+        loadChildren: () => import('./views/profile/profile.module').then(m => m.ProfileModule)
       },
       {
         path: 'settings',
-        loadChildren: './views/settings/settings.module#SettingsModule'
+        loadChildren: () => import('./views/settings/settings.module').then(m => m.SettingsModule)
       }
     ]
   },
@@ -88,15 +88,15 @@ export const routes: Routes = [
     children: [
       {
         path: 'login',
-        loadChildren: './views/login/login.module#LoginModule'
+        loadChildren: () => import('./views/login/login.module').then(m => m.LoginModule)
       },
       {
         path: 'pages',
-        loadChildren: './views/pages/pages.module#PagesModule'
+        loadChildren: () => import('./views/pages/pages.module').then(m => m.PagesModule)
       },
       {
         path: 'register',
-        loadChildren: './views/register/register.module#RegisterModule'
+        loadChildren: () => import('./views/register/register.module').then(m => m.RegisterModule)
       },
     ]
   }

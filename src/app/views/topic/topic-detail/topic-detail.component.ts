@@ -20,10 +20,10 @@ import {SupportDetailComponent} from '../../support/support-detail/support-detai
   styleUrls: ['./topic-detail.component.scss']
 })
 export class TopicDetailComponent implements OnInit {
-  @ViewChild('qtModal') public qtModal: QuestionFormComponent;
-  @ViewChild('supportFormModal') public supportFormModal: SupportFormComponent;
-  @ViewChild('supportDetailModal') public supportDetailModal: SupportDetailComponent;
-  @ViewChild('topicEditModal') public topicEditModal: TopicFormComponent;
+  @ViewChild('qtModal', /* TODO: add static flag */ {static: false}) public qtModal: QuestionFormComponent;
+  @ViewChild('supportFormModal', /* TODO: add static flag */ {static: false}) public supportFormModal: SupportFormComponent;
+  @ViewChild('supportDetailModal', /* TODO: add static flag */ {static: false}) public supportDetailModal: SupportDetailComponent;
+  @ViewChild('topicEditModal', /* TODO: add static flag */ {static: false}) public topicEditModal: TopicFormComponent;
   public clickedEvent: Event;
 
   topic: Topic;

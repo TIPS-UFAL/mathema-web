@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {RequestOptions} from '@angular/http';
 import {Router} from '@angular/router';
 import {NgxPermissionsService} from 'ngx-permissions';
 

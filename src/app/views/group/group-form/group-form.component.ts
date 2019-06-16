@@ -13,7 +13,7 @@ import {User} from '../../user/shared/models';
 })
 
 export class GroupFormComponent {
-  @ViewChild('gpModal') public gpModal: ModalDirective;
+  @ViewChild('gpModal', /* TODO: add static flag */ {static: false}) public gpModal: ModalDirective;
 
   title: string;
   visible: boolean;

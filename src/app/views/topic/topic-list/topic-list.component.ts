@@ -14,7 +14,7 @@ export class TopicListComponent implements OnChanges {
 
   topics: Topic[] = [];
 
-  @ViewChild('childModal') public childModal: ModalDirective;
+  @ViewChild('childModal', /* TODO: add static flag */ {static: false}) public childModal: ModalDirective;
   @Input() curriculumId: number;
 
   public showChildModal():void {

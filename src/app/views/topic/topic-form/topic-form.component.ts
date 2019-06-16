@@ -13,7 +13,7 @@ import {ModalDirective} from 'ngx-bootstrap';
 })
 
 export class TopicFormComponent {
-    @ViewChild('topicModal') public topicModal: ModalDirective;
+    @ViewChild('topicModal', /* TODO: add static flag */ {static: false}) public topicModal: ModalDirective;
     title: string;
     description: string;
     topicoPai?: Topic;

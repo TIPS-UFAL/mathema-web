@@ -1,9 +1,9 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { QuillEditorModule } from 'ngx-quill-editor';
 
 import { SupportFormComponent } from './support-form/support-form.component';
@@ -24,7 +24,7 @@ import { SupportEditFormComponent } from './support-edit-form/support-edit-form.
     TooltipModule.forRoot(),
     CommonModule,
     SupportRoutingModule,
-    HttpModule,
+    HttpClientModule,
     ChartsModule,
     BsDropdownModule,
     FormsModule,

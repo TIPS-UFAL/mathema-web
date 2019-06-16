@@ -13,7 +13,7 @@ import {ModalDirective} from 'ngx-bootstrap';
 })
 
 export class QuestionFormComponent implements OnInit {
-    @ViewChild('qtModal') public qtModal: ModalDirective;
+    @ViewChild('qtModal', /* TODO: add static flag */ {static: false}) public qtModal: ModalDirective;
     @Output() eventClicked = new EventEmitter<Event>();
     title: string;
     description: string;

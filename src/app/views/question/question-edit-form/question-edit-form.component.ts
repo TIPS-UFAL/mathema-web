@@ -11,7 +11,7 @@ import {QuestionConst} from '../shared/question-const';
   templateUrl: './question-edit-form.component.html'
 })
 export class QuestionEditFormComponent implements OnInit, OnChanges {
-  @ViewChild('questionEditModal') public questionEditModal: ModalDirective;
+  @ViewChild('questionEditModal', {static: false}) public questionEditModal: ModalDirective;
   @Output() eventClicked = new EventEmitter<Event>();
   @Input() questionTitle: string;
   @Input() questionDescription: string;

@@ -15,7 +15,7 @@ import {CurriculumDetailComponent} from '../curriculum-detail/curriculum-detail.
   templateUrl: './curriculum-edit-form.component.html'
 })
 export class CurriculumEditFormComponent implements OnChanges {
-  @ViewChild('curriculumEditModal') public curriculumEditModal: ModalDirective;
+  @ViewChild('curriculumEditModal', {static: false}) public curriculumEditModal: ModalDirective;
   @Input() curriculumTitle: string;
   @Input() curriculumDescription: string;
 
