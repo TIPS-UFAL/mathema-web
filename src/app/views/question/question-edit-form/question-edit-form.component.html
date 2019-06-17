@@ -36,7 +36,7 @@
             <div class="form-control-label">
               <label for="difficulty">Dificuldade</label>
               <select id="difficulty" name="formDifficulty" class="form-control" required [(ngModel)]="difficulty">
-                <option *ngFor="let d of questionConst.difficulties" [ngValue]="d">{{ d }}</option>
+                <option *ngFor="let d of questionConst.difficulty_levels" [ngValue]="d">{{ d }}</option>
               </select>
             </div>
           </div>

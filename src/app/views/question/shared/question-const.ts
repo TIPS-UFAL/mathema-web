@@ -1,4 +1,4 @@
 export class QuestionConst {
-  types = ['Problemas', 'Multipla escolha'];
-  difficulties = ['Iniciante', 'Intermediario', 'Avançado'];
+  types = ['problema', 'múltipla escolha'];
+  difficulty_levels = ['iniciante', 'intermediário', 'avançado'];
 }
