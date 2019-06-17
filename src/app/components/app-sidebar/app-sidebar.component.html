@@ -26,6 +26,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/charts']" *ngxPermissionsExcept="'STUDENT'"><i class="icon-pie-chart"></i> Estatísticas</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngxPermissionsExcept="'STUDENT'" (click)="questionFormModal.show()"><i class="icon-pie-chart"></i>Criar questão</a>
+      </li>
       <li class="divider"></li>
       <li class="nav-title">
     </ul>
@@ -33,3 +36,4 @@
   <app-sidebar-footer></app-sidebar-footer>
   <app-sidebar-minimizer></app-sidebar-minimizer>
 </div>
+<app-question-form #questionFormModal></app-question-form>

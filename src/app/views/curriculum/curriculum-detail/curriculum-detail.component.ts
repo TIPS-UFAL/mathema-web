@@ -28,7 +28,7 @@ export class CurriculumDetailComponent implements OnInit {
               private router: Router,
               private topicService: TopicService
               ) {
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     curriculumService.getCurriculum( this.id).subscribe((data: any) => {
       this.curriculum = data;
       console.log(this.curriculum);

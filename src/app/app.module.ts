@@ -62,7 +62,7 @@ import {
 const APP_DIRECTIVES = [
   NAV_DROPDOWN_DIRECTIVES,
   SIDEBAR_TOGGLE_DIRECTIVES
-]
+];
 
 // Import routing module
 import { AppRoutingModule } from './app.routing';
@@ -87,6 +87,7 @@ import {QuizService} from './views/quiz/shared/quiz.service';
 import {NgxPermissionsModule} from 'ngx-permissions';
 import { QuillEditorModule } from 'ngx-quill-editor';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {QuestionModule} from './views/question/question.module';
 
 
 @NgModule({
@@ -99,6 +100,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ChartsModule,
     FormsModule,
     CurriculumModule,
+    QuestionModule,
     HttpClientModule,
     SharedModule,
     BsDropdownModule.forRoot(),

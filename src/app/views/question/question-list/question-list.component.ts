@@ -76,11 +76,11 @@ export class QuestionListComponent implements OnInit, OnChanges {
 //
   getBtnClass(difficulty: string) {
     switch (difficulty) {
-      case this.questionConst.difficulties[0]:
+      case this.questionConst.difficulty_levels[0]:
         return 'btn-easy';
-      case this.questionConst.difficulties[1]:
+      case this.questionConst.difficulty_levels[1]:
         return 'btn-medium';
-      case this.questionConst.difficulties[2]:
+      case this.questionConst.difficulty_levels[2]:
         return 'btn-hard';
 
     }
@@ -88,11 +88,11 @@ export class QuestionListComponent implements OnInit, OnChanges {
 
   getCardClass(difficulty: string) {
     switch (difficulty) {
-      case this.questionConst.difficulties[0]:
+      case this.questionConst.difficulty_levels[0]:
         return 'card-accent-easy';
-      case this.questionConst.difficulties[1]:
+      case this.questionConst.difficulty_levels[1]:
         return 'card-accent-medium';
-      case this.questionConst.difficulties[2]:
+      case this.questionConst.difficulty_levels[2]:
         return 'card-accent-hard';
 
     }
