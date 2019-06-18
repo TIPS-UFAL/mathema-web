@@ -9,7 +9,7 @@ import {NgxPermissionsGuard} from 'ngx-permissions';
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: '',
     component: QuestionListComponent,
   },
   {
