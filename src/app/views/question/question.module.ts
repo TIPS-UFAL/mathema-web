@@ -10,13 +10,13 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { QuestionRoutingModule } from './question-routing.module';
 import { QuestionService } from 'app/views/question/shared/question.service';
-import {TopicFormComponent} from '../topic/topic-form/topic-form.component';
-import {TopicListComponent} from '../topic/topic-list/topic-list.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import { QuestionEditFormComponent } from './question-edit-form/question-edit-form.component';
 import { AnswerModule } from '../answer/answer.module';
+import {UiSwitchModule} from 'ngx-toggle-switch';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 @NgModule({
   imports: [
@@ -29,7 +29,9 @@ import { AnswerModule } from '../answer/answer.module';
     ChartsModule,
     BsDropdownModule,
     FormsModule,
-    AnswerModule
+    AnswerModule,
+    UiSwitchModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   declarations: [
     QuestionFormComponent,

@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="question-modal" class="modal-title pull-left">Criar Atividade</h4>
+        <h4 id="question-modal" class="modal-title pull-left">Criar Questão</h4>
         <button type="button" class="close pull-right" (click)="hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,28 +16,92 @@
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="description">Descrição</label>
+            <label class="form-control-label" for="statement">Questão</label>
             <div class="">
-              <textarea id="description" name="descricao" rows="4" class="form-control" placeholder="Descreva a atividade proposta." required
-                        [(ngModel)]="description" name="descricao"></textarea>
+              <textarea id="statement" name="questao" rows="4" class="form-control" placeholder="Texto da questão proposta." required
+                        [(ngModel)]="statement"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="answer">Resposta final</label>
+            <input type="text" class="form-control" id="answer" placeholder="Insira a resposta final da questão." required [(ngModel)]="answer" name="answer">
+          </div>
+
+          <div class="form-group">
+            <div class="form-control-label">
+              <label for="type">Tipo</label>
+              <!--<select id="type" name="formType" class="form-control" [(ngModel)]="type" required placeholder="Selecione">-->
+                <!--<option *ngFor="let t of questionConst.types; let i = index" [ngValue]="i" title="t.description">{{ t }}</option>-->
+              <!--</select>-->
+              <ng-multiselect-dropdown
+                placeholder="Selecione"
+                id="type"
+                name="formType"
+                [data]="questionConst.types"
+                [(ngModel)]="type"
+                [settings]="questionConstSettings"
+                required
+              ></ng-multiselect-dropdown>
             </div>
           </div>
 
           <div class="form-group">
             <div class="form-control-label">
-              <label for="tipo">Categoria</label>
-              <select id="tipo" name="formTipo" class="form-control" [(ngModel)]="type">
-                <option *ngFor="let t of questionConst.types" [ngValue]="t">{{ t }}</option>
-              </select>
+              <label for="mainTag" tooltip="Principal Tag">Tag Principal:</label>
+              <!--<select id="mainTag" name="formMainTag" class="form-control" [(ngModel)]="mainTag" required placeholder="Selecione">-->
+                <!--<option *ngFor="let t of tagsConst; let i = index" [ngValue]="t.id">{{ t.name }}</option>-->
+              <!--</select>-->
+              <ng-multiselect-dropdown
+                placeholder="Selecione"
+                id="mainTag"
+                name="formMainTag"
+                [data]="tagsConst"
+                [(ngModel)]="mainTag"
+                [settings]="formMainTagSettings"
+                required
+              ></ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-control-label">
+              <label>Tags secundárias</label>
+              <ng-multiselect-dropdown
+                placeholder="Selecione"
+                name="formTags"
+                [data]="tagsConst"
+                [(ngModel)]="tags"
+                [settings]="formTagsSettings"
+              ></ng-multiselect-dropdown>
             </div>
           </div>
 
           <div class="form-group">
             <div class="form-control-label">
               <label for="difficulty">Dificuldade</label>
-              <select id="difficulty" name="formDifficulty" class="form-control" [(ngModel)]="difficulty">
-                <option *ngFor="let d of questionConst.difficulty_levels" [ngValue]="d">{{ d }}</option>
-              </select>
+              <!--<select id="difficulty" name="formDifficulty" class="form-control" [(ngModel)]="difficulty" required placeholder="Selecione">-->
+                <!--<option *ngFor="let d of questionConst.difficulty_levels; let i = index" [ngValue]="i">{{ d }}</option>-->
+              <!--</select>-->
+              <ng-multiselect-dropdown
+                placeholder="Selecione"
+                id="difficulty"
+                name="formDifficulty"
+                [data]="questionConst.difficulty_levels"
+                [(ngModel)]="difficultyLevel"
+                [settings]="questionConstSettings"
+                required
+              ></ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-control-label">
+              <label for="isPrivate" tooltip="Caso seja privado a questão não estará visível ao público, apenas ao criador.">É privado?</label>
+              <div>
+                <ui-switch id="isPrivate" name="formIsPrivate" [(ngModel)]="isPrivate" color="#20a8d8" checkedLabel="Sim" uncheckedLabel="Não">
+                </ui-switch>
+              </div>
             </div>
           </div>
 
