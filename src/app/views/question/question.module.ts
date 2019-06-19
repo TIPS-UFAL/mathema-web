@@ -17,6 +17,8 @@ import { QuestionEditFormComponent } from './question-edit-form/question-edit-fo
 import { AnswerModule } from '../answer/answer.module';
 import {UiSwitchModule} from 'ngx-toggle-switch';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import {AccordionModule} from 'ngx-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
     FormsModule,
     AnswerModule,
     UiSwitchModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    AccordionModule.forRoot(),
+    BrowserAnimationsModule
   ],
   declarations: [
     QuestionFormComponent,
