@@ -28,7 +28,7 @@ export class QuestionListComponent implements OnInit, OnChanges {
               private route: ActivatedRoute,
               private router: Router,
               private ref: ChangeDetectorRef) {
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.topicService.getTopic(this.id).subscribe((data: any) => {
       this.topic = data;
       console.log(this.topic);

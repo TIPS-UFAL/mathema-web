@@ -6,20 +6,23 @@ import {User} from '../../user/shared/models';
 import {UserService} from '../../user/shared/services';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Tag} from '../../../shared/tag.model';
+import {ModelSolution} from '../shared/modelSolution.model';
 
 @Component({
   selector: 'app-question-form',
-  templateUrl: './question-form.component.html'
+  templateUrl: './question-form.component.html',
+  styles: ['.col { background-color: #f7f7f9; margin: 1px;}']
 })
 
 export class QuestionFormComponent implements OnInit {
   @ViewChild('qtModal', {static: false}) public qtModal: ModalDirective;
+  @ViewChild('mSolutionModal', {static: false}) public mSolutionModal: ModalDirective;
   @Output() eventClicked = new EventEmitter<Event>();
   questionConst: QuestionConst;
   tagsConst: Tag[] = [];
 
   difficultyLevel: any;
-  isPrivate = false;
+  isPrivate: boolean;
   statement: string;
   title: string;
   answer: string;
@@ -27,6 +30,7 @@ export class QuestionFormComponent implements OnInit {
   mainTag: number;
   tags: Tag[];
   author: User;
+  modelSolution: ModelSolution[] = [];
 
   /* Drop Down settings*/
   formTagsSettings = {
@@ -110,5 +114,11 @@ export class QuestionFormComponent implements OnInit {
 
   public hide(): void {
     this.qtModal.hide();
+  }
+
+  addAnswerModel(answer, feedback, is_correct) {
+    this.modelSolution.push(new ModelSolution(answer, undefined, is_correct, feedback));
+    console.log(this.modelSolution);
+    this.mSolutionModal.hide();
   }
 }

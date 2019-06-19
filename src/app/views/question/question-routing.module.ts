@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
-import {NgxPermissionsGuard} from 'ngx-permissions';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
 const routes: Routes = [
   {

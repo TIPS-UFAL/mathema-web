@@ -29,6 +29,40 @@
           </div>
 
           <div class="form-group">
+            <button type="button" class="btn btn-primary" tooltip="Adicionar modelo de resposta para esta questão" (click)="mSolutionModal.show()">
+              Adicionar Modelo de resposta
+            </button>
+          </div>
+
+          <div class="form-group">
+            <accordion [isAnimated]="true">
+              <accordion-group *ngFor="let ms of modelSolution; let i = index">
+                <button class="btn btn-link btn-block clearfix" accordion-heading>
+                  <div class="pull-left float-left">Modelo de Solução {{i}}</div>
+                  <span *ngIf="ms.is_correct" class="badge badge-success float-right">Bom exemplo <i class="fa fa-thumbs-up "></i></span>
+                  <span *ngIf="!ms.is_correct" class="badge badge-danger float-right">Mau exemplo <i class="fa fa-thumbs-down"></i></span>
+                </button>
+                <div class="container accord">
+                  <div class="row">
+                    <div class="col">
+                      <h5>Modelo de resposta</h5>
+                      <p>
+                        {{ms.answer}}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <h5>Feedback</h5>
+                      <p>
+                        {{ms.feedback}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+            </accordion>
+          </div>
+
+          <div class="form-group">
             <div class="form-control-label">
               <label for="type">Tipo</label>
               <!--<select id="type" name="formType" class="form-control" [(ngModel)]="type" required placeholder="Selecione">-->
@@ -99,7 +133,7 @@
             <div class="form-control-label">
               <label for="isPrivate" tooltip="Caso seja privado a questão não estará visível ao público, apenas ao criador.">É privado?</label>
               <div>
-                <ui-switch id="isPrivate" name="formIsPrivate" [(ngModel)]="isPrivate" color="#20a8d8" checkedLabel="Sim" uncheckedLabel="Não">
+                <ui-switch id="isPrivate" name="formIsPrivate" [(ngModel)]="isPrivate" color="#20a8d8" checkedLabel="Sim" uncheckedLabel="Não" [checked]="false">
                 </ui-switch>
               </div>
             </div>
@@ -110,6 +144,49 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div class="modal fade" bsModal #mSolutionModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-nested-name2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="ms-modal" class="modal-title pull-left">Cadastrar modelo de solução</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="mSolutionModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  #modelSolutionForm="ngForm" (ngSubmit)="addAnswerModel(msAnswer.value, msFeedback.value, msIsCorrect.checked)">
+
+          <div class="form-group">
+            <label class="form-control-label" for="ms-answer">Resposta</label>
+            <div class="">
+              <textarea #msAnswer id="ms-answer" name="ms-answer" rows="4" class="form-control" placeholder="Resposta modelo." required></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="ms-feedback">Feedback</label>
+            <div class="">
+              <textarea #msFeedback id="ms-feedback" name="ms-feedback" rows="4" class="form-control" placeholder="Comentário sobre o modelo de resposta." required></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-control-label">
+              <label for="isCorrect" tooltip="Esse é um modelo de resposta do que se deve fazer ou do que não se deve fazer? ">É correto?</label>
+              <div>
+                <ui-switch #msIsCorrect id="isCorrect" name="ms-isCorrect" color="#20a8d8" checkedLabel="Sim" uncheckedLabel="Não" [checked]="true">
+                </ui-switch>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-sm btn-primary" [disabled]="msAnswer.value.length == 0"><i class="fa fa-dot-circle-o"></i>Cadastrar</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
