@@ -4,10 +4,12 @@
   <button class="navbar-toggler d-md-down-none" type="button" appSidebarToggler>&#9776;</button>
 
   <ul class="nav navbar-nav ml-auto">
+    <!--
     <li class="nav-item dropdown d-md-down-none" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
         <i class="icon-bell"></i><span class="badge badge-pill badge-danger">2</span>
       </a>
+
       <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg" *dropdownMenu aria-labelledby="simple-dropdown">
         <div class="dropdown-header text-center"><strong>Notificações</strong></div>
         <a href="#" class="dropdown-item" routerLinkActive="active" [routerLink]="['/quiz']">
@@ -18,13 +20,14 @@
         </a>
       </div>
     </li>
+    -->
     <li class="nav-item dropdown d-md-down-none" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
         <i class="icon-list"></i>
       </a>
 
       <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg" *dropdownMenu aria-labelledby="simple-dropdown">
-        <div class="dropdown-header text-center"><strong>Últimas tarefas</strong></div>
+        <div class="dropdown-header text-center"><strong>Últimas Turmas</strong></div>
         <a href="" class="dropdown-item" routerLinkActive="active" [routerLink]="['/subject']">
           <div class="small mb-1">Matemática <span class="float-right"><strong>69%</strong></span></div>
           <span class="progress progress-xs">
@@ -32,7 +35,7 @@
           </span>
         </a>
         <a href="" class="dropdown-item text-center" routerLinkActive="active" [routerLink]="['/question']">
-          <strong>Ver todas as tarefas</strong>
+          <strong>Ver todas as Turmas</strong>
         </a>
       </div>
     </li>
@@ -44,9 +47,11 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
         <div class="dropdown-header text-center"><strong>Status</strong></div>
+        <!--
         <a class="dropdown-item" href="" routerLinkActive="active" [routerLink]="['/messages']">
           <i class="fa fa-envelope-o"></i> Mensagens<span class="badge badge-success">4</span>
         </a>
+        -->
         <a class="dropdown-item" href="" routerLinkActive="active" [routerLink]="['/charts']">
           <i class="fa fa-tasks"></i> Estatísticas
         </a>
