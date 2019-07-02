@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'form',
     component: GroupFormComponent,
-    canActivate: [NgxPermissionsGuard],
+   canActivate: [NgxPermissionsGuard],
     data: {
       permissions: {
         except: ['STUDENT'],
