@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { CommonModule} from '@angular/common';
 
 import {CurriculumService} from '../../curriculum/shared/curriculum.service';
 import {Curriculum} from '../../curriculum/shared/curriculum.model';
@@ -31,9 +32,9 @@ export class GroupDetailComponent implements OnInit {
       this.curriculumService.getCurriculum(this.group.curriculum).subscribe( (curr: any) => {
         this.curriculum = curr;
       });
-      this.userService.getUser().subscribe(data => {
+      this.userService.getUser().subscribe((data: any) => {
         this.user = data;
-        this.groupService.getGroupStudent(this.user.pk, this.group.group_key).subscribe(data => this.enrolled = true, err => this.enrolled = false);
+        this.groupService.getGroupStudent(this.user.pk, this.group.group_key).subscribe((data: any) => this.enrolled = true, err => this.enrolled = false);
       });
       this.getStudents();
 
@@ -61,7 +62,7 @@ export class GroupDetailComponent implements OnInit {
   }
 
   /*Estatísticas específicas de cada aluno a implementar:*/
-  //line
+  // line
   public lineChartDataLog: Array<any> = [
     {data: [0, 0, 0, 20, 50, 80, 85], label: 'Pontuação'},
   ];

@@ -11,7 +11,7 @@ import {BsModalService, ModalDirective, BsModalRef} from 'ngx-bootstrap';
   styleUrls: ['./group-list.component.scss']
 })
 export class GroupListComponent implements OnInit {
-  @ViewChild('errorModal', /* TODO: add static flag */ {static: false}) public errorModal:ModalDirective;
+  @ViewChild('errorModal', /* TODO: add static flag */ {static: false}) public errorModal: ModalDirective;
 
   groups: Group[] = [];
   filtered: Group[];
@@ -22,7 +22,7 @@ export class GroupListComponent implements OnInit {
               private modalService: BsModalService) {
     groupService.getGroups().subscribe((data: any) => {
       this.groups = data;
-    })
+    });
   }
 
   ngOnInit() {

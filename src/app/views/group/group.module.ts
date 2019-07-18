@@ -13,6 +13,7 @@ import { GroupDetailComponent } from './group-detail/group-detail.component';
 import {TopicModule} from '../topic/topic.module';
 import {NgxPermissionsModule} from 'ngx-permissions';
 import {FilterPipe} from './shared/filter.pipe';
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {FilterPipe} from './shared/filter.pipe';
     ChartsModule,
     BsDropdownModule,
     FormsModule,
-    TopicModule
+    TopicModule,
+    MatCardModule
   ],
   declarations: [
     GroupFormComponent,
@@ -37,7 +39,8 @@ import {FilterPipe} from './shared/filter.pipe';
     FilterPipe
   ],
   exports: [
-    GroupFormComponent
+    GroupFormComponent,
+    GroupListComponent
   ],
   providers: [ GroupService ]
 })

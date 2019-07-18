@@ -15,6 +15,7 @@ import { CurriculumDetailComponent } from './curriculum-detail/curriculum-detail
 import {GroupModule} from '../group/group.module';
 import {TopicModule} from '../topic/topic.module';
 import { CurriculumEditFormComponent } from './curriculum-edit-form/curriculum-edit-form.component';
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { CurriculumEditFormComponent } from './curriculum-edit-form/curriculum-e
     BsDropdownModule,
     FormsModule,
     GroupModule,
-    TopicModule
+    TopicModule,
+    MatCardModule
   ],
   declarations: [
     CurriculumFormComponent,

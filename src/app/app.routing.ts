@@ -38,6 +38,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/group/group.module').then(m => m.GroupModule)
       },
       {
+        path: 'classes',
+        loadChildren: () => import ('./classes/classes.module').then(m => m.ClassesModule)
+      },
+      {
         path: 'topic',
         loadChildren: () => import('./views/topic/topic.module').then(m => m.TopicModule)
       },

@@ -9,6 +9,7 @@ import {TopicFormComponent} from '../../topic/topic-form/topic-form.component';
 import {CurriculumFormComponent} from '../curriculum-form/curriculum-form.component';
 
 
+
 @Component({
   selector: 'app-curriculum-detail',
   templateUrl: './curriculum-detail.component.html',
@@ -20,6 +21,9 @@ export class CurriculumDetailComponent implements OnInit {
   @ViewChild('curriculumEditModal', /* TODO: add static flag */ {static: false}) public curriculumEditModal: CurriculumFormComponent;
 
   topics: Topic[] = [];
+  title: string;
+  author: string;
+  description: string;
   curriculum: Curriculum;
   id: any;
 

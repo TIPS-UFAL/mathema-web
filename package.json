@@ -27,6 +27,7 @@
     "@angular/platform-browser-dynamic": "^8.0.0",
     "@angular/router": "^8.0.0",
     "@angular/upgrade": "^8.0.0",
+    "@material/card": "^3.0.0",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "class-transformer": "^0.2.3",
