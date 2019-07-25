@@ -25,6 +25,7 @@ export class GroupFormComponent {
               private userService: UserService,
               private router: Router,
               private route: ActivatedRoute) {
+    // tslint:disable-next-line:radix
     this.idCurriculum = parseInt(this.route.snapshot.paramMap.get('id'));
       userService.user.subscribe((user: User) => {
         this.user = user

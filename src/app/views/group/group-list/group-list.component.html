@@ -1,66 +1,93 @@
-<div class="container-fluid">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
-  <!--
+<div class = "grid-container">
+  <div class = "item1">
+    <mat-card class="example-card" (click) = "onClick('teoria')" >
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Teoria da Computação</mat-card-title>
+        <mat-card-subtitle>Eliana Almeida</mat-card-subtitle>
+      </mat-card-header>
 
-  <div class="row">
-    <h3 class="col">Turmas<br><br></h3>
-    <div class="col-md-3">
-      <div class="input-group" dropdown>
-        <input type="text" #groupKey class="form-control" placeholder="Chave"
-               tooltip="Já possui uma chave de grupo?">
-        <span class="input-group-append">
-          <button type="button" class="btn btn-primary" (click)="searchKey(groupKey.value, errorModal)">Submit</button>
-        </span>
-      </div>
-      <div bsModal #errorModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title pull-left">Erro</h4>
-              <button type="button" class="close pull-right" aria-label="Close" (click)="errorModal.hide()">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Chave não encontrada, tente novamente!
-            </div>
+      <mat-card-content>
+        <p>
+          Turma de Teoria da Computação com a professora Eliana Almeida.
+          {{clicked}}
+        </p>
+      </mat-card-content>
+      <!--<mat-card-actions class="grid-container2">
+        <a class="item1" href="#"><i class="icon-like icons font-2xl d-block mt-4"></i></a>
+        <a class="item1" href="#"><i class="icon-people icons font-2xl d-block mt-4"></i></a>
+      </mat-card-actions>-->
+    </mat-card>
+  </div>
+
+  <div class = "item1">
+    <mat-card class="example-card" (click) = "onClick('algebra')" >
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image2"></div>
+        <mat-card-title>Álgebra Linear</mat-card-title>
+        <mat-card-subtitle>Hilário Alencar</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          Turma de Álgebra Linear do professor Hilário Alencar
+          {{clicked}}
+        </p>
+      </mat-card-content>
+      <!--
+      <mat-card-actions class="grid-container2">
+        <a class="item1" href="#"><i class="icon-like icons font-2xl d-block mt-4"></i></a>
+        <a class="item1" href="#"><i class="icon-people icons font-2xl d-block mt-4"></i></a>
+      </mat-card-actions>-->
+    </mat-card>
+  </div>
+</div>
+
+<!--
+<div class="container-fluid">
+
+<div class="row">
+  <h3 class="col">Turmas<br><br></h3>
+  <div class="col-md-3">
+    <div class="input-group" dropdown>
+      <input type="text" #groupKey class="form-control" placeholder="Chave"
+             tooltip="Já possui uma chave de grupo?">
+      <span class="input-group-append">
+        <button type="button" class="btn btn-primary" (click)="searchKey(groupKey.value, errorModal)">Submit</button>
+      </span>
+    </div>
+    <div bsModal #errorModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Erro</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="errorModal.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Chave não encontrada, tente novamente!
           </div>
         </div>
       </div>
     </div>
   </div>
-  <form class="navbar-form navbar-left">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Procurar..." [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
-    </div>
-  </form>
-  <ul *ngFor="let group of groups | filter : searchText : 'title'">
-    <div class="card" style="width: 100%;">
-      <h5 class="card-header">Titulo: {{ group?.title }} <{{ group?.group_key }}></h5>
-      <div class="card-body">
-        <p class="card-text">Curriculum: </p>
-        <p class="card-text">Descrição: </p>
-        <a href="" routerLinkActive="active" [routerLink]="['/group', group?.group_key]" class="btn btn-primary">Ver Detalhes</a>
-      </div>
-    </div>
-  </ul>
-  -->
 </div>
+<form class="navbar-form navbar-left">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Procurar..." [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+  </div>
+</form>
+<ul *ngFor="let group of groups | filter : searchText : 'title'">
+  <div class="card" style="width: 100%;">
+    <h5 class="card-header">Titulo: {{ group?.title }} <{{ group?.group_key }}></h5>
+    <div class="card-body">
+      <p class="card-text">Curriculum: </p>
+      <p class="card-text">Descrição: </p>
+      <a href="" routerLinkActive="active" [routerLink]="['/group', group?.group_key]" class="btn btn-primary">Ver Detalhes</a>
+    </div>
+  </div>
+</ul>
+</div>
+-->
+

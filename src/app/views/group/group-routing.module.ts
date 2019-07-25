@@ -5,6 +5,7 @@ import { GroupListComponent } from './group-list/group-list.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 import {GroupDetailComponent} from './group-detail/group-detail.component';
+import {CommonModule} from '@angular/common';
 
 const routes: Routes = [
   {
@@ -14,13 +15,13 @@ const routes: Routes = [
   {
     path: 'form',
     component: GroupFormComponent,
-   canActivate: [NgxPermissionsGuard],
-    data: {
-      permissions: {
-        except: ['STUDENT'],
-        redirectTo: ''
-      }
-    },
+   // canActivate: [NgxPermissionsGuard],
+   //  data: {
+   //    permissions: {
+   //      except: ['STUDENT'],
+   //      redirectTo: ''
+   //    }
+   //  },
   },
   {
     path: ':idGroup',
@@ -30,6 +31,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule.forChild(routes)
   ],
   exports: [

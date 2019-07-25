@@ -16,8 +16,26 @@ export class GroupListComponent implements OnInit {
   groups: Group[] = [];
   filtered: Group[];
   errorModalRef: BsModalRef;
+  // @ts-ignore
+  public errorModal: ModalDirective;
 
-  constructor(private groupService: GroupService,
+  clicked: string;
+  nome: string[] = [];
+
+  constructor(private router: Router, private groupService: GroupService ) {
+    this.nome[0] = 'Teoria';
+    this.nome[1] = 'Algebra';
+  }
+  ngOnInit() {
+    this.clicked = '';
+  }
+  onClick(click: string) {
+    console.log(click);
+    this.clicked = click;
+
+  }
+
+  /*constructor(private groupService: GroupService,
               private router: Router,
               private modalService: BsModalService) {
     groupService.getGroups().subscribe((data: any) => {
@@ -35,5 +53,5 @@ export class GroupListComponent implements OnInit {
     }, (err) => {
       this.errorModal.show();
     });
-  }
+  }*/
 }
