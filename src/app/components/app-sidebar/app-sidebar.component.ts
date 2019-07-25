@@ -6,6 +6,22 @@ import {QuestionFormComponent} from '../../views/question/question-form/question
   templateUrl: './app-sidebar.component.html'
 })
 export class AppSidebar implements OnInit {
+  items: string[] = [
+    'The first choice!',
+    'And another choice for you.',
+    'but wait! A third!'
+  ];
+
+  onHidden(): void {
+    console.log('Dropdown is hidden');
+  }
+  onShown(): void {
+    console.log('Dropdown is shown');
+  }
+  isOpenChange(): void {
+    console.log('Dropdown state is changed');
+  }
+
   @ViewChild('questionFormModal', /* TODO: add static flag */ {static: false}) public questionFormModal: QuestionFormComponent;
   constructor(private el: ElementRef) {  }
 

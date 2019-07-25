@@ -14,9 +14,78 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum/form']" *ngxPermissionsExcept="'STUDENT'"><i class="icon-book-open"></i> Cadastro Currículo</a>
       </li>
-      <!--<li class="nav-item">-->
-        <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/quiz/form']"><i class="icon-star"></i> Cadastro de Questionário</a>-->
-      <!--</li>-->
+      <!-- Studdent
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/question/list']"><i class="icon-book-open"></i> Questões</a>
+      </li>
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-people"></i> Turmas</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum-form']"><i class="address-book"></i> Buscar Turma</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/group/list']"><i class="address-book"></i> Minhas Turmas</a>
+          </li>
+        </ul>
+      </li>
+      -->
+
+      <!-- Teacher -->
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-people"></i> Turmas</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum-form']"><i class="address-book"></i> Criar Turma</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum-form']"><i class="address-book"></i> Buscar Turma</a>
+          </li>
+
+          <li class = "nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+            <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="address-book"></i> Minhas Turmas</a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum-form']"><i class="address-book"></i> Turmas Criadas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/group']"><i class="address-book"></i> Minhas Turmas </a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-folder"></i> Currículos</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum-form']"><i class="address-book"></i> Criar Currículo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum-form']"><i class="address-book"></i> Buscar Currículo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum/list']"><i class="address-book"></i> Meus Currículos</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-book-open"></i> Questões</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/question/form']"><i class="address-book"></i> Criar Questão</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/question/form']"><i class="address-book"></i> Buscar Questão</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/question/list']"><i class="address-book"></i> Minhas Questões</a>
+          </li>
+        </ul>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/curriculum/list']" *ngxPermissionsExcept="'STUDENT'"><i class="icon-book-open"></i> Currículos</a>
       </li>
