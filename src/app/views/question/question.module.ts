@@ -18,7 +18,6 @@ import { AnswerModule } from '../answer/answer.module';
 import {UiSwitchModule} from 'ngx-toggle-switch';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {AccordionModule} from 'ngx-bootstrap';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -35,7 +34,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     UiSwitchModule,
     NgMultiSelectDropDownModule.forRoot(),
     AccordionModule.forRoot(),
-    BrowserAnimationsModule
   ],
   declarations: [
     QuestionFormComponent,

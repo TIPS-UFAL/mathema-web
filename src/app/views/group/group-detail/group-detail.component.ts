@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { CommonModule} from '@angular/common';
 
 import {CurriculumService} from '../../curriculum/shared/curriculum.service';
 import {Curriculum} from '../../curriculum/shared/curriculum.model';
@@ -16,52 +17,25 @@ import {UserService} from '../../user/shared/services';
 export class GroupDetailComponent implements OnInit {
   group: Group;
   user: User;
-  enrolled: boolean = false;
+  enrolled = false;
   curriculum: Curriculum;
   students: User[] = [];
   isCollapsed: boolean[] = [];
 
-  constructor(private groupService: GroupService,
-              private userService: UserService,
-              private curriculumService: CurriculumService,
-              private route: ActivatedRoute) {
-    const idGroup = this.route.snapshot.paramMap.get('idGroup');
-    groupService.getGroup(idGroup).subscribe((data: any) => {
-      this.group = data;
-      this.curriculumService.getCurriculum(this.group.curriculum).subscribe( (curr: any) => {
-        this.curriculum = curr;
-      });
-      this.userService.getUser().subscribe(data => {
-        this.user = data;
-        this.groupService.getGroupStudent(this.user.pk, this.group.group_key).subscribe(data => this.enrolled = true, err => this.enrolled = false);
-      });
-      this.getStudents();
+  /*Estatísticas gerais da turma a implementar:*/
 
-    });
-  }
+  public brandPrimary = '#20a8d8';
+  public brandSuccess = '#4dbd74';
+  public brandInfo = '#63c2de';
+  public brandWarning = '#f8cb00';
+  public brandDanger = '#f86c6b';
 
-  getStudents() {
-    for (const student of this.group.students) {
-      this.userService.findUser(student).subscribe( (data: any) => {
-        this.students.push(data);
-        this.isCollapsed.push(true);
-      });
-    }
-  }
+  // dropdown buttons
+  public status: { isopen } = { isopen: false };
 
-  enroll() {
-    if(!this.enrolled) {
-      this.groupService.createGroupStudent({'student': this.user.pk, 'group': this.group.group_key}).subscribe(data => {
-        alert('Cadastrado com Sucesso!');
-        this.enrolled = true;
-      }, err => {
-        alert('Oops! Algum erro aconteceu!');
-      });
-    }
-  }
 
   /*Estatísticas específicas de cada aluno a implementar:*/
-  //line
+  // line
   public lineChartDataLog: Array<any> = [
     {data: [0, 0, 0, 20, 50, 80, 85], label: 'Pontuação'},
   ];
@@ -82,64 +56,6 @@ export class GroupDetailComponent implements OnInit {
   ];
   public lineChartLegendLog = true;
   public lineChartTypeLog = 'line';
-
-
-
-  // Radar
-  public radarChartLabelsMat: string[] = ['Fração', 'Potencia', 'Fatoração', 'Funções', 'Exponencial'];
-
-  public radarChartDataMat: any = [
-    {data: [100, 72, 50, 81, 0], label: 'Matematica'}
-  ];
-  public radarChartColoursMat: Array<any> = [
-    {
-      backgroundColor: 'rgba(78,189,116,0.2)',
-      borderColor: 'rgba(78,189,116,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    },
-  ];
-  public radarChartTypeMat = 'radar';
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
-
-  /*Estatísticas gerais da turma a implementar:*/
-
-  public brandPrimary = '#20a8d8';
-  public brandSuccess = '#4dbd74';
-  public brandInfo = '#63c2de';
-  public brandWarning = '#f8cb00';
-  public brandDanger = '#f86c6b';
-
-  // dropdown buttons
-  public status: { isopen } = { isopen: false };
-  public toggleDropdown($event: MouseEvent): void {
-    $event.preventDefault();
-    $event.stopPropagation();
-    this.status.isopen = !this.status.isopen;
-  }
-
-  // convert Hex to RGBA
-  public convertHex(hex: string, opacity: number) {
-    hex = hex.replace('#', '');
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-
-    const rgba = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + opacity / 100 + ')';
-    return rgba;
-  }
-
   // lineChart1
   public lineChart1Data: Array<any> = [
     {
@@ -324,11 +240,6 @@ export class GroupDetailComponent implements OnInit {
   public barChart1Legend = false;
   public barChart1Type = 'bar';
 
-  // mainChart
-
-  public random(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
 
   public mainChartElements = 27;
   public mainChartData1: Array<number> = [];
@@ -558,6 +469,103 @@ export class GroupDetailComponent implements OnInit {
 
   public sparklineChartLegend = false;
   public sparklineChartType = 'line';
+
+
+  // Radar
+  public radarChartLabelsMat: string[] = ['Fração', 'Potencia', 'Fatoração', 'Funções', 'Exponencial'];
+
+  public radarChartDataMat: any = [
+    {data: [100, 72, 50, 81, 0], label: 'Matematica'}
+  ];
+  public radarChartColoursMat: Array<any> = [
+    {
+      backgroundColor: 'rgba(78,189,116,0.2)',
+      borderColor: 'rgba(78,189,116,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+  ];
+  public radarChartTypeMat = 'radar';
+
+  // events
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
+
+
+
+  public toggleDropdown($event: MouseEvent): void {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.status.isopen = !this.status.isopen;
+  }
+
+  // convert Hex to RGBA
+  public convertHex(hex: string, opacity: number) {
+    hex = hex.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+
+    const rgba = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + opacity / 100 + ')';
+    return rgba;
+  }
+
+
+
+
+  // mainChart
+
+  public random(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  constructor(private groupService: GroupService,
+              private userService: UserService,
+              private curriculumService: CurriculumService,
+              private route: ActivatedRoute) {
+    const idGroup = this.route.snapshot.paramMap.get('idGroup');
+    groupService.getGroup(idGroup).subscribe((data: any) => {
+      this.group = data;
+      this.curriculumService.getCurriculum(this.group.curriculum).subscribe( (curr: any) => {
+        this.curriculum = curr;
+      });
+      // tslint:disable-next-line:no-shadowed-variable
+      this.userService.getUser().subscribe((data: any) => {
+        this.user = data;
+        // tslint:disable-next-line:no-shadowed-variable max-line-length
+        this.groupService.getGroupStudent(this.user.pk, this.group.group_key).subscribe((data: any) => this.enrolled = true, err => this.enrolled = false);
+      });
+      this.getStudents();
+
+    });
+  }
+
+  getStudents() {
+    for (const student of this.group.students) {
+      this.userService.findUser(student).subscribe( (data: any) => {
+        this.students.push(data);
+        this.isCollapsed.push(true);
+      });
+    }
+  }
+
+  enroll() {
+    if (!this.enrolled) {
+      this.groupService.createGroupStudent({'student': this.user.pk, 'group': this.group.group_key}).subscribe(data => {
+        alert('Cadastrado com Sucesso!');
+        this.enrolled = true;
+      }, err => {
+        alert('Oops! Algum erro aconteceu!');
+      });
+    }
+  }
+
 
 
   ngOnInit(): void {
